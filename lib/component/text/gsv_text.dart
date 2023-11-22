@@ -12,11 +12,11 @@ class GsvText extends StatelessWidget {
   final FontWeight? fontWeight;
 
   const GsvText({
-    Key? key,
     required this.text,
     this.color = ColorStyle.black,
     this.textType = TextType.body,
-    this.fontWeight
+    this.fontWeight,
+    Key? key
 }) : super(key: key);
 
   @override

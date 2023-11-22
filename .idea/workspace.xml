@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38f6bbab-e7e5-4516-a6c3-41e80ea08b4e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Black.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Bold.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-ExtraBold.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-ExtraLight.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Light.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Medium.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Regular.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-SemiBold.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Thin.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/component/text/gsv_text.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/component/text/text_type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/component/button/button_type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/component/button/button_type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/component/button/gsv_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/component/button/gsv_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/component/text/gsv_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/component/text/gsv_text.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/ui/ui.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/ui/ui.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/color.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +34,22 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dgsw8th71/Desktop/develop/HNW-Mobile-v2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/dgsw8th71/Desktop/develop/HNW-Mobile-v2",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/font/pretendard" />

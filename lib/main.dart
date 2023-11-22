@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterproj/component/button/gsv_button.dart';
 import 'package:flutterproj/features/ui/ui.dart';
 import 'package:flutterproj/main_viewmodel.dart';
+import 'package:flutterproj/theme/color.dart';
 import 'package:provider/provider.dart';
 import 'features/home/home_view.dart';
 
@@ -18,6 +19,8 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
+            splashColor: ColorStyle.transparent,
+            highlightColor: ColorStyle.transparent,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
