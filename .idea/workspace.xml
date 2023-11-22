@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38f6bbab-e7e5-4516-a6c3-41e80ea08b4e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Black.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Bold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-ExtraBold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-ExtraLight.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Light.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Medium.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Regular.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-SemiBold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/font/pretendard/Pretendard-Thin.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/component/text/gsv_text.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/component/text/text_type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/ui/ui.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/ui/ui.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2YWOQCNaIWpKDb4MgOHwcNpoyng" />
+  <component name="ProjectViewState">
+    <option name="compactDirectories" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dgsw8th71/Desktop/develop/HNW-Mobile-v2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/font/pretendard" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38f6bbab-e7e5-4516-a6c3-41e80ea08b4e" name="Changes" comment="" />
+      <created>1700637851756</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700637851756</updated>
+    </task>
+    <servers />
+  </component>
+</project>
