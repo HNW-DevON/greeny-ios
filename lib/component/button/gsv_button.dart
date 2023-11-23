@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutterproj/component/button/button_type.dart';
 import 'package:flutterproj/component/text/gsv_text.dart';
 import 'package:flutterproj/component/text/text_type.dart';
+import 'package:flutterproj/theme/color.dart';
 
 class GsvButton extends StatefulWidget {
-  static const double height = 44;
+  static const double height = 48;
 
   final String text;
   final VoidCallback callback;
@@ -49,16 +50,15 @@ class _GsvButtonState extends State<GsvButton> with SingleTickerProviderStateMix
   }
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
+    return Container(
+      // color: ColorStyle.gray200,
+      child: ScaleTransition(
         scale: _animation,
-        child: SizedBox(
-          width: double.infinity,
-          height: null,
-          child: TextButton(
-            onPressed: widget.isEnabled ? () {
-              _animationController.forward();
-            } : null,
-            style: ButtonStyle(
+        child: TextButton(
+          onPressed: widget.isEnabled ? () {
+            _animationController.forward();
+          } : null,
+          style: ButtonStyle(
               splashFactory: NoSplash.splashFactory,
               backgroundColor: widget.isEnabled
                   ? MaterialStateProperty.all(widget.buttonType.backgroundColor)
@@ -78,16 +78,17 @@ class _GsvButtonState extends State<GsvButton> with SingleTickerProviderStateMix
                     borderRadius: BorderRadius.circular(GsvButton.height / 2),
                   )
               ),
-            ),
-            child: GsvText(
-              text: widget.text,
-              textType: TextType.label,
-              color: widget.isEnabled
-                  ? widget.buttonType.contentColor
-                  : widget.buttonType.disabledContentColor,
-            ),
+              minimumSize: MaterialStateProperty.all(const Size(double.infinity, GsvButton.height))
           ),
-        )
+          child: GsvText(
+            text: widget.text,
+            textType: TextType.label,
+            color: widget.isEnabled
+                ? widget.buttonType.contentColor
+                : widget.buttonType.disabledContentColor,
+          ),
+        ),
+      )
     );
   }
 
