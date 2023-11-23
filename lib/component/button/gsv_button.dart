@@ -3,8 +3,7 @@ import 'package:flutterproj/component/button/button_type.dart';
 import 'package:flutterproj/component/text/gsv_text.dart';
 import 'package:flutterproj/component/text/text_type.dart';
 
-class GsvButton extends StatelessWidget {
-
+class GsvButton extends StatefulWidget {
   static const double height = 44;
 
   final String text;
@@ -23,38 +22,78 @@ class GsvButton extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Transform.scale(
-      scale: 1,
-      child: SizedBox(
-          width: isLarge ? double.infinity : null,
-          height: height,
-          child: TextButton(
-              style: TextButton.styleFrom(
-                  splashFactory: NoSplash.splashFactory,
-                  backgroundColor: buttonType.backgroundColor,
-                  foregroundColor: buttonType.contentColor,
-                  disabledBackgroundColor: buttonType.disabledBackgroundColor,
-                  disabledForegroundColor: buttonType.disabledContentColor,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: isEnabled ? buttonType.strokeColor : buttonType.disabledStrokeColor,
-                        width: 1.5
-                    ),
-                    borderRadius: BorderRadius.circular(height / 2),
-                  ),
-              ),
-              onPressed: isEnabled ? () {
-                callback();
-              } : null,
-              child: GsvText(
-                text: text,
-                textType: TextType.label,
-                color: isEnabled ? buttonType.contentColor : buttonType.disabledContentColor,
-              )
-          )
-      ),
-    );
-  }
+  _GsvButtonState createState() => _GsvButtonState();
 }
 
+class _GsvButtonState extends State<GsvButton> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+  bool isPressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150)
+    );
+
+    _animation = Tween<double>(begin: 1.0, end: 0.98).animate(_animationController);
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _animationController.reverse();
+      }
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return ScaleTransition(
+        scale: _animation,
+        child: SizedBox(
+          width: double.infinity,
+          height: null,
+          child: TextButton(
+            onPressed: widget.isEnabled ? () {
+              _animationController.forward();
+            } : null,
+            style: ButtonStyle(
+              splashFactory: NoSplash.splashFactory,
+              backgroundColor: widget.isEnabled
+                  ? MaterialStateProperty.all(widget.buttonType.backgroundColor)
+                  : MaterialStateProperty.all(widget.buttonType.disabledBackgroundColor),
+              foregroundColor: widget.isEnabled
+                  ? MaterialStateProperty.all(widget.buttonType.contentColor)
+                  : MaterialStateProperty.all(widget.buttonType.disabledContentColor),
+              side: MaterialStateProperty.all(
+                  BorderSide(
+                      color: widget.isEnabled
+                          ? widget.buttonType.strokeColor
+                          : widget.buttonType.disabledStrokeColor,
+                      width: 1.5
+                  )),
+              shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(GsvButton.height / 2),
+                  )
+              ),
+            ),
+            child: GsvText(
+              text: widget.text,
+              textType: TextType.label,
+              color: widget.isEnabled
+                  ? widget.buttonType.contentColor
+                  : widget.buttonType.disabledContentColor,
+            ),
+          ),
+        )
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+}

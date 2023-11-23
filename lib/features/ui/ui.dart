@@ -4,7 +4,16 @@ import 'package:flutterproj/component/button/gsv_button.dart';
 import 'package:flutterproj/component/text/gsv_text.dart';
 import 'package:flutterproj/component/text/text_type.dart';
 
-class UiView extends StatelessWidget {
+class UiView extends StatefulWidget {
+
+  @override
+  _UiView createState() => _UiView();
+}
+
+class _UiView extends State<UiView> {
+
+  bool a = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -13,21 +22,22 @@ class UiView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
             children: [
-              const SizedBox(height: 100),
+              const SizedBox(height: 30),
               GsvButton(
                   text: "로그인asdas",
                   callback: () {
-
                   },
-                  isEnabled: true
+                  isEnabled: a
               ),
 
               GsvButton(
                   text: "test",
                   callback: () {
-
+                    setState(() {
+                      a = !a;
+                    });
                   },
-                  isEnabled: false
+                  isEnabled: true
               ),
               GsvButton(
                 text: "test",
