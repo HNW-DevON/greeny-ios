@@ -7,7 +7,6 @@ extension WidgetExtension on Widget {
   Widget redBoard() {
     if (!isDebug) return this;
     return Container(
-      padding: const EdgeInsets.only(top: 1, left: 1),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.blue,
