@@ -3,6 +3,7 @@ import 'package:flutterproj/component/button/button_type.dart';
 import 'package:flutterproj/component/button/gsv_button.dart';
 import 'package:flutterproj/component/text/gsv_text.dart';
 import 'package:flutterproj/component/text/text_type.dart';
+import 'package:flutterproj/component/text_field/gsv_text_field.dart';
 
 class UiView extends StatefulWidget {
 
@@ -11,6 +12,7 @@ class UiView extends StatefulWidget {
 }
 
 class _UiView extends State<UiView> {
+  final TextEditingController _nameController = TextEditingController();
 
   bool a = false;
 
@@ -71,29 +73,53 @@ class _UiView extends State<UiView> {
               GsvButton(
                 text: "test",
                 callback: () {
-
+                  Navigator.of(context).pushNamed('/home');
                 },
                 buttonType: ButtonType.grayDefaultButton,
               ),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w100, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w200, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w300, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w400, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w500, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w600, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w700, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w800, textType: TextType.title),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w900, textType: TextType.title),
+              const SizedBox(height: 16),
+              GsvTextField(controller: _nameController, labelText: '이메일을 입력해주세요'),
+              const SizedBox(height: 16),
+              GsvTextField(controller: _nameController, labelText: '이메일을 입력해주세요', isPassword: true),
+              const SizedBox(height: 16),
+              GsvTextField(controller: _nameController, labelText: "ㅁ닝ㅁ", isEnabled: false,),
+              const SizedBox(height: 16),
+              GsvTextField(controller: _nameController, labelText: "ㅁ닝ㅁ", prefixIconData: Icons.add, callback: () {
+                _nameController.text = "";
+              },hideIcon: Icons.add_circle,),
+              const Row(
+                children: [
+                  Column(
+                    children: [
+                      GsvText(text: "Hello", fontWeight: FontWeight.w100, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w200, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w300, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w400, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w500, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w600, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w700, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w800, textType: TextType.title),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w900, textType: TextType.title),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      GsvText(text: "Hello", fontWeight: FontWeight.w100, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w200, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w300, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w400, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w500, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w600, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w700, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w800, textType: TextType.body),
+                      GsvText(text: "Hello", fontWeight: FontWeight.w900, textType: TextType.body),
+                    ],
+                  )
+                ],
+              )
 
-              const GsvText(text: "Hello", fontWeight: FontWeight.w100, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w200, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w300, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w400, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w500, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w600, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w700, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w800, textType: TextType.body),
-              const GsvText(text: "Hello", fontWeight: FontWeight.w900, textType: TextType.body),
+
+
             ],
           ),
         )

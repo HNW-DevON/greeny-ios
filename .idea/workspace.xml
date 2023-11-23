@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38f6bbab-e7e5-4516-a6c3-41e80ea08b4e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/component/text_field/gsv_text_field.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/component/text_field/text_field_type.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/component/button/gsv_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/component/button/gsv_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/ui/ui.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/ui/ui.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

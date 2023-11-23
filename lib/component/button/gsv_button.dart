@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterproj/component/button/button_type.dart';
 import 'package:flutterproj/component/text/gsv_text.dart';
 import 'package:flutterproj/component/text/text_type.dart';
-import 'package:flutterproj/theme/color.dart';
 
 class GsvButton extends StatefulWidget {
   static const double height = 48;
@@ -51,11 +50,11 @@ class _GsvButtonState extends State<GsvButton> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: ColorStyle.gray200,
       child: ScaleTransition(
         scale: _animation,
         child: TextButton(
           onPressed: widget.isEnabled ? () {
+            widget.callback();
             _animationController.forward();
           } : null,
           style: ButtonStyle(
