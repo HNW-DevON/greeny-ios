@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38f6bbab-e7e5-4516-a6c3-41e80ea08b4e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/component/text_field/gsv_text_field.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/component/text_field/text_field_type.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/cam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/explore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/my.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/image/quest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/component/extension/widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/component/button/gsv_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/component/button/gsv_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/ui/ui.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/ui/ui.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/home_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/home_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +55,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/image" />
       <recent name="$PROJECT_DIR$/assets/font/pretendard" />
     </key>
   </component>

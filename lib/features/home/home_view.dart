@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproj/component/button/gsv_button.dart';
+import 'package:flutterproj/component/text/gsv_text.dart';
+import 'package:flutterproj/component/text/text_type.dart';
 import 'package:flutterproj/main_viewmodel.dart';
+import 'package:flutterproj/theme/color.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -19,15 +21,27 @@ class MainView extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: ColorStyle.white,
           title: const Text("홈", style: TextStyle(fontWeight: FontWeight.bold),),
         ),
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Center(
-            child: GsvButton(text: "버asdsads튼", callback: () {
+          color: ColorStyle.white,
+          width: double.infinity,
+          height: double.infinity,
+          child: SingleChildScrollView(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    GsvText(text: "오늘의 착한 소비", textType: TextType.headline),
+                  ]
+                ),
 
-            })
+
+
+              ],
+            )
           )
         )
     );
