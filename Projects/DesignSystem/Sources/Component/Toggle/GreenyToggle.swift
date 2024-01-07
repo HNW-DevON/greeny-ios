@@ -8,11 +8,15 @@
 
 import SwiftUI
 
-struct GreenyToggle: View {
+public struct GreenyToggle: View {
     
     @Binding var isOn: Bool
     
-    var body: some View {
+    public init(isOn: Binding<Bool>) {
+        self._isOn = isOn
+    }
+    
+    public var body: some View {
         Toggle("", isOn: $isOn)
             .labelsHidden()
             .foregroundStyle(Color.main300)

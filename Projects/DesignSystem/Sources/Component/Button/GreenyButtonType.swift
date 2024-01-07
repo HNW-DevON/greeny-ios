@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum GreenyButtonType {
+public enum GreenyButtonType {
     case main
     case black
     case red

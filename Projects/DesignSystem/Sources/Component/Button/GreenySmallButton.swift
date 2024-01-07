@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct GreenySmallButton: View {
+public struct GreenySmallButton: View {
     
     var text: String
     var buttonType: GreenyButtonType
     var callback: () -> Void
     
-    init(_ text: String,
+    public init(_ text: String,
          buttonType: GreenyButtonType = .main,
          callback: @escaping () -> Void) {
         self.text = text
@@ -22,7 +22,7 @@ struct GreenySmallButton: View {
         self.callback = callback
     }
     
-    var body: some View {
+    public var body: some View {
         Button {
             callback()
         } label: {

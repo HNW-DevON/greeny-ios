@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-extension Font {
+public extension Font {
     
     // pretendard
     static let title = Font.custom(Pretendard.bold.rawValue, size: 24)

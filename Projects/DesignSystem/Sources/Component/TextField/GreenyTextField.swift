@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct GreenyTextField: View {
+public struct GreenyTextField: View {
     
     // MARK: - parameters
     let hint: String
     @Binding var text: String
     let textFieldType: GreenyTextFieldType
     
-    init(_ hint: String = "",
+    public init(_ hint: String = "",
          text: Binding<String>,
          textFieldType: GreenyTextFieldType = .none(hasXMark: true)) {
         self.hint = hint
@@ -28,7 +28,7 @@ struct GreenyTextField: View {
     @State private var isHide: Bool = true
     
     // MARK: - View
-    var body: some View {
+    public var body: some View {
         
         let lineWidth = isFocused ? 1.5 : 1
         let strokeColor: Color = isFocused ? .main600 : .gray300
