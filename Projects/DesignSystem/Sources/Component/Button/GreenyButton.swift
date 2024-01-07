@@ -28,7 +28,7 @@ struct GreenyButton: View {
         } label: {
             Text(text)
                 .font(.body)
-                .frame(maxWidth: .infinity, maxHeight: 54)
+                .frame(maxWidth: .infinity, maxHeight: 52)
                 .foregroundStyle(buttonType.foregroundColor)
                 .background(buttonType.backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: Size.large.rawValue))
