@@ -29,11 +29,11 @@ struct UITestView: View {
                 } label: {
                     Text("Button Test")
                 }
-                //                NavigationLink {
-                //                    LogoTestView()
-                //                } label: {
-                //                    Text("Logo Test")
-                //                }
+                NavigationLink {
+                    LogoTestView()
+                } label: {
+                    Text("Logo Test")
+                }
                 NavigationLink {
                     TextFieldTest()
                 } label: {

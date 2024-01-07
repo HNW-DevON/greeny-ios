@@ -8,5 +8,5 @@
 
 import Foundation
 
-public let dummyText = "Alimo!"
-public let appName = "Alimo"
+public let dummyText = "Greeny!"
+public let appName = "Greeny"
