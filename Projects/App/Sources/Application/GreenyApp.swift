@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Feature
 
 @main
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            UITestView()
+//            UITestView()
+            OnboardingView()
         }
     }
 }
