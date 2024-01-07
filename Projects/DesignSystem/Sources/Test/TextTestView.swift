@@ -8,9 +8,11 @@
 
 import SwiftUI
 
-struct TextTestView: View {
+public struct TextTestView: View {
     
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(dummyText)

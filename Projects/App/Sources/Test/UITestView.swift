@@ -19,16 +19,16 @@ struct UITestView: View {
                 } label: {
                     Text("Color Test")
                 }
-                //                NavigationLink {
-                //                    TextTestView()
-                //                } label: {
-                //                    Text("Text Test")
-                //                }
-                //                NavigationLink {
-                //                    ButtonTestView()
-                //                } label: {
-                //                    Text("Button Test")
-                //                }
+                NavigationLink {
+                    TextTestView()
+                } label: {
+                    Text("Text Test")
+                }
+                NavigationLink {
+                    ButtonTestView()
+                } label: {
+                    Text("Button Test")
+                }
                 //                NavigationLink {
                 //                    LogoTestView()
                 //                } label: {
