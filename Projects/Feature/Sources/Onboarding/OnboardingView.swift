@@ -12,6 +12,7 @@ import DesignSystem
 public struct OnboardingView: View {
     
     @State var isLoading: Bool = true
+    @State var selectedTab: Int = 0
     
     public init() {}
     
@@ -19,7 +20,7 @@ public struct OnboardingView: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    TabView {
+                    TabView(selection: $selectedTab) {
                         GreenyOnboardingImage(image: "Onboarding1",
                                               title: "사회적 기업이란?",
                                               description: "영리기업과 비영리기업의 중간 형태")
@@ -34,7 +35,17 @@ public struct OnboardingView: View {
                         .tag(2)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                    
+                    .frame(height: 320)
+                    .padding(.bottom, 20)
+                    HStack(spacing: 8) {
+                        ForEach(0..<3) {
+                            let isSelectedTab = selectedTab == $0
+                            let indicatorColor = isSelectedTab ? Color.main600 : Color.gray300
+                            Circle()
+                                .frame(width: 8, height: 8)
+                                .foregroundStyle(indicatorColor)
+                        }
+                    }
                 }
                 VStack {
                     Spacer()
