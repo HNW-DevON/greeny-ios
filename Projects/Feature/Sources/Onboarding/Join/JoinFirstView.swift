@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  JoinView.swift
 //  Feature
 //
 //  Created by dgsw8th71 on 1/8/24.
@@ -9,7 +9,7 @@
 import SwiftUI
 import DesignSystem
 
-struct LoginView: View {
+struct JoinFirstView: View {
     
     @State var id: String = ""
     @State var pw: String = ""
@@ -19,29 +19,15 @@ struct LoginView: View {
             GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
                 .padding([.bottom, .top], 32)
             GreenyInputCeil(textFieldType: .password, title: "비밀번호", hint: "비밀번호를 입력해 주세요", text: $pw)
-            HStack {
-                Spacer()
-                NavigationLink {
-                    
-                } label: {
-                    Text("비밀번호 찾기")
-                        .foregroundStyle(Color.gray500)
-                        .font(._caption)
-                        .underline()
-                        .padding([.top], 4)
-                        .padding([.trailing], 24)
-                }
-                
-            }
             Spacer()
             
             HStack(spacing: 0) {
-                Text("아직 계정이 없으시다면? ")
+                Text("이미 계정이 있으시다면? ")
                     .font(._caption)
                 NavigationLink {
-                    JoinFirstView()
+                    LoginView()
                 } label: {
-                    Text("회원가입")
+                    Text("로그인")
                         .foregroundStyle(Color.main600)
                         .font(._caption)
                 }
@@ -49,9 +35,10 @@ struct LoginView: View {
             .padding(.bottom, 16)
             
             
-            GreenyButton("로그인") {}
+            GreenyButton("다음으로") {}
                 .padding(.bottom, 16)
             
         }
     }
 }
+
