@@ -51,7 +51,7 @@ struct LoginView: View {
             
             GreenyButton("로그인") {}
                 .padding(.bottom, 16)
-            
         }
+        .navigationBarBackButtonHidden()
     }
 }

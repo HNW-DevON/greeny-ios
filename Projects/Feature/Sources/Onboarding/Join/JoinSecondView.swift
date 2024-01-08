@@ -9,16 +9,16 @@
 import SwiftUI
 import DesignSystem
 
-struct JoinFirstView: View {
+struct JoinSecondView: View {
     
-    @State var id: String = ""
-    @State var pw: String = ""
+    @State var name: String = ""
+    @State var birthday: String = ""
     
     var body: some View {
         VStack(spacing:0) {
-            GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
+            GreenyInputCeil(title: "이름", hint: "이름을 입력해 주세요", text: $name)
                 .padding([.bottom, .top], 32)
-            GreenyInputCeil(textFieldType: .password, title: "비밀번호", hint: "비밀번호를 입력해 주세요", text: $pw)
+            GreenyInputCeil(textFieldType: .password, title: "생년월일", hint: "생년월일을 입력해 주세요", text: $birthday)
             Spacer()
             
             HStack(spacing: 0) {
@@ -34,12 +34,9 @@ struct JoinFirstView: View {
             }
             .padding(.bottom, 16)
             
-            NavigationLink {
-                JoinSecondView()
-            } label: {
-                GreenyButton("다음으로") {}.disabled(true)
-                    .padding(.bottom, 16)
-            }
+            GreenyButton("회원가입") {}
+                .padding(.bottom, 16)
+            
         }
         .navigationBarBackButtonHidden()
     }
