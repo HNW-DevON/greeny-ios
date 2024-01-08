@@ -15,17 +15,19 @@ public struct MainView: View {
     public init() {}
     
     public var body: some View {
-        ZStack {
-            switch selectedTab {
-            case .home: Text("home view")
-            case .find: Text("find view")
-            case .certification: Text("certification view")
-            case .quest: Text("quest view")
-            case .my: Text("my view")
-            }
-            VStack {
-                Spacer()
-                GreenyBottomNavigator(selectedTab: $selectedTab)
+        NavigationStack {
+            ZStack {
+                switch selectedTab {
+                case .home: Text("home view")
+                case .find: Text("find view")
+                case .certification: Text("certification view")
+                case .quest: Text("quest view")
+                case .my: Text("my view")
+                }
+                VStack {
+                    Spacer()
+                    GreenyBottomNavigator(selectedTab: $selectedTab)
+                }
             }
         }
     }
