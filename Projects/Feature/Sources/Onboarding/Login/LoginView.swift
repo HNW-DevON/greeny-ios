@@ -34,6 +34,20 @@ struct LoginView: View {
             }
             Spacer()
             
+            HStack(spacing: 0) {
+                Text("아직 계정이 없으시다면? ")
+                    .font(._caption)
+                NavigationLink {
+                    // to join view
+                } label: {
+                    Text("회원가입")
+                        .foregroundStyle(Color.main600)
+                        .font(._caption)
+                }
+            }
+            .padding(.bottom, 16)
+            
+            
             GreenyButton("로그인") {}
                 .padding(.bottom, 16)
             
