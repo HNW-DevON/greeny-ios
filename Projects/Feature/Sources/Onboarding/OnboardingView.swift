@@ -16,30 +16,32 @@ public struct OnboardingView: View {
     public init() {}
     
     public var body: some View {
-        ZStack {
-            VStack {
-                
-            }
-            VStack {
-                Spacer()
-                NavigationLink {
-                    // login
-                } label: {
-                    GreenyButton("시작하기") {}.disabled(true)
-                        .padding(.bottom, 16)
+        NavigationStack {
+            ZStack {
+                VStack {
+                    
+                }
+                VStack {
+                    Spacer()
+                    NavigationLink {
+                        LoginView()
+                    } label: {
+                        GreenyButton("시작하기") {}.disabled(true)
+                            .padding(.bottom, 16)
+                    }
+                    
+                    
                 }
                 
-                
+                if isLoading {
+                    LaunchScreenView().transition(.opacity).zIndex(1)
+                }
             }
-            
-            if isLoading {
-                LaunchScreenView().transition(.opacity).zIndex(1)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    withAnimation { isLoading = false }
+                })
             }
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                withAnimation { isLoading = false }
-            })
         }
     }
 }

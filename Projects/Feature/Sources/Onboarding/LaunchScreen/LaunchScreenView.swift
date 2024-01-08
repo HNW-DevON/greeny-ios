@@ -21,7 +21,7 @@ public struct LaunchScreenView: View {
                     Spacer()
                     GreenyLogo(type: .large)
                     Text("착한 소비")
-                        .font(.subtitle)
+                        .font(._subtitle)
                         .padding(.top, 16)
                     Spacer()
                 }
