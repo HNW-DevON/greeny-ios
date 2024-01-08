@@ -34,7 +34,7 @@ struct GreenyInputCeil: View {
                     .padding(.leading, 4)
                 Spacer()
             }
-            GreenyTextField("아이디를 입력해 주세요", text: $text)
+            GreenyTextField(hint, text: $text, textFieldType: textFieldType)
         }
         .padding(.horizontal, 20)
     }
