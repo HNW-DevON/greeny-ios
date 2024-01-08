@@ -27,7 +27,7 @@ public struct GreenySmallButton: View {
             callback()
         } label: {
             Text(text)
-                .font(.label)
+                .font(._label)
                 .frame(maxHeight: 36)
                 .padding(.horizontal, Size.large.rawValue)
                 .foregroundStyle(buttonType.foregroundColor)

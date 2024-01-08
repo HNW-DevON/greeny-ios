@@ -12,13 +12,13 @@ import SwiftUI
 public extension Font {
     
     // pretendard
-    static let title = Font.custom(Pretendard.bold.rawValue, size: 24)
-    static let subtitle = Font.custom(Pretendard.bold.rawValue, size: 20)
-    static let body = Font.custom(Pretendard.bold.rawValue, size: 16)
-    static let bodyLight = Font.custom(Pretendard.medium.rawValue, size: 16)
-    static let label = Font.custom(Pretendard.medium.rawValue, size: 14)
-    static let caption = Font.custom(Pretendard.medium.rawValue, size: 12)
-    static let cute = Font.custom(Pretendard.medium.rawValue, size: 10)
+    static let _title = Font.custom(Pretendard.bold.rawValue, size: 24)
+    static let _subtitle = Font.custom(Pretendard.bold.rawValue, size: 20)
+    static let _body = Font.custom(Pretendard.bold.rawValue, size: 16)
+    static let _bodyLight = Font.custom(Pretendard.medium.rawValue, size: 16)
+    static let _label = Font.custom(Pretendard.medium.rawValue, size: 14)
+    static let _caption = Font.custom(Pretendard.medium.rawValue, size: 12)
+    static let _cute = Font.custom(Pretendard.medium.rawValue, size: 10)
 }
 
 enum Pretendard: String {

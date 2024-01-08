@@ -16,8 +16,8 @@ public struct GreenyTextField: View {
     let textFieldType: GreenyTextFieldType
     
     public init(_ hint: String = "",
-         text: Binding<String>,
-         textFieldType: GreenyTextFieldType = .none(hasXMark: true)) {
+                text: Binding<String>,
+                textFieldType: GreenyTextFieldType = .none(hasXMark: true)) {
         self.hint = hint
         self._text = text
         self.textFieldType = textFieldType
@@ -47,7 +47,7 @@ public struct GreenyTextField: View {
         .background(Color.white)
         .padding(.horizontal, 16)
         .clipShape(RoundedRectangle(cornerRadius: Size.large.rawValue))
-        .font(.bodyLight)
+        .font(._bodyLight)
         .accentColor(.main600)
         .foregroundStyle(.black)
         .overlay(
@@ -79,6 +79,5 @@ public struct GreenyTextField: View {
                 .padding(.trailing, 16)
             }
         )
-        .padding(.horizontal, 20)
     }
 }

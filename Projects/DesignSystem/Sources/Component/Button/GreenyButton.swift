@@ -27,7 +27,7 @@ public struct GreenyButton: View {
             callback()
         } label: {
             Text(text)
-                .font(.body)
+                .font(._body)
                 .frame(maxWidth: .infinity, maxHeight: 52)
                 .foregroundStyle(buttonType.foregroundColor)
                 .background(buttonType.backgroundColor)
