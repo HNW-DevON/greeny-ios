@@ -8,31 +8,32 @@
 
 import SwiftUI
 
-struct GreenyTopbar<Content>: View where Content: View {
+public struct GreenyTopbar<Content>: View where Content: View {
     
     var backButtonCallback: (() -> Void)?
     var title: String
     @ViewBuilder var content: () -> Content
     
-    init(backButtonCallback: (() -> Void)? = nil,
-         title: String,
-         content: @escaping () -> Content) {
+    public init(_ title: String,
+                backButtonCallback: (() -> Void)? = nil,
+                content: @escaping () -> Content) {
         self.backButtonCallback = backButtonCallback
         self.title = title
         self.content = content
     }
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 if backButtonCallback != nil {
-                    Image("LeftArrow")
-                        .resizable()
-                        .frame(width: 28, height: 28)
-                        .onTapGesture {
-                            backButtonCallback!()
-                        }
-                        .padding(.leading, 16)
+                    Button {
+                        backButtonCallback!()
+                    } label: {
+                        Image("LeftArrow")
+                            .resizable()
+                            .frame(width: 28, height: 28)
+                            .padding(.leading, 16)
+                    }
                 }
                 Text(title)
                     .font(._subtitle)
