@@ -11,7 +11,7 @@ import SwiftUI
 struct GreenyBottomNavigator: View {
     
     @Binding var selectedTab: GreenyBottomNavigatorType
-    public static let bottomList: [GreenyBottomNavigatorType] = [.home, .find, .certification, .quest, .my]
+    public static let bottomList: [GreenyBottomNavigatorType] = [.home, .find, .certification(true), .quest, .my]
     
     var body: some View {
         HStack(spacing: 44) {

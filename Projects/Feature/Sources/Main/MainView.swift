@@ -20,7 +20,7 @@ public struct MainView: View {
                 switch selectedTab {
                 case .home: Text("home view")
                 case .find: Text("find view")
-                case .certification: Text("certification view")
+                case .certification: CertificationView()
                 case .quest: Text("quest view")
                 case .my: Text("my view")
                 }

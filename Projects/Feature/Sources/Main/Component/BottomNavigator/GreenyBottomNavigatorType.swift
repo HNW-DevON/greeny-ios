@@ -11,7 +11,7 @@ import SwiftUI
 enum GreenyBottomNavigatorType: Hashable {
     case home
     case find
-    case certification
+    case certification(_ focus: Bool)
     case quest
     case my
     
