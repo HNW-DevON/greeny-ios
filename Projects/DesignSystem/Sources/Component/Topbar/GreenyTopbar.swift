@@ -29,7 +29,7 @@ public struct GreenyTopbar<Content>: View where Content: View {
                     Button {
                         backButtonCallback!()
                     } label: {
-                        Image("LeftArrow")
+                        Image(Asset.leftArrow)
                             .resizable()
                             .frame(width: 28, height: 28)
                             .padding(.leading, 16)
@@ -41,6 +41,7 @@ public struct GreenyTopbar<Content>: View where Content: View {
                 Spacer()
             }
             content()
+            Spacer()
         }
     }
 }

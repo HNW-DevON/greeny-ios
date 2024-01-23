@@ -19,4 +19,5 @@ public class Asset {
     public static let loudSpeaker = "LoudSpeaker"
     public static let xMark = "XMark"
     public static let cameraRectangle = "CameraRectangle"
+    public static let leftArrow = "LeftArrow"
 }
