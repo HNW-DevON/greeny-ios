@@ -9,7 +9,7 @@
 import SwiftUI
 import DesignSystem
 
-struct TodayGreeny: Hashable {
+struct Today: Hashable {
     let imageUrl: String
     let productName: String
     let author: String
@@ -17,9 +17,9 @@ struct TodayGreeny: Hashable {
 }
 
 fileprivate let dummyTodayGreenyData = [
-    TodayGreeny(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
-    TodayGreeny(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
-    TodayGreeny(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
+    Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
+    Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
+    Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
 ]
 
 public struct HomeView: View {
@@ -35,7 +35,7 @@ public struct HomeView: View {
                     ScrollView(.horizontal) {
                         HStack(spacing: 8) {
                             ForEach(dummyTodayGreenyData, id: \.self) {
-                                TodayGreenyCeil(todayGreeny: $0)
+                                TodayCeil(todayGreeny: $0)
                             }
                         }
                         .padding(.top, 8)

@@ -26,6 +26,7 @@ public extension Color {
     static let gray300 = Color(0xE6E6E6)
     static let gray400 = Color(0xB6B6B6)
     static let gray500 = Color(0x989899)
+    static let gray700 = Color(0x76767B)
     
     // red color
     static let red200 = Color(0xFFE8E8)

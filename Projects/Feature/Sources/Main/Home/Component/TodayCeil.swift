@@ -9,15 +9,15 @@
 import SwiftUI
 import DesignSystem
 
-struct TodayGreenyCeil: View {
+struct TodayCeil: View {
     
-    var todayGreeny: TodayGreeny
+    var todayGreeny: Today
     
     var body: some View {
         
         let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue, corners: .allCorners)
         
-        VStack {
+        VStack(spacing: 0) {
             AsyncImage(
                 url: URL(string: todayGreeny.imageUrl),
                 content: { image in
@@ -27,17 +27,19 @@ struct TodayGreenyCeil: View {
                         .clipShape(roundedCorner)
                         .overlay {
                             roundedCorner
-                                .stroke(Color.gray100, lineWidth: 1)
+                                .stroke(Color.gray100, lineWidth: 2)
                         }
                 }
             )
             Text(todayGreeny.productName)
                 .font(._label)
                 .padding(4)
+                .toLeading()
             Text("\(todayGreeny.author) - \(todayGreeny.createdAt)")
                 .font(.caption)
                 .padding(.leading, 4)
+                .toLeading()
+                .foregroundStyle(Color.gray700)
         }
-            
     }
 }
