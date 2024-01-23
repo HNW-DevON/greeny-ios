@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Size: Double {
+public enum Size: Double {
     case small = 4
     case normal = 8
     case large = 12

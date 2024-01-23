@@ -52,7 +52,7 @@ public struct GreenyTextField: View {
         .foregroundStyle(.black)
         .overlay(
             ZStack {
-                RoundedCorner(radius: Size.large.rawValue)
+                RoundedCorner(radius: Size.large.rawValue, corners: [.allCorners])
                     .stroke(strokeColor, lineWidth: lineWidth)
                 HStack(spacing: 0) {
                     Spacer()
