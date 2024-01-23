@@ -54,9 +54,8 @@ public struct OnboardingView: View {
                     } label: {
                         GreenyButton("시작하기") {}.disabled(true)
                             .padding(.bottom, 16)
+                            .padding(.horizontal, 20)
                     }
-                    
-                    
                 }
                 
                 if isLoading {

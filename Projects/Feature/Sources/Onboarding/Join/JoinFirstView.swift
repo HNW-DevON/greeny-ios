@@ -22,7 +22,9 @@ struct JoinFirstView: View {
             VStack(spacing:0) {
                 GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
                     .padding([.bottom, .top], 32)
+                    .padding(.horizontal, 20)
                 GreenyInputCeil(textFieldType: .password, title: "비밀번호", hint: "비밀번호를 입력해 주세요", text: $pw)
+                    .padding(.horizontal, 20)
                 Spacer()
                 
                 HStack(spacing: 0) {
@@ -43,6 +45,7 @@ struct JoinFirstView: View {
                 } label: {
                     GreenyButton("다음으로") {}.disabled(true)
                         .padding(.bottom, 16)
+                        .padding(.horizontal, 20)
                 }
             }
         }

@@ -36,6 +36,5 @@ struct GreenyInputCeil: View {
             }
             GreenyTextField(hint, text: $text, textFieldType: textFieldType)
         }
-        .padding(.horizontal, 20)
     }
 }

@@ -33,6 +33,5 @@ public struct GreenyButton: View {
                 .background(buttonType.backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: Size.large.rawValue))
         }
-        .padding(.horizontal, 20)
     }
 }

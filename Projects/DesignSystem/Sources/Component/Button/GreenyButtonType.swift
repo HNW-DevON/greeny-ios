@@ -16,7 +16,7 @@ public enum GreenyButtonType {
     case none
     
     var backgroundColor: Color {
-        return switch self {
+        switch self {
         case .main: .main600
         case .black: .black
         case .red: .red200
@@ -26,7 +26,7 @@ public enum GreenyButtonType {
     }
     
     var foregroundColor: Color {
-        return switch self {
+        switch self {
         case .main: .white
         case .black: .white
         case .red: .red500

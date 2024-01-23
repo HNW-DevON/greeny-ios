@@ -14,8 +14,8 @@ struct MyApp: App {
         WindowGroup {
 //            UITestView()
 //            if isLogin...
-//            OnboardingView()
-            MainView()
+            OnboardingView()
+//            MainView()
         }
     }
 }
