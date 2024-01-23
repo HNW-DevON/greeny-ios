@@ -40,6 +40,7 @@ public struct GreenyTopbar<Content>: View where Content: View {
                     .padding(.leading, 16)
                 Spacer()
             }
+            .frame(maxHeight: 48)
             content()
             Spacer()
         }

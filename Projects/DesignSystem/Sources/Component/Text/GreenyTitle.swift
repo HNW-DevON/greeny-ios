@@ -21,7 +21,6 @@ public struct GreenyTitle: View {
             Text(title)
                 .font(._title)
                 .padding(.leading, 16)
-                .padding(.top, 20)
             Spacer()
         }
     }

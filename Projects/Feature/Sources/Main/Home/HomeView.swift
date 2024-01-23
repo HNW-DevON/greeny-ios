@@ -27,16 +27,13 @@ fileprivate let dummyQuestData = [
     ("New", "새 퀘스트")
 ]
 
-public struct HomeView: View {
+struct HomeView: View {
     
-    public init() {}
-    
-    public var body: some View {
+    var body: some View {
         GreenyTopbar("홈") {
             ScrollView {
                 VStack(spacing: 0) {
                     GreenyTitle("오늘의 착한 소비")
-                        .padding(.top, 20)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
                             ForEach(dummyTodayData, id: \.self) {
