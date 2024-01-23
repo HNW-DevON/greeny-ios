@@ -12,7 +12,8 @@ public struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
     
-    public init(radius: CGFloat, corners: UIRectCorner) {
+    public init(radius: CGFloat, 
+                corners: UIRectCorner = .allCorners) {
         self.radius = radius
         self.corners = corners
     }

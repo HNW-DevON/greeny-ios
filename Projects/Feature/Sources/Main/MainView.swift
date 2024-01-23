@@ -22,7 +22,7 @@ public struct MainView: View {
                 case .find: Text("find view")
                 case .certification: CertificationView()
                 case .quest: Text("quest view")
-                case .my: Text("my view")
+                case .my: MyView()
                 }
                 VStack {
                     Spacer()
