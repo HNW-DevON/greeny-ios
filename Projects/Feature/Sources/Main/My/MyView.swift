@@ -71,22 +71,24 @@ struct MyView: View {
                 }
             }
             HStack(spacing: 8) {
-                GreenyButton("Hello", buttonType: .gray) {
+                GreenyButton("혜택보기", buttonType: .gray) {
                     
                 }
-                GreenyButton("Hello", buttonType: .gray) {
+                GreenyButton("포인트 얻는 법", buttonType: .gray) {
                     
                 }
             }
+            .frame(height: 32)
             .padding(.horizontal, 8)
             .padding(.bottom, 12)
         }
-        .padding(.horizontal, 10)
+        
         .overlay {
             roundedCorner
-                .stroke(Color.gray100, lineWidth: 1)
+                .stroke(Color.gray100, lineWidth: 2)
         }
         .clipShape(roundedCorner)
+        .padding(.horizontal, 10)
     }
     
     var body: some View {
