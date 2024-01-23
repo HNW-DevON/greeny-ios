@@ -6,18 +6,17 @@
 //  Copyright © 2024 tuist.io. All rights reserved.
 //
 
-import Foundation
-
-class Asset {
-    static let addImoji = "AddImoji"
-    static let bookMark = "BookMark"
-    static let chat = "Chat"
-    static let copy = "Copy"
-    static let profile = "Profile"
-    static let hide = "Hide"
-    static let send = "Send"
-    static let home = "Home"
-    static let show = "Show"
-    static let loudSpeaker = "LoudSpeaker"
-    static let xMark = "XMark"
+public class Asset {
+    public static let addImoji = "AddImoji"
+    public static let bookMark = "BookMark"
+    public static let chat = "Chat"
+    public static let copy = "Copy"
+    public static let profile = "Profile"
+    public static let hide = "Hide"
+    public static let send = "Send"
+    public static let home = "Home"
+    public static let show = "Show"
+    public static let loudSpeaker = "LoudSpeaker"
+    public static let xMark = "XMark"
+    public static let cameraRectangle = "CameraRectangle"
 }

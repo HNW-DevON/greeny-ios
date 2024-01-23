@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DesignSystem
 
 struct CertificationCameraView: View {
     
@@ -18,11 +19,11 @@ struct CertificationCameraView: View {
                 .onAppear {
                     viewModel.configure()
                 }
-            Image("CameraRectangle")
+            Image(Asset.cameraRectangle)
                 .resizable()
                 .frame(width: 200, height: 200)
             Text("네모 안에 상품을 맞춰주세요")
-                .foregroundStyle(Color.white)
+                .foregroundStyle(.white)
                 .font(._body)
                 .shadow(radius: 3)
                 .padding(.top, 200 + 32)
