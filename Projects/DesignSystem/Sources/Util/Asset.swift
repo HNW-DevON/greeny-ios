@@ -21,4 +21,6 @@ public class Asset {
     public static let cameraRectangle = "CameraRectangle"
     public static let leftArrow = "LeftArrow"
     public static let greeny = "Greeny"
+    
+    public static let seed = "Seed"
 }

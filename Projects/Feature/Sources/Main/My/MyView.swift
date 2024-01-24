@@ -13,6 +13,8 @@ struct MyView: View {
     
     fileprivate let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue)
     
+    @State private var levelGauge = 0.4
+    
     @ViewBuilder
     var profile: some View {
         HStack {
@@ -25,7 +27,7 @@ struct MyView: View {
                         .clipShape(Circle())
                 }
                 )
-                    .padding(.leading, 16)
+                .padding(.leading, 16)
                 Text("노자손")
                     .font(._label)
                 Text("골드3")
@@ -91,13 +93,67 @@ struct MyView: View {
         .padding(.horizontal, 10)
     }
     
+    @ViewBuilder
+    var level: some View {
+        VStack {
+            HStack {
+                Text("레벨")
+                    .font(._body)
+                    .padding(12)
+                Spacer()
+                Button {
+                    print("mv to level detail")
+                } label: {
+                    Image(Asset.leftArrow)
+                        .resizable()
+                        .renderingMode(.template)
+                        .frame(maxWidth: 18, maxHeight: 18)
+                        .foregroundStyle(Color.gray500)
+                        .scaleEffect(x: -1, y: 1)
+                        .padding(.leading, 12)
+                }
+            }
+            VStack(spacing: 4) {
+                HStack(alignment: .bottom, spacing: 8) {
+                    Image(Asset.seed)
+                        .resizable()
+                        .frame(width: 36, height: 36)
+                        .padding(.bottom, 8)
+                    Text("씨앗")
+                        .foregroundStyle(Color.main500)
+                        .font(._subtitle)
+                    Spacer()
+                    Text("착소 새싹")
+                        .foregroundStyle(Color.gray500)
+                        .font(._label)
+                        .padding(.trailing, 4)
+                }
+                .padding(.top, 8)
+                Gauge(value: levelGauge) {
+                }
+                .tint(.main500)
+                .accentColor(.gray100)
+                .frame(height: 8.0)
+                .scaleEffect(x: 1, y: 0.5, anchor: .center)
+            }
+            .padding(.horizontal, 8)
+            .padding(.bottom, 12)
+        }
+        .overlay {
+            roundedCorner
+                .stroke(Color.gray100, lineWidth: 2)
+        }
+        .clipShape(roundedCorner)
+        .padding(.horizontal, 10)
+    }
+    
     var body: some View {
         GreenyTopbar("MY") {
             ScrollView {
                 VStack {
                     profile
-                    point
-                        .padding(.top, 16)
+                    point.padding(.top, 16)
+                    level.padding(.top, 12)
                 }
             }
         }
