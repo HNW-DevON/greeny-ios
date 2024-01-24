@@ -11,9 +11,16 @@ import DesignSystem
 
 struct MyView: View {
     
-    fileprivate let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue)
+    private let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue)
     
     @State private var levelGauge = 0.4
+    @State private var rect: CGRect = .zero
+    
+    private let data = (1...30).map { "상품 \($0)" }
+    private let gridItem = [GridItem(.flexible(minimum: 50)),
+                            GridItem(.flexible(minimum: 50)),
+                            GridItem(.flexible(minimum: 50)),
+                            GridItem(.flexible(minimum: 50))]
     
     @ViewBuilder
     var profile: some View {
@@ -69,6 +76,7 @@ struct MyView: View {
                             .frame(maxWidth: 18, maxHeight: 18)
                             .foregroundStyle(Color.gray500)
                             .scaleEffect(x: -1, y: 1)
+                            .padding(.trailing, 12)
                     }
                 }
             }
@@ -111,6 +119,7 @@ struct MyView: View {
                         .foregroundStyle(Color.gray500)
                         .scaleEffect(x: -1, y: 1)
                         .padding(.leading, 12)
+                        .padding(.trailing, 12)
                 }
             }
             VStack(spacing: 4) {
@@ -122,6 +131,7 @@ struct MyView: View {
                     Text("씨앗")
                         .foregroundStyle(Color.main500)
                         .font(._subtitle)
+                        .padding(.bottom, 8)
                     Spacer()
                     Text("착소 새싹")
                         .foregroundStyle(Color.gray500)
@@ -147,6 +157,45 @@ struct MyView: View {
         .padding(.horizontal, 10)
     }
     
+    @ViewBuilder
+    var encyclopedia: some View {
+        LazyVGrid(columns: gridItem) {
+            ForEach(data, id: \.self) {
+                Text($0)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+            }
+        }
+    }
+    
+//    @ViewBuilder
+//    var tabViewIndicator: some View {
+//        
+//    }
+    
+    @ViewBuilder
+    var tabViewContent: some View {
+        TabView {
+            encyclopedia
+                .frame(maxWidth: .infinity)
+                .background(GeometryReader {
+                    Color.clear.preference(key: ViewRectKey.self,
+                                           value: [$0.frame(in: .local)])
+                })
+                .tag(0)
+            Text("Hello")
+                .tag(1)
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(height: rect.size.height + 60)
+        .onPreferenceChange(ViewRectKey.self) { rects in
+            if rects.first?.height ?? .zero > rect.height {
+                rect = rects.first ?? .zero
+            }
+        }
+    }
+    
     var body: some View {
         GreenyTopbar("MY") {
             ScrollView {
@@ -154,8 +203,18 @@ struct MyView: View {
                     profile
                     point.padding(.top, 16)
                     level.padding(.top, 12)
+                    tabViewIndicator
+                    tabViewContent
                 }
             }
         }
+    }
+}
+
+public struct ViewRectKey: PreferenceKey {
+    public typealias Value = Array<CGRect>
+    public static var defaultValue = [CGRect]()
+    public static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
