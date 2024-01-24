@@ -159,20 +159,21 @@ struct MyView: View {
     
     @ViewBuilder
     var encyclopedia: some View {
-        LazyVGrid(columns: gridItem) {
+        LazyVGrid(columns: gridItem, spacing: 16) {
             ForEach(data, id: \.self) {
-                Text($0)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
+                EncyclopediaCeil(imageUrl: "https://hws.dev/paul.jpg", productName: $0)
+                    .onTapGesture {
+                        print("clicked \($0)")
+                    }
             }
         }
+        .padding(.horizontal, 20)
     }
     
-//    @ViewBuilder
-//    var tabViewIndicator: some View {
-//        
-//    }
+    @ViewBuilder
+    var tabViewIndicator: some View {
+        Text("indicator")
+    }
     
     @ViewBuilder
     var tabViewContent: some View {
