@@ -211,7 +211,7 @@ struct MyView: View {
                 .tag(MyTabViewType.Corp)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(height: rect.size.height + 60)
+        .frame(height: rect.size.height + 30)
         .onPreferenceChange(ViewRectKey.self) { rects in
             if rects.first?.height ?? .zero > rect.height {
                 rect = rects.first ?? .zero
