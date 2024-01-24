@@ -43,13 +43,14 @@ struct MyView: View {
                     .foregroundStyle(Color.yellow)
             }
             Spacer()
-            Text("프로필 수정")
-                .padding(.trailing, 4)
-                .font(._cute)
-                .foregroundStyle(Color.gray500)
-                .onTapGesture {
-                    print("edit profile")
-                }
+            NavigationLink {
+                MyEditView()
+            } label: {
+                Text("프로필 수정")
+                    .padding(.trailing, 4)
+                    .font(._cute)
+                    .foregroundStyle(Color.gray500)
+            }
         }
         .padding(.horizontal, 8)
     }

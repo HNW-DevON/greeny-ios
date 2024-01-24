@@ -7,16 +7,15 @@
 //
 
 import SwiftUI
-import DesignSystem
 
-struct GreenyInputCeil: View {
+public struct GreenyInputCeil: View {
     
     var textFieldType: GreenyTextFieldType
     var title: String
     var hint: String
     @Binding var text: String
     
-    init(textFieldType: GreenyTextFieldType = .none(hasXMark: true),
+    public init(textFieldType: GreenyTextFieldType = .none(hasXMark: true),
          title: String,
          hint: String,
          text: Binding<String>) {
@@ -26,7 +25,7 @@ struct GreenyInputCeil: View {
         self._text = text
     }
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 8) {
             HStack {
                 Text(title)

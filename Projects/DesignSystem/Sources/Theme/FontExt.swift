@@ -10,7 +10,6 @@ import SwiftUI
 
 
 public extension Font {
-    
     // pretendard
     static let _title = Font.custom(Pretendard.bold.rawValue, size: 24)
     static let _subtitle = Font.custom(Pretendard.bold.rawValue, size: 20)
@@ -22,7 +21,6 @@ public extension Font {
 }
 
 enum Pretendard: String {
-    
     case bold = "Pretendard-Bold"
     case medium = "Pretendard-Medium"
 }
