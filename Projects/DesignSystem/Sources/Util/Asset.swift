@@ -23,4 +23,7 @@ public class Asset {
     public static let greeny = "Greeny"
     
     public static let seed = "Seed"
+    
+    public static let encyclopedia = "Encyclopedia"
+    public static let corp = "Corp"
 }

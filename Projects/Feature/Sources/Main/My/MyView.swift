@@ -15,6 +15,7 @@ struct MyView: View {
     
     @State private var levelGauge = 0.4
     @State private var rect: CGRect = .zero
+    @State private var selectedTab = MyTabViewType.Encyclopedia
     
     private let data = (1...30).map { "상품 \($0)" }
     private let gridItem = [GridItem(.flexible(minimum: 50)),
@@ -172,21 +173,42 @@ struct MyView: View {
     
     @ViewBuilder
     var tabViewIndicator: some View {
-        Text("indicator")
+        HStack(spacing: 0) {
+            ForEach(MyTabViewType.allCases, id: \.self) { i in
+                
+                let imageColor = i == selectedTab ? Color.main600 : Color.gray400
+                let dividerColor = i == selectedTab ? Color.main600 : Color.gray100
+                
+                VStack(spacing: 4) {
+                    Button {
+                        selectedTab = i
+                    } label: {
+                        Image(i.image)
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 32, height: 32)
+                            .foregroundStyle(imageColor)
+                    }
+                    Divider()
+                        .frame(height: 1)
+                        .background(dividerColor)
+                }
+            }
+        }
     }
     
     @ViewBuilder
     var tabViewContent: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             encyclopedia
                 .frame(maxWidth: .infinity)
                 .background(GeometryReader {
                     Color.clear.preference(key: ViewRectKey.self,
                                            value: [$0.frame(in: .local)])
                 })
-                .tag(0)
+                .tag(MyTabViewType.Encyclopedia)
             Text("Hello")
-                .tag(1)
+                .tag(MyTabViewType.Corp)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: rect.size.height + 60)
@@ -204,7 +226,7 @@ struct MyView: View {
                     profile
                     point.padding(.top, 16)
                     level.padding(.top, 12)
-                    tabViewIndicator
+                    tabViewIndicator.padding(.top, 24)
                     tabViewContent
                 }
             }
