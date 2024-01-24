@@ -21,7 +21,7 @@ public struct MainView: View {
                 case .home: HomeView()
                 case .find: Text("find view")
                 case .certification: CertificationView()
-                case .quest: Text("quest view")
+                case .quest: QuestView()
                 case .my: MyView()
                 }
                 VStack {

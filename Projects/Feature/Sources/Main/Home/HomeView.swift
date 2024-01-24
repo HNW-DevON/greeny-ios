@@ -22,9 +22,10 @@ fileprivate let dummyTodayData = [
     Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
 ]
 
-fileprivate let dummyQuestData = [
-    ("Today", "착하게\n시작하는 하루"),
-    ("New", "새 퀘스트")
+let dummyQuestData = [
+    (Asset.today, "착하게\n시작하는 하루"),
+    (Asset.new, "새 퀘스트"),
+    (Asset.calendarWeek, "이번주의 퀘스트")
 ]
 
 struct HomeView: View {

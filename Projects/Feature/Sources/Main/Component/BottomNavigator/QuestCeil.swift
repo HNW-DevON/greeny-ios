@@ -23,7 +23,7 @@ struct QuestCeil: View {
             Text(title)
                 .font(._body)
         }
-        .frame(maxHeight: 100)
+        .frame(height: 60)
         .padding(24)
         .background(Color.gray100)
         .clipShape(roundedCorner)
