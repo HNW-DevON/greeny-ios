@@ -29,4 +29,8 @@ public class Asset {
     
     public static let encyclopedia = "Encyclopedia"
     public static let corp = "Corp"
+    
+    public static let complete = "Complete"
+    public static let doing = "Doing"
+    public static let yet = "Yet"
 }

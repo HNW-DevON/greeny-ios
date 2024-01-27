@@ -9,7 +9,7 @@
 import SwiftUI
 import DesignSystem
 
-struct QuestCeil: View {
+struct QuestTabCeil: View {
     
     var image: String
     var title: String

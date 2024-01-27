@@ -22,11 +22,9 @@ fileprivate let dummyTodayData = [
     Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
 ]
 
-let dummyQuestData = [
-    (Asset.today, "착하게\n시작하는 하루"),
-    (Asset.new, "새 퀘스트"),
-    (Asset.calendarWeek, "이번주의 퀘스트")
-]
+let dummyQuestData = [(Asset.today, "착하게\n시작하는 하루"),
+                      (Asset.new, "새 퀘스트"),
+                      (Asset.calendarWeek, "이번주의 퀘스트")]
 
 struct HomeView: View {
     
@@ -50,7 +48,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(dummyQuestData, id: \.0) {
-                                QuestCeil(image: $0.0, title: $0.1)
+                                QuestTabCeil(image: $0.0, title: $0.1)
                             }
                         }
                         .padding(.leading, 16)
