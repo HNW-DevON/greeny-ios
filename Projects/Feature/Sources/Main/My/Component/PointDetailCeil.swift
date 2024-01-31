@@ -33,6 +33,5 @@ struct PointDetailCeil: View {
             .padding(.top, 24)
             .padding(.leading, 28)
         }
-        
     }
 }
