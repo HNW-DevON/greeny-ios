@@ -1,5 +1,5 @@
 //
-//  PointDetailCeil.swift
+//  PointDetailView.swift
 //  Feature
 //
 //  Created by dgsw8th71 on 1/31/24.
@@ -9,24 +9,18 @@
 import SwiftUI
 import DesignSystem
 
-struct PointDetailCeil: View {
+struct PointDetailView: View {
     
-    let name: String
-    let point: Int
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            Text("\(name) 님의 포인트는...")
-                .font(._body)
-                .padding(.leading, 24)
-                .toLeading()
-            NavigationLink {
-                PointDetailView()
-            } label: {
+        GreenyTopbar("포인트", backButtonCallback: {
+            dismiss()
+        }) {
+            ScrollView {
                 HStack {
                     GreenyLogo(type: .medium)
-                    Text("\(point)P")
-                        .foregroundStyle(Color.black)
+                    Text("100P")
                         .font(._title)
                         .padding(.leading, 24)
                     Spacer()
@@ -34,9 +28,10 @@ struct PointDetailCeil: View {
                         .scaleEffect(x: -1, y: 1)
                         .padding(.trailing, 24)
                 }
+                .padding(.top, 24)
+                .padding(.leading, 28)
             }
-            .padding(.top, 24)
-            .padding(.leading, 28)
         }
+        .navigationBarBackButtonHidden()
     }
 }

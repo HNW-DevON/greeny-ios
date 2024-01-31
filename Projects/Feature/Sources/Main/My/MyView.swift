@@ -63,8 +63,8 @@ struct MyView: View {
                     .font(._body)
                     .padding(12)
                 Spacer()
-                Button {
-                    print("mv to point detail")
+                NavigationLink {
+                    PointDetailView()
                 } label: {
                     HStack {
                         Image(Asset.greeny)
