@@ -19,7 +19,7 @@ public struct MainView: View {
             ZStack {
                 switch selectedTab {
                 case .home: HomeView()
-                case .find: Text("find view")
+                case .find: FindView()
                 case .certification: CertificationView()
                 case .quest: QuestView()
                 case .my: MyView()
