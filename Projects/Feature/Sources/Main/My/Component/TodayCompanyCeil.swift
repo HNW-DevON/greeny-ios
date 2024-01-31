@@ -13,7 +13,7 @@ struct TodayCompanyCeil: View {
     
     let productName: String
     let imageUrl: String
-    let point: Int
+    let description: String
     
     var body: some View {
         HStack {
@@ -32,17 +32,14 @@ struct TodayCompanyCeil: View {
                     .font(._body)
                     .toLeading()
                 Spacer()
-                Text("\(point)P")
+                Text(description)
                     .font(._label)
                     .toLeading()
                 Spacer()
             }
             .padding(.leading, 12)
             Spacer()
-            Image(Asset.leftArrow)
-                .resizable()
-                .frame(width: 20, height: 20)
-                .scaleEffect(x: -1, y: 1)
+            GreenyTag("asd", foregroundColor: .green500, backgroundColor: .green)
         }
     }
 }

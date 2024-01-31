@@ -89,8 +89,10 @@ struct MyView: View {
                     GreenyButton("혜택보기", buttonType: .gray) {}.disabled(true)
                 }
                 
-                GreenyButton("포인트 얻는 법", buttonType: .gray) {
-                    
+                NavigationLink {
+                    EarnPointView()
+                } label: {
+                    GreenyButton("포인트 얻는 법", buttonType: .gray) {}.disabled(true)
                 }
             }
             .frame(height: 32)

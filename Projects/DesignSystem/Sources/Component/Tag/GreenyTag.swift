@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct GreenyTag: View {
+public struct GreenyTag: View {
     
     let text: String
     let backgroundColor: Color
     let foregroundColor: Color
     
-    init(_ text: String,
+    public init(_ text: String,
          foregroundColor: Color,
          backgroundColor: Color
     ) {
@@ -23,7 +23,7 @@ struct GreenyTag: View {
         self.foregroundColor = foregroundColor
     }
     
-    var body: some View {
+    public var body: some View {
         Text(text)
             .padding(.vertical, 5)
             .padding(.horizontal, 8)

@@ -9,9 +9,23 @@
 import SwiftUI
 import DesignSystem
 
+fileprivate let dummyProducts = [
+    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
+    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
+    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
+    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
+    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
+    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨")
+]
+
 struct EarnPointView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        GreenyTopbar("포인트 얻는 법") {
+        GreenyTopbar("포인트 얻는 법", backButtonCallback: {
+            dismiss()
+        }) {
             ScrollView {
                 VStack(spacing: 0) {
                     PointDetailCeil(name: "노자손", point: 100)
@@ -24,12 +38,19 @@ struct EarnPointView: View {
                         .padding(.top, 32)
                     Text("오늘의 사회적 기업")
                         .font(._body)
-                        .padding(.top, 32)
+                        .padding(.top, 24)
                         .padding(.leading, 24)
                         .toLeading()
-                    
+                    VStack(spacing: 12) {
+                        ForEach(dummyProducts, id: \.2) {
+                            TodayCompanyCeil(productName: $0.1, imageUrl: $0.0, description: $0.2)
+                                .padding(.horizontal, 28)
+                        }
+                    }
+                    .padding(.top, 16)
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
