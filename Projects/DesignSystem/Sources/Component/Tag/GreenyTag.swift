@@ -29,5 +29,6 @@ public struct GreenyTag: View {
             .padding(.horizontal, 8)
             .foregroundStyle(foregroundColor)
             .background(backgroundColor)
+            .clipShape(RoundedCorner(radius: 100))
     }
 }
