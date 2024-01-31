@@ -41,7 +41,7 @@ struct BenefitProductCeil: View {
             Spacer()
             Image(Asset.leftArrow)
                 .resizable()
-                .frame(width: 16, height: 16)
+                .frame(width: 20, height: 20)
                 .scaleEffect(x: -1, y: 1)
         }
     }

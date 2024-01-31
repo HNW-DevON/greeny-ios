@@ -28,23 +28,8 @@ struct BenefitView: View {
         }) {
             ScrollView {
                 VStack(spacing: 0) {
-                    Text("노자손 님의 포인트는...")
-                        .font(._body)
+                    PointDetailCeil(name: "노자손", point: 100)
                         .padding(.top, 32)
-                        .padding(.leading, 24)
-                        .toLeading()
-                    HStack {
-                        GreenyLogo(type: .medium)
-                        Text("120P")
-                            .font(._title)
-                            .padding(.leading, 24)
-                        Spacer()
-                        Image(Asset.leftArrow)
-                            .scaleEffect(x: -1, y: 1)
-                            .padding(.trailing, 24)
-                    }
-                    .padding(.top, 24)
-                    .padding(.leading, 28)
                     Text("포인트로 착한소비하기")
                         .font(._body)
                         .padding(.top, 32)
