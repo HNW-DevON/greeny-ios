@@ -83,9 +83,12 @@ struct MyView: View {
                 }
             }
             HStack(spacing: 8) {
-                GreenyButton("혜택보기", buttonType: .gray) {
-                    
+                NavigationLink {
+                    BenefitView()
+                } label: {
+                    GreenyButton("혜택보기", buttonType: .gray) {}.disabled(true)
                 }
+                
                 GreenyButton("포인트 얻는 법", buttonType: .gray) {
                     
                 }

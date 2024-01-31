@@ -23,18 +23,22 @@ struct BenefitProductCeil: View {
                     $0.image?
                         .resizable()
                         .frame(width: 64, height: 64)
+                        .addGrayStroke()
                 }
             )
             VStack {
                 Spacer()
                 Text(productName)
                     .font(._body)
+                    .toLeading()
                 Spacer()
                 Text("\(point)P")
                     .font(._label)
+                    .toLeading()
                 Spacer()
             }
             .padding(.leading, 12)
+            Spacer()
             Image(Asset.leftArrow)
                 .resizable()
                 .frame(width: 16, height: 16)

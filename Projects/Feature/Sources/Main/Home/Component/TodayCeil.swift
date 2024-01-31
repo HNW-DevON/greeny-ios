@@ -24,11 +24,7 @@ struct TodayCeil: View {
                     image.image?.resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 120, maxHeight: 120)
-                        .clipShape(roundedCorner)
-                        .overlay {
-                            roundedCorner
-                                .stroke(Color.gray100, lineWidth: 2)
-                        }
+                        .addGrayStroke()
                 }
             )
             Text(todayGreeny.productName)

@@ -19,13 +19,19 @@ fileprivate let dummyProducts = [
 ]
 
 struct BenefitView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        GreenyTopbar("혜택 보기") {
+        GreenyTopbar("혜택 보기", backButtonCallback: {
+            dismiss()
+        }) {
             ScrollView {
                 VStack(spacing: 0) {
                     Text("노자손 님의 포인트는...")
                         .font(._body)
                         .padding(.top, 32)
+                        .padding(.leading, 24)
                         .toLeading()
                     HStack {
                         GreenyLogo(type: .medium)
@@ -42,13 +48,19 @@ struct BenefitView: View {
                     Text("포인트로 착한소비하기")
                         .font(._body)
                         .padding(.top, 32)
+                        .padding(.leading, 24)
                         .toLeading()
-                    ForEach(dummyProducts, id: \.2) {
-                        BenefitProductCeil(productName: $0.1, imageUrl: $0.0, point: $0.2)
-                            .padding(.horizontal, 28)
+                    VStack(spacing: 12) {
+                        ForEach(dummyProducts, id: \.2) {
+                            BenefitProductCeil(productName: $0.1, imageUrl: $0.0, point: $0.2)
+                                .padding(.horizontal, 28)
+                        }
                     }
+                    .padding(.top, 16)
+                    
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }

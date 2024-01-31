@@ -37,3 +37,18 @@ public extension View {
         }
     }
 }
+
+public extension View {
+    
+    func addGrayStroke() -> some View {
+        
+        let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue, corners: .allCorners)
+        
+        return self
+            .clipShape(roundedCorner)
+            .overlay {
+                roundedCorner
+                    .stroke(Color.gray100, lineWidth: 2)
+            }
+    }
+}
