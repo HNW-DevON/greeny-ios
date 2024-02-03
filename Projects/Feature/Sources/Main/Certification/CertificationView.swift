@@ -19,14 +19,18 @@ struct CertificationView: View {
             CertificationCameraView(viewModel: vm)
                 .onChange(of: isClicked) {
                     if $0 {
-                        print("shot")
+                        Task {
+                            withAnimation {
+                                vm.capturePhoto()
+                            }
+                        }
                         isClicked = false
                     }
                 }
         case .loadingFirst:
-            Text("Loading first")
+            LoadingFirstView()
         case .loadingSecond:
-            Text("Loading second")
+            LoadingSecondView()
         case .result:
             Text("Loading result")
         }

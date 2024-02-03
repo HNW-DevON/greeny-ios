@@ -26,6 +26,13 @@ class CertificationViewModel: ObservableObject {
     
     func capturePhoto() {
         print("[CameraViewModel]: Photo captured!")
+        self.viewType = .loadingFirst
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.viewType = .loadingSecond
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            // next view
+        }
     }
     
     func configure() {
