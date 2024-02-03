@@ -38,6 +38,7 @@ private let gamdongMsg = [
 struct LoadingSecondView: View {
     
     let gamdongIdx = Int.random(in: 0..<gamdongMsg.count)
+    @State var opacity = 0.0
     
     var body: some View {
         VStack(spacing: 24) {
@@ -53,6 +54,12 @@ struct LoadingSecondView: View {
                 .font(._body)
                 .multilineTextAlignment(.center)
         }
+        .opacity(opacity)
         .toCenter()
+        .onAppear {
+            withAnimation {
+                opacity = 1
+            }
+        }
     }
 }

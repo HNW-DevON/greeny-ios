@@ -12,27 +12,25 @@ struct CertificationView: View {
     
     @ObservedObject var vm = CertificationViewModel()
     @Binding var isClicked: Bool
+    @State var isActive = false
     
     var body: some View {
-        switch vm.viewType {
-        case .camera: 
-            CertificationCameraView(viewModel: vm)
-                .onChange(of: isClicked) {
-                    if $0 {
-                        Task {
-                            withAnimation {
-                                vm.capturePhoto()
-                            }
+        CertificationCameraView(viewModel: vm)
+            .onChange(of: isClicked) {
+                if $0 {
+                    Task {
+                        withAnimation {
+                            vm.capturePhoto()
+                            isActive = true
                         }
-                        isClicked = false
                     }
+                    isClicked = false
                 }
-        case .loadingFirst:
-            LoadingFirstView()
-        case .loadingSecond:
-            LoadingSecondView()
-        case .result:
-            Text("Loading result")
+            }
+        NavigationLink(isActive: $isActive) {
+            ResultView()
+        } label: {
+            
         }
     }
 }

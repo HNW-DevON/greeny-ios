@@ -9,7 +9,6 @@
 import Foundation
 
 enum CertificationViewType {
-    case camera
     case loadingFirst
     case loadingSecond
     case result
