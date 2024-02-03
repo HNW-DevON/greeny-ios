@@ -25,6 +25,7 @@ public class Asset {
     public static let today = "Today"
     public static let new = "New"
     public static let search = "Search"
+    public static let certification = "Certification"
     
     public static let seed = "Seed"
     

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DesignSystem
 
 struct GreenyBottomCeil: View {
     
@@ -27,6 +28,37 @@ struct GreenyBottomCeil: View {
             Text(bottomType.title)
                 .font(._cute)
                 .foregroundStyle(textColor)
+        }
+    }
+}
+
+struct GreenyCameraBottomCeil: View {
+    
+    @State var textOpacitiy = 1.0
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            ZStack(alignment: .center) {
+                Circle()
+                    .foregroundStyle(Color.main600)
+                    .frame(width: 52, height: 52)
+                Image(Asset.certification)
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 36, height: 36)
+                    .foregroundStyle(Color.white)
+            }
+            if textOpacitiy > 0.0 {
+                Text(GreenyBottomNavigatorType.certification.title)
+                    .font(._cute)
+                    .foregroundStyle(Color.gray500)
+                    .opacity(textOpacitiy)
+            }
+        }
+        .onAppear {
+            withAnimation {
+                textOpacitiy = 0.0
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ struct FindView: View {
     var body: some View {
         GreenyTopbar("탐색") {
             ScrollView {
-                VStack {
+                VStack(spacing: 12) {
                     search
                     findGrid
                     Spacer()

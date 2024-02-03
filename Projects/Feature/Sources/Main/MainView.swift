@@ -11,6 +11,7 @@ import SwiftUI
 public struct MainView: View {
     
     @State var selectedTab: GreenyBottomNavigatorType = .home
+    @State var certificationFocused = false
     
     public init() {}
     
@@ -26,7 +27,7 @@ public struct MainView: View {
                 }
                 VStack {
                     Spacer()
-                    GreenyBottomNavigator(selectedTab: $selectedTab)
+                    GreenyBottomNavigator(certificationFocused: $certificationFocused, selectedTab: $selectedTab)
                 }
             }
         }
