@@ -36,6 +36,18 @@ public extension View {
             self
         }
     }
+    
+    func toCenter() -> some View {
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                self
+                Spacer()
+            }
+            Spacer()
+        }
+    }
 }
 
 public extension View {
