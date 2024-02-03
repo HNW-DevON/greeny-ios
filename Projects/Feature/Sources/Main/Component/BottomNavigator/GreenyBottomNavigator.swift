@@ -12,6 +12,7 @@ struct GreenyBottomNavigator: View {
     
     @Binding var certificationFocused: Bool
     @Binding var selectedTab: GreenyBottomNavigatorType
+    @Binding var isClicked: Bool
     public static let bottomList: [GreenyBottomNavigatorType] = [.home, .find, .certification, .quest, .my]
     
     var body: some View {
@@ -24,10 +25,12 @@ struct GreenyBottomNavigator: View {
                         GreenyCameraBottomCeil()
                     } else {
                         GreenyBottomCeil(isSelected: isSelected, bottomType: tab)
-                            
                     }
                 }
                 .onTapGesture {
+                    if isSelected && tab == .certification {
+                        isClicked = true
+                    }
                     withAnimation {
                         selectedTab = tab
                     }

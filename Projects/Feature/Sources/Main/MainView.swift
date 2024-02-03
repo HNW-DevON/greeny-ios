@@ -12,6 +12,7 @@ public struct MainView: View {
     
     @State var selectedTab: GreenyBottomNavigatorType = .home
     @State var certificationFocused = false
+    @State var isClicked = false
     
     public init() {}
     
@@ -21,13 +22,15 @@ public struct MainView: View {
                 switch selectedTab {
                 case .home: HomeView()
                 case .find: FindView()
-                case .certification: CertificationView()
+                case .certification: CertificationView(isClicked: $isClicked)
                 case .quest: QuestView()
                 case .my: MyView()
                 }
                 VStack {
                     Spacer()
-                    GreenyBottomNavigator(certificationFocused: $certificationFocused, selectedTab: $selectedTab)
+                    GreenyBottomNavigator(certificationFocused: $certificationFocused, 
+                                          selectedTab: $selectedTab,
+                                          isClicked: $isClicked)
                 }
             }
         }
