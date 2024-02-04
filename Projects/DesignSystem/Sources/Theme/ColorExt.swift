@@ -41,7 +41,7 @@ public extension Color {
 extension Color {
     
     // hex to color
-    init(_ hex: UInt, alpha: Double = 1) {
+    public init(_ hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB,
             red: Double((hex >> 16) & 0xff) / 255,
