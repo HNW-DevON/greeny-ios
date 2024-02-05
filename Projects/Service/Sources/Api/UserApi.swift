@@ -24,7 +24,9 @@ public final class UserApi {
     }
     
     public func join(request: JoinRequest) async throws -> String {
-        try await AF.request("\(baseUrl)/user/register", method: .post, parameters: request).serializingDecodable(String.self).value
+        try await AF.request("\(baseUrl)/user/register",
+                             method: .post,
+                             parameters: request).validate().serializingDecodable(String.self).value
     }
     
     public func login(request: LoginRequest) async throws -> String {
