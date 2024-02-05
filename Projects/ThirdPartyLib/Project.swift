@@ -12,7 +12,8 @@ let project = Project.makeModule(
     name: "ThirdPartyLib",
     product: .staticFramework,
     dependencies: [
-        .SPM.Alamofire
+        .SPM.Alamofire,
+        .SPM.AlamofireImage
     ],
     resources: ["Resources/**"]
 )

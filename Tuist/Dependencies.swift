@@ -12,10 +12,10 @@ let dependencies = Dependencies(
     carthage: [],
     swiftPackageManager: .init(
         [
-            .remote(
-                url: "https://github.com/Alamofire/Alamofire.git",
-                requirement: .upToNextMajor(from: "5.4.0")
-            )
+            .remote(url: "https://github.com/Alamofire/Alamofire.git",
+                    requirement: .upToNextMajor(from: "5.4.0")),
+            .remote(url: "https://github.com/Alamofire/AlamofireImage.git", 
+                    requirement: .upToNextMajor(from: "4.3.0"))
         ]
     ),
     platforms: [.iOS]
