@@ -21,6 +21,10 @@ let project = Project.makeModule(
         "UIMainStoryboardFile": "",
         "UILaunchStoryboardName": "LaunchScreen",
         "ENABLE_TESTS": .boolean(true),
+        "NSAppTransportSecurity": [
+            "NSAllowsArbitraryLoads": .boolean(true)
+        ]
     ])
 )
+
 
