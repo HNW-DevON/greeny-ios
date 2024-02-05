@@ -18,6 +18,10 @@ final class QuestApi {
         try await AF.request("/quest", method: .get).serializingDecodable(QuestsResponse.self).value
     }
     
+    func completeQuest(id: Int) async throws -> VoidResponse {
+        try await AF.request("/quest/complete", method: .post).serializingDecodable(VoidResponse.self).value
+    }
+    
 }
 
 extension QuestApi {
