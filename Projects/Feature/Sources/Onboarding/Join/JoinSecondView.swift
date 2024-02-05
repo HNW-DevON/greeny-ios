@@ -11,9 +11,14 @@ import DesignSystem
 
 struct JoinSecondView: View {
     
+    let id: String
+    let pw: String
+    
     @State var name: String = ""
     @State var birthday: String = ""
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var vm = JoinSecondViewModel()
+    @State var isLoginActive = false
     
     var body: some View {
         GreenyTopbar("회원가입") {
@@ -40,9 +45,25 @@ struct JoinSecondView: View {
                 }
                 .padding(.bottom, 16)
                 
-                GreenyButton("회원가입") {}
-                    .padding(.bottom, 16)
-                    .padding(.horizontal, 20)
+                NavigationLink(isActive: $isLoginActive) {
+                    LoginView()
+                } label: {
+                    
+                }
+                GreenyButton("회원가입") {
+                    Task {
+                        await vm.join(id: id,
+                                      pw: pw,
+                                      name: name,
+                                      birth: birthday) {
+                            isLoginActive = true
+                        } onFail: {
+                            print("회원가입 실패")
+                        }
+                    }
+                }
+                .padding(.bottom, 16)
+                .padding(.horizontal, 20)
             }
         }
         .navigationBarBackButtonHidden()

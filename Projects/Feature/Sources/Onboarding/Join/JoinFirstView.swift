@@ -41,7 +41,7 @@ struct JoinFirstView: View {
                 .padding(.bottom, 16)
                 
                 NavigationLink {
-                    JoinSecondView()
+                    JoinSecondView(id: id, pw: pw)
                 } label: {
                     GreenyButton("다음으로") {}.disabled(true)
                         .padding(.bottom, 16)
