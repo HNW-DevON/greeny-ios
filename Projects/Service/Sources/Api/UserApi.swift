@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 final class UserApi {
     
@@ -38,9 +39,9 @@ final class UserApi {
         try await AF.request("/user/tier", method: .get).serializingDecodable(UserTierResponse.self).value
     }
     
-//    func getImage() async throws -> String {
-//        try await AF.download("/user/image")
-//    }
+    func getImage() async throws -> UIImage {
+        try await AF.request("/user/image").serializingImage().value
+    }
 }
 
 extension UserApi {
