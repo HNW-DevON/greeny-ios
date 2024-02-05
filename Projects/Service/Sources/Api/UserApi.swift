@@ -20,27 +20,27 @@ public final class UserApi {
         
         return try await AF.upload(multipartFormData: {
             $0.append(imageData, withName: "file")
-        }, to: "/user/upload", method: .post, headers: []).serializingDecodable(String.self).value
+        }, to: "\(baseUrl)/user/upload", method: .post, headers: []).serializingDecodable(String.self).value
     }
     
     public func join(request: JoinRequest) async throws -> String {
-        try await AF.request("/user/register", method: .post, parameters: request).serializingDecodable(String.self).value
+        try await AF.request("\(baseUrl)/user/register", method: .post, parameters: request).serializingDecodable(String.self).value
     }
     
     public func login(request: LoginRequest) async throws -> String {
-        try await AF.request("/login", method: .post, parameters: request).serializingDecodable(String.self).value
+        try await AF.request("\(baseUrl)/login", method: .post, parameters: request).serializingDecodable(String.self).value
     }
     
     public func editProfile(request: EditProfileRequest) async throws -> String {
-        try await AF.request("/user/edit", method: .post, parameters: request).serializingDecodable(String.self).value
+        try await AF.request("\(baseUrl)/user/edit", method: .post, parameters: request).serializingDecodable(String.self).value
     }
     
     public func getTier() async throws -> UserTierResponse {
-        try await AF.request("/user/tier", method: .get).serializingDecodable(UserTierResponse.self).value
+        try await AF.request("\(baseUrl)/user/tier", method: .get).serializingDecodable(UserTierResponse.self).value
     }
     
     public func getImage() async throws -> UIImage {
-        try await AF.request("/user/image").serializingImage().value
+        try await AF.request("\(baseUrl)/user/image").serializingImage().value
     }
 }
 
