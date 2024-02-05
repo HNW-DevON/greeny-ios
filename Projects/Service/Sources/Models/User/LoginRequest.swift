@@ -6,7 +6,7 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-struct LoginRequest: Encodable {
+public struct LoginRequest: Encodable {
     let username: String
     let password: String
 }

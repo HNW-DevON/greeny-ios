@@ -6,9 +6,16 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-struct JoinRequest: Encodable {
+public struct JoinRequest: Encodable {
     let username: String
     let password: String
     let name: String
     let birth: String
+    
+    public init(username: String, password: String, name: String, birth: String) {
+        self.username = username
+        self.password = password
+        self.name = name
+        self.birth = birth
+    }
 }

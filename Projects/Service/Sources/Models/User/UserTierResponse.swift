@@ -6,7 +6,7 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-struct UserTierResponse: Decodable {
+public struct UserTierResponse: Decodable {
     let tier: String
     let left: Int
 }

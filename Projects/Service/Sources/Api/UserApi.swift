@@ -10,9 +10,9 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-final class UserApi {
+public final class UserApi {
     
-    func uploadImage(image: UIImage) async throws -> String {
+    public func uploadImage(image: UIImage) async throws -> String {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             print("Failed to convert image to data")
             return "이미지를 불러오는데 실패했습니다"
@@ -23,27 +23,27 @@ final class UserApi {
         }, to: "/user/upload", method: .post, headers: []).serializingDecodable(String.self).value
     }
     
-    func join(request: JoinRequest) async throws -> String {
+    public func join(request: JoinRequest) async throws -> String {
         try await AF.request("/user/register", method: .post, parameters: request).serializingDecodable(String.self).value
     }
     
-    func login(request: LoginRequest) async throws -> String {
+    public func login(request: LoginRequest) async throws -> String {
         try await AF.request("/login", method: .post, parameters: request).serializingDecodable(String.self).value
     }
     
-    func editProfile(request: EditProfileRequest) async throws -> String {
+    public func editProfile(request: EditProfileRequest) async throws -> String {
         try await AF.request("/user/edit", method: .post, parameters: request).serializingDecodable(String.self).value
     }
     
-    func getTier() async throws -> UserTierResponse {
+    public func getTier() async throws -> UserTierResponse {
         try await AF.request("/user/tier", method: .get).serializingDecodable(UserTierResponse.self).value
     }
     
-    func getImage() async throws -> UIImage {
+    public func getImage() async throws -> UIImage {
         try await AF.request("/user/image").serializingImage().value
     }
 }
 
 extension UserApi {
-    static let live = UserApi()
+    public static let live = UserApi()
 }
