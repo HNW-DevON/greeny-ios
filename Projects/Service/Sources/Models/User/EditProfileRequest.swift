@@ -6,6 +6,6 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-struct ProfileEditRequest: Encodable {
+struct EditProfileRequest: Encodable {
     let name: String
 }
