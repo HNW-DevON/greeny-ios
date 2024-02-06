@@ -13,7 +13,7 @@ struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm = LoginViewModel()
-    @Environment(\.tokenManager) var tokenManager
+    @EnvironmentObject var tokenManager: TokenManager
     
     var body: some View {
         GreenyTopbar("로그인") {

@@ -34,15 +34,24 @@ public final class UserApi {
                                  parameters: request)
     }
     
-    public func login(request: LoginRequest) async throws -> String {
-        try await AF.upload(
+    public func login(request: LoginRequest,
+                      onSuccess: @escaping (String) -> Void,
+                      onFail: @escaping () -> Void) {
+        AF.upload(
             multipartFormData: {
                 $0.append(request.username.data(using: .utf8)!, withName: "username")
                 $0.append(request.password.data(using: .utf8)!, withName: "password")
             }, to: baseUrl + "/login",
             method: .post,
             interceptor: GreenyInterceptor()
-        ).serializingDecodable(String.self).value
+        ).validate().responseString {
+            switch $0.result {
+            case .success(let success):
+                onSuccess(success)
+            case .failure(let failure):
+                onFail()
+            }
+        }
     }
     
     public func editProfile(request: EditProfileRequest) async throws -> String {

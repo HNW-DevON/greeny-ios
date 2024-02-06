@@ -20,15 +20,3 @@ public class TokenManager: ObservableObject {
         self.token = UserDefaults.standard.string(forKey: "accessToken") ?? ""
     }
 }
-
-struct TokenEnvironmentKey: EnvironmentKey {
-    public static var defaultValue: TokenManager = TokenManager()
-}
-
-extension EnvironmentValues {
-    public var tokenManager: TokenManager {
-        get { self[TokenEnvironmentKey.self] }
-        set { self[TokenEnvironmentKey.self] = newValue }
-    }
-}
-

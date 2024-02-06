@@ -17,17 +17,12 @@ final class LoginViewModel: ObservableObject {
     
     private let userApi = UserApi.live
     
-    func login(onSuccess: (String) -> Void,
-               onFail: () -> Void) async {
-        do {
-            
-            let token = try await userApi.login(request: LoginRequest(username: id,
-                                                                      password: pw)).split(separator: " ")[1]
+    func login(onSuccess: @escaping (String) -> Void,
+               onFail: @escaping () -> Void) async {
+        userApi.login(request: LoginRequest(username: id,
+                                            password: pw), onSuccess: { token in
             print(token)
-            onSuccess(String(token))
-        } catch (let e) {
-            print(e)
-            onFail()
-        }
+            onSuccess(String(token.split(separator: " ")[1]))
+        }, onFail: onFail)
     }
 }
