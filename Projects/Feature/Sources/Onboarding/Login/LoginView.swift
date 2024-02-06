@@ -11,19 +11,19 @@ import DesignSystem
 
 struct LoginView: View {
     
-    @State var id: String = ""
-    @State var pw: String = ""
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var vm = LoginViewModel()
+    @Environment(\.tokenManager) var tokenManager
     
     var body: some View {
         GreenyTopbar("로그인") {
             dismiss()
         } content: {
             VStack(spacing:0) {
-                GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
+                GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $vm.id)
                     .padding([.bottom, .top], 32)
                     .padding(.horizontal, 20)
-                GreenyInputCeil(textFieldType: .password, title: "비밀번호", hint: "비밀번호를 입력해 주세요", text: $pw)
+                GreenyInputCeil(textFieldType: .password, title: "비밀번호", hint: "비밀번호를 입력해 주세요", text: $vm.pw)
                     .padding(.horizontal, 20)
                 HStack {
                     Spacer()
@@ -37,7 +37,6 @@ struct LoginView: View {
                             .padding([.top], 4)
                             .padding([.trailing], 24)
                     }
-                    
                 }
                 Spacer()
                 
@@ -53,9 +52,17 @@ struct LoginView: View {
                     }
                 }
                 .padding(.bottom, 16)
-                GreenyButton("로그인") {}
-                    .padding(.bottom, 16)
-                    .padding(.horizontal, 20)
+                GreenyButton("로그인") {
+                    Task {
+                        await vm.login { token in
+                            tokenManager.token = token
+                        } onFail: {
+                            tokenManager.token = ""
+                        }
+                    }
+                }
+                .padding(.bottom, 16)
+                .padding(.horizontal, 20)
             }
         }
         .navigationBarBackButtonHidden()

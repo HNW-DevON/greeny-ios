@@ -9,24 +9,24 @@
 import Foundation
 import SwiftUI
 
-class TokenManager: ObservableObject {
-    @Published var token: String {
+public class TokenManager: ObservableObject {
+    @Published public var token: String {
         didSet {
             UserDefaults.standard.set(token, forKey: "accessToken")
         }
     }
 
-    init() {
+    public init() {
         self.token = UserDefaults.standard.string(forKey: "accessToken") ?? ""
     }
 }
 
 struct TokenEnvironmentKey: EnvironmentKey {
-    static var defaultValue: TokenManager = TokenManager()
+    public static var defaultValue: TokenManager = TokenManager()
 }
 
 extension EnvironmentValues {
-    var tokenManager: TokenManager {
+    public var tokenManager: TokenManager {
         get { self[TokenEnvironmentKey.self] }
         set { self[TokenEnvironmentKey.self] = newValue }
     }

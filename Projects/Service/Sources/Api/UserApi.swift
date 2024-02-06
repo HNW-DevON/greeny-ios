@@ -35,10 +35,14 @@ public final class UserApi {
     }
     
     public func login(request: LoginRequest) async throws -> String {
-        try await client.request("/login",
-                                 String.self,
-                                 method: .post,
-                                 parameters: request)
+        try await AF.upload(
+            multipartFormData: {
+                $0.append(request.username.data(using: .utf8)!, withName: "username")
+                $0.append(request.password.data(using: .utf8)!, withName: "password")
+            }, to: baseUrl + "/login",
+            method: .post,
+            interceptor: GreenyInterceptor()
+        ).serializingDecodable(String.self).value
     }
     
     public func editProfile(request: EditProfileRequest) async throws -> String {
