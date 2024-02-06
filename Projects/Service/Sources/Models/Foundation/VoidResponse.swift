@@ -6,4 +6,4 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-struct VoidResponse: Decodable {}
+public struct VoidResponse: Decodable {}

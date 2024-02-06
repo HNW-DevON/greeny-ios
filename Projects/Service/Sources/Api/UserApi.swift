@@ -20,31 +20,41 @@ public final class UserApi {
             return "이미지를 불러오는데 실패했습니다"
         }
         
-        return try await AF.upload(multipartFormData: {
+        return try await client.upload(multipartFormData: {
             $0.append(imageData, withName: "file")
-        }, to: "\(baseUrl)/user/upload", method: .post, headers: []).serializingDecodable(String.self).value
+        },
+                                       to: "/user/upload",
+                                       String.self,
+                                       method: .post)
     }
     
-    public func join(request: JoinRequest) async throws {
+    public func join(request: JoinRequest) async throws -> VoidResponse {
         try await client.request("/user/register",
                                  method: .post,
                                  parameters: request)
     }
     
     public func login(request: LoginRequest) async throws -> String {
-        try await AF.request("\(baseUrl)/login", method: .post, parameters: request).serializingDecodable(String.self).value
+        try await client.request("/login",
+                                 String.self,
+                                 method: .post,
+                                 parameters: request)
     }
     
     public func editProfile(request: EditProfileRequest) async throws -> String {
-        try await AF.request("\(baseUrl)/user/edit", method: .post, parameters: request).serializingDecodable(String.self).value
+        try await client.request("/user/edit",
+                                 String.self,
+                                 method: .post,
+                                 parameters: request)
     }
     
     public func getTier() async throws -> UserTierResponse {
-        try await AF.request("\(baseUrl)/user/tier", method: .get).serializingDecodable(UserTierResponse.self).value
+        try await client.request("/user/tier",
+                                 UserTierResponse.self)
     }
     
     public func getImage() async throws -> UIImage {
-        try await AF.request("\(baseUrl)/user/image").serializingImage().value
+        try await client.requestImage("/user/image")
     }
 }
 
