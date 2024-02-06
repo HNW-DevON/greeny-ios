@@ -11,6 +11,8 @@ import DesignSystem
 
 struct FindView: View {
     
+    @ObservedObject var vm = FindViewModel()
+    
     @ViewBuilder
     private var search: some View {
         NavigationLink {

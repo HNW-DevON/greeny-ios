@@ -17,11 +17,13 @@ struct MyView: View {
     @State private var rect: CGRect = .zero
     @State private var selectedTab = MyTabViewType.Encyclopedia
     
-    private let data = (1...30).map { "상품 \($0)" }
+    // 4칸
     private let gridItem = [GridItem(.flexible(minimum: 50)),
                             GridItem(.flexible(minimum: 50)),
                             GridItem(.flexible(minimum: 50)),
                             GridItem(.flexible(minimum: 50))]
+    
+    @ObservedObject var vm = MyViewModel()
     
     @ViewBuilder
     var profile: some View {
@@ -167,8 +169,8 @@ struct MyView: View {
     @ViewBuilder
     var encyclopedia: some View {
         LazyVGrid(columns: gridItem, spacing: 16) {
-            ForEach(data, id: \.self) {
-                EncyclopediaCeil(imageUrl: "https://hws.dev/paul.jpg", productName: $0)
+            ForEach(vm.encyclopedias, id: \.id) {
+                EncyclopediaCeil(imageUrl: "https://hws.dev/paul.jpg", productName: $0.username)
                     .onTapGesture {
                         print("clicked \($0)")
                     }

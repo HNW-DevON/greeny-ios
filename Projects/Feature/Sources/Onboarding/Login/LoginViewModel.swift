@@ -20,9 +20,11 @@ final class LoginViewModel: ObservableObject {
     func login(onSuccess: @escaping (String) -> Void,
                onFail: @escaping () -> Void) async {
         userApi.login(request: LoginRequest(username: id,
-                                            password: pw), onSuccess: { token in
+                                            password: pw)) { token in
             print(token)
             onSuccess(String(token.split(separator: " ")[1]))
-        }, onFail: onFail)
+        } onFail: {
+            onFail()
+        }
     }
 }

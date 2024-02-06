@@ -8,14 +8,16 @@
 
 import Alamofire
 
-final class EncycloPediaApi {
+public final class EncycloPediaApi {
     
-    func getEncyclePediaAll() async throws -> EncycloPediasResponse {
-        try await AF.request("/pedia", method: .get).serializingDecodable(EncycloPediasResponse.self).value
+    private let client = GreenyHttpClient()
+    
+    public func getEncyclePediaAll() async throws -> EncycloPedias {
+        try await client.request("/pedia", EncycloPediasResponse.self).map { $0.toDomain() }
     }
     
 }
 
 extension EncycloPediaApi {
-    static let live = EncycloPediaApi()
+    public static let live = EncycloPediaApi()
 }
