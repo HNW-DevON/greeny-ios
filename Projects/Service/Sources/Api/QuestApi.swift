@@ -10,20 +10,20 @@ import Alamofire
 
 final class QuestApi {
     
-    func getQuest(id: Int) async throws -> QuestResponse {
+    public func getQuest(id: Int) async throws -> QuestResponse {
         try await AF.request("/qeust/\(id)", method: .get).serializingDecodable(QuestResponse.self).value
     }
     
-    func getQuestAll() async throws -> QuestsResponse {
+    public func getQuestAll() async throws -> QuestsResponse {
         try await AF.request("/quest", method: .get).serializingDecodable(QuestsResponse.self).value
     }
     
-    func completeQuest(id: Int) async throws -> VoidResponse {
+    public func completeQuest(id: Int) async throws -> VoidResponse {
         try await AF.request("/quest/complete", method: .post).serializingDecodable(VoidResponse.self).value
     }
     
 }
 
 extension QuestApi {
-    static let live = QuestApi()
+    public static let live = QuestApi()
 }
