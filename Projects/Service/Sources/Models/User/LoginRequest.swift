@@ -7,11 +7,6 @@
 //
 
 public struct LoginRequest: Encodable {
-    let username: String
-    let password: String
-    
-    public init(username: String, password: String) {
-        self.username = username
-        self.password = password
-    }
+    public let username: String
+    public let password: String
 }

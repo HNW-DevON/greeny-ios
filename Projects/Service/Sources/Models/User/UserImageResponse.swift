@@ -7,5 +7,5 @@
 //
 
 public struct UserImageResponse: Decodable {
-    let image: String
+    public let image: String
 }

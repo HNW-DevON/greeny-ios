@@ -7,6 +7,6 @@
 //
 
 public struct UserTierResponse: Decodable {
-    let tier: String
-    let left: Int
+    public let tier: String
+    public let left: Int
 }

@@ -7,5 +7,5 @@
 //
 
 public struct EditProfileRequest: Encodable {
-    let name: String
+    public let name: String
 }

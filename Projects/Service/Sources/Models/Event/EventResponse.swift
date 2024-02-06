@@ -6,11 +6,11 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-struct EventResponse: Decodable {
-    let id: Int
-    let eventName: String
-    let eventDesc: String
-    let company: CompanyResponse
+public struct EventResponse: Decodable {
+    public let id: Int
+    public let eventName: String
+    public let eventDesc: String
+    public let company: CompanyResponse
 }
 
-typealias EventsResponse = [EventResponse]
+public typealias EventsResponse = [EventResponse]

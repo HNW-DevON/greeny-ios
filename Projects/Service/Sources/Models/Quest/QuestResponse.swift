@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct QuestResponse: Decodable {
-    let id: Int
-    let questName: String
-    let questDesc: String
-    let questCurrent: Int
-    let questLimit: Int
-    let questPoint: Int
-    let createdAt: Date
+public struct QuestResponse: Decodable {
+    public let id: Int
+    public let questName: String
+    public let questDesc: String
+    public let questCurrent: Int
+    public let questLimit: Int
+    public let questPoint: Int
+    public let createdAt: Date
 }
 
-typealias QuestsResponse = [QuestResponse]
+public typealias QuestsResponse = [QuestResponse]

@@ -8,12 +8,22 @@
 
 import Foundation
 
-struct EncycloPediaResponse: Decodable {
+public struct EncycloPediaResponse: Decodable {
     let id: Int
     let productId: String
     let username: String
     let addedAt: Date
 }
 
-typealias EncycloPediasResponse = [EncycloPediaResponse]
+public typealias EncycloPediasResponse = [EncycloPediaResponse]
 
+extension EncycloPediaResponse {
+    
+    func toDomain() -> EncycloPedia {
+        EncycloPedia(id: id,
+                     productId: productId,
+                     username: username,
+                     addedAt: addedAt)
+    }
+    
+}
