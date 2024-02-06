@@ -12,6 +12,8 @@ import AlamofireImage
 
 public final class UserApi {
     
+    private let client = GreenyHttpClient.live
+    
     public func uploadImage(image: UIImage) async throws -> String {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             print("Failed to convert image to data")
@@ -23,10 +25,10 @@ public final class UserApi {
         }, to: "\(baseUrl)/user/upload", method: .post, headers: []).serializingDecodable(String.self).value
     }
     
-    public func join(request: JoinRequest) async throws -> String {
-        try await AF.request("\(baseUrl)/user/register",
-                             method: .post,
-                             parameters: request).validate().serializingDecodable(String.self).value
+    public func join(request: JoinRequest) async throws {
+        try await client.request("/user/register",
+                                 method: .post,
+                                 parameters: request)
     }
     
     public func login(request: LoginRequest) async throws -> String {
