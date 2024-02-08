@@ -6,6 +6,23 @@
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
+import Foundation
+
+public struct Product {
+    
+    public let id = UUID()
+    public let code, message, status: String?
+    public let type, gtin, kanCode: String
+    public let clsTotalNm: String
+    public let baseItems: [BaseItemResponse]
+    public let companies: [Companies2Response]
+    public let brands: [String]
+    public let countries: [Country]
+    public let prdComp, originVolume, prdPacTyp: String
+    public let images: [String]
+    public let isGotPoint: Bool
+}
+
 public struct ProductResponse: Decodable {
     public let code, message, status: String?
     public let type, gtin, kanCode: String
@@ -17,6 +34,25 @@ public struct ProductResponse: Decodable {
     public let prdComp, originVolume, prdPacTyp: String
     public let images: [String]
     public let isGotPoint: Bool
+    
+    public func toDomain() -> Product {
+        Product(code: code,
+                message: message,
+                status: status,
+                type: type,
+                gtin: gtin,
+                kanCode: kanCode,
+                clsTotalNm: clsTotalNm,
+                baseItems: baseItems,
+                companies: companies, 
+                brands: brands,
+                countries: countries,
+                prdComp: prdComp,
+                originVolume: originVolume,
+                prdPacTyp: prdPacTyp,
+                images: images,
+                isGotPoint: isGotPoint)
+    }
 }
 
 public struct BaseItemResponse: Decodable {
