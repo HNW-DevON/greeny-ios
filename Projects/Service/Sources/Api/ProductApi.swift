@@ -10,12 +10,16 @@ import Alamofire
 
 fileprivate let client = GreenyHttpClient.live
 
-final class ProductApi {
-    func find() async throws -> [ProductResponse] {
-        try await client.request("/find", [ProductResponse].self)
+public final class ProductApi {
+    public func find() async throws -> [Product] {
+        try await client.request("/find", [ProductResponse].self).map { $0.toDomain() }
     }
     
-    func product(id: Int) async throws -> ProductResponse {
+    public func product(id: Int) async throws -> ProductResponse {
         try await client.request("/product/\(id)", ProductResponse.self)
     }
+}
+
+extension ProductApi {
+    public static let live = ProductApi()
 }
