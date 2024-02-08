@@ -8,4 +8,4 @@
 
 import Foundation
 
-let baseUrl = "http://220.94.36.24:8080"
+let baseUrl = "http://89.116.32.94:8080"
