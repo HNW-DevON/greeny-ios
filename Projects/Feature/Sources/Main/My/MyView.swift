@@ -13,7 +13,6 @@ struct MyView: View {
     
     private let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue)
     
-    @State private var levelGauge = 0.4
     @State private var rect: CGRect = .zero
     @State private var selectedTab = MyTabViewType.Encyclopedia
     
@@ -29,7 +28,7 @@ struct MyView: View {
     var profile: some View {
         HStack {
             HStack(spacing: 8) {
-                AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
+                AsyncImage(url: URL(string: vm.user?.imagePath ?? ""),
                            content: {
                     $0.image?.resizable()
                         .aspectRatio(contentMode: .fit)
@@ -38,9 +37,9 @@ struct MyView: View {
                 }
                 )
                 .padding(.leading, 16)
-                Text("노자손")
+                Text(vm.user?.name ?? "")
                     .font(._label)
-                Text("골드3")
+                Text(vm.user?.tier ?? "")
                     .font(._caption)
                     .foregroundStyle(Color.yellow)
             }
@@ -72,7 +71,7 @@ struct MyView: View {
                         Image(Asset.greeny)
                             .resizable()
                             .frame(maxWidth: 16, maxHeight: 16)
-                        Text("120P")
+                        Text("\(vm.user?.hasPoint ?? 0)P")
                             .font(._body)
                         Image(Asset.leftArrow)
                             .resizable()
@@ -114,7 +113,7 @@ struct MyView: View {
     var level: some View {
         VStack {
             HStack {
-                Text("레벨")
+                Text("티어")
                     .font(._body)
                     .padding(12)
                 Spacer()
@@ -137,7 +136,7 @@ struct MyView: View {
                         .resizable()
                         .frame(width: 36, height: 36)
                         .padding(.bottom, 8)
-                    Text("씨앗")
+                    Text(vm.tier)
                         .foregroundStyle(Color.main500)
                         .font(._subtitle)
                         .padding(.bottom, 8)
@@ -148,7 +147,7 @@ struct MyView: View {
                         .padding(.trailing, 4)
                 }
                 .padding(.top, 8)
-                Gauge(value: levelGauge) {
+                Gauge(value: (Double(vm.left) / 100.0)) {
                 }
                 .tint(.main500)
                 .accentColor(.gray100)
@@ -237,6 +236,13 @@ struct MyView: View {
                     tabViewIndicator.padding(.top, 24)
                     tabViewContent
                 }
+            }
+        }
+        .onAppear {
+            Task {
+                await vm.loadEncyclopedia()
+                await vm.loadPoint()
+                await vm.loadUserInfo()
             }
         }
     }

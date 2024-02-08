@@ -69,6 +69,10 @@ public final class UserApi {
     public func getImage() async throws -> UIImage {
         try await client.requestImage("/user/image")
     }
+    
+    public func getInfo() async throws -> UserResponse {
+        try await client.request("/user/info", UserResponse.self)
+    }
 }
 
 extension UserApi {
