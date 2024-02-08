@@ -14,16 +14,20 @@ final class LoginViewModel: ObservableObject {
     
     @Published var id = ""
     @Published var pw = ""
+    @Published var isLoading = false
     
     private let userApi = UserApi.live
     
-    func login(onSuccess: @escaping (String) -> Void,
+    func login(onSuccess: @escaping (String, Date) -> Void,
                onFail: @escaping () -> Void) async {
-        userApi.login(request: LoginRequest(username: id,
-                                            password: pw)) { token in
-            print(token)
-            onSuccess(String(token.split(separator: " ")[1]))
-        } onFail: {
+        do {
+            let tokenResponse = try await userApi.login(request: LoginRequest(username: id,
+                                                password: pw))
+            onSuccess(String(tokenResponse.token.split(separator: " ")[1]), tokenResponse.expireAt.toDate())
+            isLoading = true
+        } catch (let e) {
+            print(e)
+            isLoading = true
             onFail()
         }
     }

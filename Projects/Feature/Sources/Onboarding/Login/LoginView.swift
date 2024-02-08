@@ -54,13 +54,19 @@ struct LoginView: View {
                 .padding(.bottom, 16)
                 GreenyButton("로그인") {
                     Task {
-                        await vm.login { token in
+                        await vm.login { token, expireAt in
+                            print(token)
                             tokenManager.token = token
+                            
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+                            tokenManager.expireAt = dateFormatter.string(from: expireAt)
                         } onFail: {
                             tokenManager.token = ""
                         }
                     }
                 }
+                .disabled(vm.isLoading)
                 .padding(.bottom, 16)
                 .padding(.horizontal, 20)
             }
