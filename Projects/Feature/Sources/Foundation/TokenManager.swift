@@ -15,8 +15,14 @@ public class TokenManager: ObservableObject {
             UserDefaults.standard.set(token, forKey: "accessToken")
         }
     }
+    @Published public var expireAt: String {
+        didSet {
+            UserDefaults.standard.set(expireAt, forKey: "expireAt")
+        }
+    }
 
     public init() {
         self.token = UserDefaults.standard.string(forKey: "accessToken") ?? ""
+        self.expireAt = UserDefaults.standard.string(forKey: "expireAt") ?? ""
     }
 }

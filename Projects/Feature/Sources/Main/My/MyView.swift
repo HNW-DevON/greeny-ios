@@ -15,6 +15,7 @@ struct MyView: View {
     
     @State private var rect: CGRect = .zero
     @State private var selectedTab = MyTabViewType.Encyclopedia
+    @EnvironmentObject var tm: TokenManager
     
     // 4칸
     private let gridItem = [GridItem(.flexible(minimum: 50)),
@@ -240,9 +241,15 @@ struct MyView: View {
         }
         .onAppear {
             Task {
-                await vm.loadEncyclopedia()
-                await vm.loadPoint()
-                await vm.loadUserInfo()
+                await vm.loadEncyclopedia {
+                    tm.token = ""
+                }
+                await vm.loadPoint {
+                    tm.token = ""
+                }
+                await vm.loadUserInfo {
+                    tm.token = ""
+                }
             }
         }
     }
