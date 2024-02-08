@@ -11,4 +11,11 @@ public struct JoinRequest: Encodable {
     public let password: String
     public let name: String
     public let birth: String
+    
+    public init(username: String, password: String, name: String, birth: String) {
+        self.username = username
+        self.password = password
+        self.name = name
+        self.birth = birth
+    }
 }
