@@ -20,7 +20,6 @@ public struct Product {
     public let countries: [Country]
     public let prdComp, originVolume, prdPacTyp: String
     public let images: [String]
-    public let isGotPoint: Bool
 }
 
 public struct ProductResponse: Decodable {
@@ -33,7 +32,6 @@ public struct ProductResponse: Decodable {
     public let countries: [Country]
     public let prdComp, originVolume, prdPacTyp: String
     public let images: [String]
-    public let isGotPoint: Bool
     
     public func toDomain() -> Product {
         Product(code: code,
@@ -50,8 +48,7 @@ public struct ProductResponse: Decodable {
                 prdComp: prdComp,
                 originVolume: originVolume,
                 prdPacTyp: prdPacTyp,
-                images: images,
-                isGotPoint: isGotPoint)
+                images: images)
     }
 }
 
@@ -62,10 +59,10 @@ public struct BaseItemResponse: Decodable {
 
 public struct Companies2Response: Decodable {
     public let type, name: String
-    public let addressed: [String]
+    public let addresses: [String]
 }
 
 public struct Country: Decodable {
     let name: String
-    let value: String
+    let values: [String]
 }
