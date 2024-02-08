@@ -14,3 +14,4 @@ public struct CompanyResponse: Decodable {
 }
 
 public typealias CompaniesResponse = [CompanyResponse]
+
