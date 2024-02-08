@@ -7,11 +7,15 @@
 //
 
 import SwiftUI
+import Service
 
 struct FindCeil: View {
+    
+    let item: Product
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
+            AsyncImage(url: URL(string: item.images.first ?? ""),
                        content: {
                 $0.image?
                     .resizable()
@@ -19,16 +23,16 @@ struct FindCeil: View {
                     .frame(maxHeight: CGFloat.random(in: 124...220))
             }
             )
-            Text("망고맛치킨")
+            Text(item.baseItems.first?.value ?? "")
                 .font(._caption)
                 .bold()
                 .padding(.top, 12)
-            Text("제갈치킨")
+            Text(item.companies.first?.name ?? "")
                 .font(._cute)
-            Text("오늘 10명의 사용자가 소비하고 있어요")
-                .font(._cute)
-                .padding(.top, 8)
-                .foregroundStyle(Color.main700)
+//            Text("오늘 10명의 사용자가 소비하고 있어요")
+//                .font(._cute)
+//                .padding(.top, 8)
+//                .foregroundStyle(Color.main700)
         }
     }
 }

@@ -12,6 +12,7 @@ import DesignSystem
 struct FindView: View {
     
     @ObservedObject var vm = FindViewModel()
+    @EnvironmentObject var tm: TokenManager
     
     @ViewBuilder
     private var search: some View {
@@ -33,19 +34,17 @@ struct FindView: View {
         }
     }
     
-    let data = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9"]
-    
     @ViewBuilder
     private var findGrid: some View {
         HStack(alignment: .top, spacing: 16) {
             LazyVStack(spacing: 16) {
-                ForEach(data, id: \.self) { item in
-                    FindCeil()
+                ForEach(vm.leftProducts, id: \.id) { item in
+                    FindCeil(item: item)
                 }
             }
             LazyVStack(spacing: 16) {
-                ForEach(data, id: \.self) { item in
-                    FindCeil()
+                ForEach(vm.rightProducts, id: \.id) { item in
+                    FindCeil(item: item)
                 }
             }
         }
@@ -63,5 +62,13 @@ struct FindView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            Task {
+                await vm.loadFind {
+                    print(tm.token)
+                    tm.token = ""
+                }
+            }
+        }
     }
 }
