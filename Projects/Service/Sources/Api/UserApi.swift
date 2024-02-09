@@ -42,7 +42,7 @@ public final class UserApi {
             }, to: baseUrl + "/login",
             method: .post,
             interceptor: GreenyInterceptor()
-        ).serializingDecodable(TokenResponse.self).value
+        ).validate().serializingDecodable(TokenResponse.self).value
     }
     
     public func editProfile(request: EditProfileRequest) async throws -> String {
