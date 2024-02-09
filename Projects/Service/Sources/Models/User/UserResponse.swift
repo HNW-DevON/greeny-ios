@@ -10,9 +10,9 @@ public struct UserResponse: Decodable {
     public let username: String
     public let name: String
     public let birth: String
-    public let tier: String
+    public let tier: String?
     public let pointHistory: [PointResponse]
-    public let imagePath: String
+    public let imagePath: String?
     public let totalExp: Int
     public let hasPoint: Int
 }

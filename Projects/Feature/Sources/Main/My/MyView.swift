@@ -29,14 +29,17 @@ struct MyView: View {
     var profile: some View {
         HStack {
             HStack(spacing: 8) {
-                AsyncImage(url: URL(string: vm.user?.imagePath ?? ""),
-                           content: {
-                    $0.image?.resizable()
+                AsyncImage(url: URL(string: vm.user?.imagePath ?? "")) {
+                    $0.resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 48, maxHeight: 48)
                         .clipShape(Circle())
+                } placeholder: {
+                    Circle()
+                        .foregroundStyle(Color.gray100)
+                        .frame(maxWidth: 48, maxHeight: 48)
+                        .clipShape(Circle())
                 }
-                )
                 .padding(.leading, 16)
                 Text(vm.user?.name ?? "")
                     .font(._label)
@@ -48,9 +51,9 @@ struct MyView: View {
             NavigationLink {
                 MyEditView()
             } label: {
-                Text("프로필 수정")
-                    .padding(.trailing, 4)
-                    .font(._cute)
+                Text("설정")
+                    .padding(.trailing, 12)
+                    .font(._caption)
                     .foregroundStyle(Color.gray500)
             }
         }

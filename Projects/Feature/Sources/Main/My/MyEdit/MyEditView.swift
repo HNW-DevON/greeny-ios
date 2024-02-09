@@ -14,9 +14,10 @@ struct MyEditView: View {
     @State private var name = ""
     @State private var id = ""
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var tm: TokenManager
     
     var body: some View {
-        GreenyTopbar("프로필 수정", backButtonCallback: {
+        GreenyTopbar("설정", backButtonCallback: {
             dismiss()
         }) {
             VStack(spacing: 0) {
@@ -31,15 +32,16 @@ struct MyEditView: View {
                 .padding(.top, 16)
                 GreenyInputCeil(title: "이름", hint: "이름을 입력해 주세요", text: $name)
                     .padding(.horizontal, 20)
-                    .padding([.bottom, .top], 32)
                 GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
                     .padding(.horizontal, 20)
-                Spacer()
-                GreenyButton("취소", buttonType: .gray) {
-                    dismiss()
+                    .padding(.top, 32)
+                GreenyButton("로그아웃", buttonType: .red) {
+                    tm.token = ""
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 8)
+                .frame(width: 100, height: 40)
+                .padding(.top, 20)
+                
+                Spacer()
                 GreenyButton("저장") {
                     dismiss()
                 }

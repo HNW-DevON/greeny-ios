@@ -33,7 +33,7 @@ final class MyViewModel: ObservableObject {
     func loadPoint(onFail: () -> Void) async {
         do {
             let tierResponse = try await userApi.getTier()
-            tier = tierResponse.tier
+            tier = tierResponse.tier ?? ""
             left = tierResponse.left
         } catch (let e) {
             onFail()
