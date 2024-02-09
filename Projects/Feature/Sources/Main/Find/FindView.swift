@@ -8,6 +8,7 @@
 
 import SwiftUI
 import DesignSystem
+import SkeletonUI
 
 struct FindView: View {
     
@@ -37,23 +38,48 @@ struct FindView: View {
     @ViewBuilder
     private var findGrid: some View {
         HStack(alignment: .top, spacing: 16) {
-            LazyVStack(spacing: 16) {
-                ForEach(vm.leftProducts, id: \.id) { item in
-                    FindCeil(item: item)
+            if !vm.isLoading {
+                LazyVStack(spacing: 16) {
+                    ForEach(vm.leftProducts, id: \.id) { item in
+                        FindCeil(item: item)
+                    }
+                    
                 }
-            }
-            LazyVStack(spacing: 16) {
-                ForEach(vm.rightProducts, id: \.id) { item in
-                    FindCeil(item: item)
+                LazyVStack(spacing: 16) {
+                    ForEach(vm.rightProducts, id: \.id) { item in
+                        FindCeil(item: item)
+                    }
+                }
+            } else {
+                VStack(spacing: 16) {
+                    ForEach(0..<5, id: \.self) { _ in
+                        let height = CGFloat.random(in: 124...220)
+                        Rectangle()
+                            .skeleton(with: vm.isLoading,
+                                      animation: .pulse(),
+                                      shape: .rounded(.radius(Size.extraLarge.rawValue)))
+                            .frame(height: height)
+                    }
+                }
+                VStack(spacing: 16) {
+                    ForEach(0..<5, id: \.self) { _ in
+                        let height = CGFloat.random(in: 124...220)
+                        Rectangle()
+                            .skeleton(with: vm.isLoading,
+                                      animation: .pulse(),
+                                      shape: .rounded(.radius(Size.extraLarge.rawValue)))
+                            .frame(height: height)
+                    }
                 }
             }
         }
         .padding(.horizontal, 24)
-        .overlay {
-            if vm.leftProducts.count + vm.rightProducts.count == 0 {
-                
-            }
-        }
+        //        .skeleton(with: vm.isLoading,
+        //                  animation: .pulse(),
+        //                  shape: .rounded(.radius(Size.extraLarge.rawValue)),
+        //                  lines: 10,
+        //                  scales: [1: 22])
+        //        .frame(height: 300)
     }
     
     var body: some View {
@@ -64,15 +90,14 @@ struct FindView: View {
                     findGrid
                     Spacer()
                 }
+                .padding(.bottom, 60)
             }
         }
         .navigationBarBackButtonHidden()
-        .onAppear {
-            Task {
-                await vm.loadFind {
-                    print(tm.token)
-                    tm.token = ""
-                }
+        .task {
+            await vm.loadFind {
+                print(tm.token)
+                tm.token = ""
             }
         }
     }

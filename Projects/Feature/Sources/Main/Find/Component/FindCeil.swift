@@ -21,6 +21,7 @@ struct FindCeil: View {
                     .resizable()
                     .addGrayStroke()
                     .frame(height: height)
+                    .frame(maxWidth: .infinity)
             } placeholder: {
                 Rectangle()
                     .foregroundStyle(Color.gray100)
@@ -38,6 +39,16 @@ struct FindCeil: View {
             //                .padding(.top, 8)
             //                .foregroundStyle(Color.main700)
         }
+    }
+}
+
+struct FindVoidCeil: View {
+    var body: some View {
+        let height = CGFloat.random(in: 124...220)
+        Rectangle()
+            .foregroundStyle(Color.gray100)
+            .addGrayStroke()
+            .frame(height: height)
     }
 }
 
