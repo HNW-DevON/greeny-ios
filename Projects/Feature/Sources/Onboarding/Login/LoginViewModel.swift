@@ -20,14 +20,17 @@ final class LoginViewModel: ObservableObject {
     
     func login(onSuccess: @escaping (String, Date) -> Void,
                onFail: @escaping () -> Void) async {
+        isLoading = true
         do {
             let tokenResponse = try await userApi.login(request: LoginRequest(username: id,
                                                 password: pw))
-            onSuccess(String(tokenResponse.token.split(separator: " ")[1]), tokenResponse.expireAt.toDate())
-            isLoading = true
+            debugPrint("loginvm - respose")
+            let expireAt = tokenResponse.expireAt.toDate()
+            onSuccess(String(tokenResponse.token.split(separator: " ")[1]), expireAt)
+            isLoading = false
         } catch (let e) {
             print(e)
-            isLoading = true
+            isLoading = false
             onFail()
         }
     }

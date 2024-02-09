@@ -24,7 +24,8 @@ class CertificationViewModel: ObservableObject {
     }
     
     func capturePhoto() {
-        print("[CameraViewModel]: Photo captured!")
+        camera.capturePhoto()
+        print("CertificationViewModel - Photo captured!")
     }
     
     func configure() {

@@ -60,7 +60,9 @@ struct LoginView: View {
                             
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
-                            tokenManager.expireAt = dateFormatter.string(from: expireAt)
+                            let expireText = dateFormatter.string(from: expireAt)
+                            debugPrint(expireText)
+                            tokenManager.expireAt = expireText
                         } onFail: {
                             tokenManager.token = ""
                         }
