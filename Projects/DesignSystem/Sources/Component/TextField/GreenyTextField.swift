@@ -42,7 +42,11 @@ public struct GreenyTextField: View {
                           text: $text)
             }
         }
+        .fixedSize(horizontal: false, vertical: true)
         .focused($isFocused)
+        .onTapGesture {
+            isFocused = true
+        }
         .frame(maxWidth: .infinity)
         .frame(height: 52)
         .background(Color.white)
