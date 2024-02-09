@@ -7,13 +7,16 @@
 //
 
 import AVKit
+import Foundation
 
-public class Camera {
+public class Camera: NSObject, ObservableObject {
     public var session = AVCaptureSession()
-    var videoDeviceInput: AVCaptureDeviceInput!
-    let output = AVCapturePhotoOutput()
+    public var videoDeviceInput: AVCaptureDeviceInput!
+    public let output = AVCapturePhotoOutput()
     
-    public init() {}
+    var photoData = Data(count: 0)
+    
+    public override init() {}
     
     // 카메라 셋업 과정을 담당하는 함수, positio
     public func setUpCamera() {
@@ -58,5 +61,45 @@ public class Camera {
             // 거절했을 경우
             print("Permession declined")
         }
+    }
+    
+    public func capturePhoto() {
+        // 사진 옵션 세팅
+        let photoSettings = AVCapturePhotoSettings()
+        
+        self.output.capturePhoto(with: photoSettings, delegate: self)
+        print("[Camera]: Photo's taken")
+    }
+    
+    // ✅ 추가
+    public func savePhoto(_ imageData: Data) {
+        guard let image = UIImage(data: imageData) else { return }
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
+        // 사진 저장하기
+        print("[Camera]: Photo's saved")
+    }
+}
+
+extension Camera: AVCapturePhotoCaptureDelegate {
+    public func photoOutput(_ output: AVCapturePhotoOutput, 
+                            willBeginCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+    }
+    
+    public func photoOutput(_ output: AVCapturePhotoOutput, 
+                            willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+    }
+    
+    public func photoOutput(_ output: AVCapturePhotoOutput, 
+                            didCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+    }
+    
+    public func photoOutput(_ output: AVCapturePhotoOutput, 
+                            didFinishProcessingPhoto photo: AVCapturePhoto,
+                            error: Error?) {
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        self.savePhoto(imageData)
+        
+        print("[CameraModel]: Capture routine's done")
     }
 }
