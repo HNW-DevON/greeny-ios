@@ -49,6 +49,11 @@ struct FindView: View {
             }
         }
         .padding(.horizontal, 24)
+        .overlay {
+            if vm.leftProducts.count + vm.rightProducts.count == 0 {
+                
+            }
+        }
     }
     
     var body: some View {

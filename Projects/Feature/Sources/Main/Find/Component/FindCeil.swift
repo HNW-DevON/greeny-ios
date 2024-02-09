@@ -15,24 +15,28 @@ struct FindCeil: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            AsyncImage(url: URL(string: item.images.first ?? ""),
-                       content: {
-                $0.image?
+            let height = CGFloat.random(in: 124...220)
+            AsyncImage(url: URL(string: item.images.first ?? "")) {
+                $0
                     .resizable()
                     .addGrayStroke()
-                    .frame(maxHeight: CGFloat.random(in: 124...220))
+                    .frame(height: height)
+            } placeholder: {
+                Rectangle()
+                    .foregroundStyle(Color.gray100)
+                    .addGrayStroke()
+                    .frame(height: height)
             }
-            )
             Text(item.baseItems.first?.value ?? "")
                 .font(._caption)
                 .bold()
                 .padding(.top, 12)
             Text(item.companies.first?.name ?? "")
                 .font(._cute)
-//            Text("오늘 10명의 사용자가 소비하고 있어요")
-//                .font(._cute)
-//                .padding(.top, 8)
-//                .foregroundStyle(Color.main700)
+            //            Text("오늘 10명의 사용자가 소비하고 있어요")
+            //                .font(._cute)
+            //                .padding(.top, 8)
+            //                .foregroundStyle(Color.main700)
         }
     }
 }

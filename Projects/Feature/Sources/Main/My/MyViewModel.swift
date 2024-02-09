@@ -24,6 +24,7 @@ final class MyViewModel: ObservableObject {
     func loadEncyclopedia(onFail: () -> Void) async {
         do {
             encyclopedias = try await encyclopediaApi.getEncyclePediaAll()
+            print(encyclopedias)
         } catch (let e) {
             onFail()
             print(e)
