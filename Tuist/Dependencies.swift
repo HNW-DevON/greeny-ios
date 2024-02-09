@@ -15,7 +15,8 @@ let dependencies = Dependencies(
             .remote(url: "https://github.com/Alamofire/Alamofire.git",
                     requirement: .upToNextMajor(from: "5.4.0")),
             .remote(url: "https://github.com/Alamofire/AlamofireImage.git", 
-                    requirement: .upToNextMajor(from: "4.3.0"))
+                    requirement: .upToNextMajor(from: "4.3.0")),
+            .remote(url: "https://github.com/CSolanaM/SkeletonUI.git", requirement: .branch("master"))
         ]
     ),
     platforms: [.iOS]

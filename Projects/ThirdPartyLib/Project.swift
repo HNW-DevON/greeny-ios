@@ -13,7 +13,8 @@ let project = Project.makeModule(
     product: .staticFramework,
     dependencies: [
         .SPM.Alamofire,
-        .SPM.AlamofireImage
+        .SPM.AlamofireImage,
+        .SPM.SkeletonUI
     ],
     resources: ["Resources/**"]
 )
