@@ -43,7 +43,8 @@ public struct GreenyTextField: View {
             }
         }
         .focused($isFocused)
-        .frame(maxWidth: .infinity, maxHeight: 52)
+        .frame(maxWidth: .infinity)
+        .frame(height: 52)
         .background(Color.white)
         .padding(.horizontal, 16)
         .clipShape(RoundedRectangle(cornerRadius: Size.large.rawValue))
