@@ -30,7 +30,10 @@ public extension Project {
             infoPlist: infoPlist,
             sources: sources,
             resources: resources,
-            dependencies: dependencies
+            dependencies: dependencies,
+            settings: .settings(base: ["DEVELOPMENT_TEAM":"B42SPPS3PR"],
+                                configurations: [],
+                                defaultSettings: .recommended)
         )
 
         let testTarget = Target(
