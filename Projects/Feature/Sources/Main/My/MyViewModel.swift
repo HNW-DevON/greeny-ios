@@ -8,6 +8,7 @@
 
 import Service
 import Foundation
+import Alamofire
 
 fileprivate let encyclopediaApi = EncycloPediaApi.live
 fileprivate let userApi = UserApi.live
@@ -25,8 +26,12 @@ final class MyViewModel: ObservableObject {
         do {
             encyclopedias = try await encyclopediaApi.getEncyclePediaAll()
             print(encyclopedias)
+        } catch AFError.responseValidationFailed(let e) {
+            if isUnauthorized(e) {
+                onFail()
+            }
+            print(e)
         } catch (let e) {
-            onFail()
             print(e)
         }
     }
@@ -36,8 +41,12 @@ final class MyViewModel: ObservableObject {
             let tierResponse = try await userApi.getTier()
             tier = tierResponse.tier ?? ""
             left = tierResponse.left
+        } catch AFError.responseValidationFailed(let e) {
+            if isUnauthorized(e) {
+                onFail()
+            }
+            print(e)
         } catch (let e) {
-            onFail()
             print(e)
         }
     }
@@ -47,8 +56,12 @@ final class MyViewModel: ObservableObject {
             let userResponse = try await userApi.getInfo()
             user = userResponse
             pointHistory = userResponse.pointHistory
+        } catch AFError.responseValidationFailed(let e) {
+            if isUnauthorized(e) {
+                onFail()
+            }
+            print(e)
         } catch (let e) {
-            onFail()
             print(e)
         }
     }

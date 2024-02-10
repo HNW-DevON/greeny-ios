@@ -36,7 +36,9 @@ struct MyEditView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 32)
                 GreenyButton("로그아웃", buttonType: .red) {
-                    tm.token = ""
+                    withAnimation {
+                        tm.token = ""
+                    }
                 }
                 .frame(width: 100, height: 40)
                 .padding(.top, 20)

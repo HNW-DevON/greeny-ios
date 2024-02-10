@@ -28,11 +28,13 @@ struct GreenyBottomNavigator: View {
                     }
                 }
                 .onTapGesture {
-                    if isSelected && tab == .certification {
-                        isClicked = true
-                    }
-                    withAnimation {
-                        selectedTab = tab
+                    Task {
+                        if isSelected && tab == .certification {
+                            isClicked = true
+                        }
+                        withAnimation {
+                            selectedTab = tab
+                        }
                     }
                 }
             }

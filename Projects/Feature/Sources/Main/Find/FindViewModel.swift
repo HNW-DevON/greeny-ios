@@ -8,6 +8,7 @@
 
 import Service
 import Foundation
+import Alamofire
 
 fileprivate let productApi = ProductApi.live
 
@@ -27,9 +28,12 @@ final class FindViewModel: ObservableObject {
             leftProducts = Array(Array(products)[0..<center])
             rightProducts = Array(Array(products)[center..<products.count])
             isLoading = false
-        } catch (let e) {
-            print(e)
-            onFail()
+        } catch AFError.responseValidationFailed(let e) {
+            if isUnauthorized(e) {
+                onFail()
+            }
+            isLoading = false
+        } catch {
             isLoading = false
         }
     }
