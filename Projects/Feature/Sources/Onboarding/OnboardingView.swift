@@ -11,7 +11,6 @@ import DesignSystem
 
 public struct OnboardingView: View {
     
-    @State var isLoading: Bool = true
     @State var selectedTab: Int = 0
     
     public init() {}
@@ -57,15 +56,6 @@ public struct OnboardingView: View {
                             .padding(.horizontal, 20)
                     }
                 }
-                
-                if isLoading {
-                    LaunchScreenView().transition(.opacity).zIndex(1)
-                }
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                    withAnimation { isLoading = false }
-                })
             }
         }
     }

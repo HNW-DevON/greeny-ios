@@ -16,7 +16,7 @@ struct MyApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(TokenManager())
-//            UITestView()
+            //            UITestView()
         }
     }
 }
@@ -24,18 +24,29 @@ struct MyApp: App {
 private struct ContentView: View {
     
     @EnvironmentObject var tokenManager: TokenManager
+    @State var isLoading: Bool = true
     
     var body: some View {
-        Group {
-            if tokenManager.token.isEmpty {
-                OnboardingView()
-            } else {
-                MainView()
+        ZStack {
+            Group {
+                if tokenManager.token.isEmpty {
+                    OnboardingView()
+                } else {
+                    MainView()
+                }
+            }
+            
+            
+            if isLoading {
+                LaunchScreenView().transition(.opacity).zIndex(1)
             }
         }
-        .onAppear {
+        .task {
             tokenManager.token = UserDefaults.standard.string(forKey: "accessToken") ?? ""
-//            tokenManager.token = ""
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                withAnimation { isLoading = false }
+            })
         }
     }
 }
