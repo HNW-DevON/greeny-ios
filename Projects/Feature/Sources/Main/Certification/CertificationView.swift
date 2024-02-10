@@ -18,9 +18,9 @@ struct CertificationView: View {
         CertificationCameraView(viewModel: vm)
             .onChange(of: isClicked) {
                 if $0 {
-                    Task {
-                        withAnimation {
-                            vm.capturePhoto()
+                    let _ = withAnimation {
+                        Task {
+                            await vm.capturePhoto()
                             isActive = true
                         }
                     }

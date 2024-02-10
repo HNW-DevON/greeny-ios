@@ -11,6 +11,7 @@ import Service
 import AVKit
 import SwiftUI
 
+@MainActor
 class CertificationViewModel: ObservableObject {
     private let camera: Camera
     private let session: AVCaptureSession
@@ -23,12 +24,12 @@ class CertificationViewModel: ObservableObject {
         self.cameraPreview = AnyView(CameraPreviewView(session: session))
     }
     
-    func capturePhoto() {
+    func capturePhoto() async {
         camera.capturePhoto()
         print("CertificationViewModel - Photo captured!")
     }
     
-    func configure() {
+    func configure() async {
         camera.requestAndCheckPermissions()
     }
     
