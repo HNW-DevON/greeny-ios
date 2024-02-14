@@ -8,22 +8,22 @@
 
 import Alamofire
 
-final class CompanyApi {
+public final class CompanyApi {
     
-    func getCompanyAll() async throws -> Companies {
+    public func getCompanyAll() async throws -> Companies {
         try await AF.request("/company", method: .get).serializingDecodable(CompaniesResponse.self).value.map { $0.toDomain() }
     }
     
-    func getCompany(id: String) async throws -> Company {
+    public func getCompany(id: String) async throws -> Company {
         try await AF.request("/company/\(id)", method: .get).serializingDecodable(CompanyResponse.self).value.toDomain()
     }
     
-    func getCompanyByCategory(category: String) async throws -> Companies {
+    public func getCompanyByCategory(category: String) async throws -> Companies {
         try await AF.request("/company/category/\(category)", method: .get).serializingDecodable(CompaniesResponse.self).value.map { $0.toDomain() }
     }
     
 }
 
 extension CompanyApi {
-    static let live = CompanyApi()
+    public static let live = CompanyApi()
 }
