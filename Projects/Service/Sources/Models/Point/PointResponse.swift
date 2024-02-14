@@ -14,3 +14,12 @@ public struct PointResponse: Decodable {
     public let productId: String
     public let addedAt: String
 }
+
+extension PointResponse {
+    public func toDomain() -> Point {
+        Point(id: id,
+              point: point,
+              productId: productId,
+              addedAt: Date.fromString(addedAt))
+    }
+}

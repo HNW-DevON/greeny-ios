@@ -37,6 +37,11 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
         
-        return dateFormatter.date(from: string.replacingOccurrences(of: "T", with: " ")) ?? Date()
+        if let result = dateFormatter.date(from: string.replacingOccurrences(of: "T", with: " ")) {
+            return result
+        } else {
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            return dateFormatter.date(from: string.replacingOccurrences(of: "T", with: " ")) ?? Date()
+        }
     }
 }

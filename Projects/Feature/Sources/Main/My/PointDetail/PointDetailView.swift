@@ -8,10 +8,12 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 struct PointDetailView: View {
     
     @Environment(\.dismiss) var dismiss
+    var user: UserResponse
     
     var body: some View {
         GreenyTopbar("포인트", backButtonCallback: {

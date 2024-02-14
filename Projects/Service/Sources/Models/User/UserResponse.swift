@@ -16,3 +16,16 @@ public struct UserResponse: Decodable {
     public let totalExp: Int
     public let hasPoint: Int
 }
+
+extension UserResponse {
+    func toDomain() -> User {
+        User(username: username,
+             name: name,
+             birth: birth,
+             tier: tier,
+             pointHistory: pointHistory.map { $0.toDomain() }, 
+             imagePath: imagePath,
+             totalExp: totalExp,
+             hasPoint: hasPoint)
+    }
+}
