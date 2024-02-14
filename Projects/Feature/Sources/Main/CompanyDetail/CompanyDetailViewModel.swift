@@ -16,15 +16,16 @@ fileprivate let companyApi = CompanyApi.live
 final class CompanyDetailViewModel: ObservableObject {
     @Published var companies: Companies = []
     
-    func loadCompanies(onFail: @escaping () -> Void) async {
+    func loadCompanies(category:String,
+                       onFail: @escaping () -> Void) async {
         do {
-            
+            companies = try await companyApi.getCompanyByCategory(category: category)
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
             }
-        } catch {
-            
+        } catch (let e) {
+            print(e)
         }
     }
 }

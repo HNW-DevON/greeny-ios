@@ -28,7 +28,7 @@ struct CompanyDetailView: View {
         }
         .navigationBarBackButtonHidden()
         .task {
-            await vm.loadCompanies {
+            await vm.loadCompanies(category: category) {
                 tm.token = ""
             }
         }
