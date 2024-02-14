@@ -10,14 +10,14 @@ import Alamofire
 
 fileprivate let client = GreenyHttpClient.live
 
-final class PointApi {
+public final class PointApi {
     
-    func savePoint(id: Int) async throws -> VoidResponse {
+    public func savePoint(id: Int) async throws -> VoidResponse {
         try await client.request("/point/get/\(id)", VoidResponse.self)
     }
     
 }
 
 extension PointApi {
-    static let live = PointApi()
+    public static let live = PointApi()
 }

@@ -11,6 +11,7 @@ import Alamofire
 import Service
 
 fileprivate let productApi = ProductApi.live
+fileprivate let pointApi = PointApi.live
 
 @MainActor
 class ResultViewModel: ObservableObject {
@@ -26,7 +27,9 @@ class ResultViewModel: ObservableObject {
     func loadView(onFail: @escaping () -> Void, onFail2: @escaping () -> Void) async {
         viewType = .loadingFirst
         do {
+            let dummyId = 8801045023687
             resultProduct = try await productApi.product(id: 8801045023687)
+            let _ = try await pointApi.savePoint(id: 8801045023687)
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()

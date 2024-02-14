@@ -15,6 +15,8 @@ struct ResultView: View {
     @ObservedObject var vm = ResultViewModel()
     @EnvironmentObject var tm: TokenManager
     var recentImage: UIImage
+    @State var showDialog = false
+    @State var isPointed = false
     
     
     @ViewBuilder
@@ -58,17 +60,9 @@ struct ResultView: View {
     @ViewBuilder
     private var company: some View {
         HStack(alignment: .top, spacing: 16) {
-            //            AsyncImage(url: URL(string: ""),
-            //                       content: {
-            //                $0.image?
-            //                    .resizable()
-            //                    .frame(width: 150, height: 150)
-            //                    .addGrayStroke()
-            //            }
-            //            )
             VStack(alignment: .leading, spacing: 8) {
                 ForEach(vm.resultProduct?.companies ?? [], id: \.name) { i in
-                    VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
                         Text(i.name)
                             .font(._body)
                         HStack(alignment: .bottom) {
@@ -107,6 +101,12 @@ struct ResultView: View {
                 product
                     .padding(.horizontal, 16)
                     .padding(.top, 8)
+                GreenyButton(isPointed ? "포인트 획득 완료" : "30포인트 획득하기!", buttonType: isPointed ? .gray : .main) {
+                    showDialog = true
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 28)
+                .disabled(isPointed)
                 Text("기업 정보")
                     .font(._title)
                     .toLeading()
@@ -133,6 +133,13 @@ struct ResultView: View {
                     content
                 }
             }
+        }
+        .alert("30포인트 획득!", isPresented: $showDialog) {
+            Button("닫기", role: .cancel) {
+                isPointed = true
+            }
+        } message: {
+            Text("사회적 제품을 사용해주셔서 감사합니다")
         }
         .navigationBarBackButtonHidden()
         .task {
