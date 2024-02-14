@@ -21,6 +21,7 @@ final class MyViewModel: ObservableObject {
     @Published var left = 0
     @Published var pointHistory: [PointResponse] = []
     @Published var user: UserResponse? = nil
+    @Published var fixName = ""
     
     func loadEncyclopedia(onFail: () -> Void) async {
         do {
@@ -55,12 +56,26 @@ final class MyViewModel: ObservableObject {
         do {
             let userResponse = try await userApi.getInfo()
             user = userResponse
+            fixName = user?.name ?? ""
             pointHistory = userResponse.pointHistory
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
             }
             print(e)
+        } catch (let e) {
+            print(e)
+        }
+    }
+    
+    func editProfile(onFail: () -> Void) async {
+        do {
+            let _ = try await userApi.editProfile(request: EditProfileRequest(name: fixName))
+            print("response")
+        } catch AFError.responseValidationFailed(let e) {
+            if isUnauthorized(e) {
+                onFail()
+            }
         } catch (let e) {
             print(e)
         }

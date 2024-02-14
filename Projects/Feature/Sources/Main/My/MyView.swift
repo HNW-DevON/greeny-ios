@@ -23,7 +23,7 @@ struct MyView: View {
                             GridItem(.flexible(minimum: 50)),
                             GridItem(.flexible(minimum: 50))]
     
-    @ObservedObject var vm = MyViewModel()
+    @StateObject var vm = MyViewModel()
     
     @ViewBuilder
     var profile: some View {
@@ -49,7 +49,13 @@ struct MyView: View {
             }
             Spacer()
             NavigationLink {
-                MyEditView()
+                MyEditView(fixName: $vm.fixName) {
+                    await vm.editProfile {
+                        withAnimation {
+                            tm.token = ""
+                        }
+                    }
+                }
             } label: {
                 Text("설정")
                     .padding(.trailing, 12)
@@ -233,7 +239,7 @@ struct MyView: View {
     var body: some View {
         GreenyTopbar("MY") {
             ScrollView {
-                VStack {
+                VStack(spacing: 0) {
                     profile
                     point.padding(.top, 16)
                     level.padding(.top, 12)
@@ -242,17 +248,15 @@ struct MyView: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                await vm.loadEncyclopedia {
-                    tm.token = ""
-                }
-                await vm.loadPoint {
-                    tm.token = ""
-                }
-                await vm.loadUserInfo {
-                    tm.token = ""
-                }
+        .task {
+            await vm.loadEncyclopedia {
+                tm.token = ""
+            }
+            await vm.loadPoint {
+                tm.token = ""
+            }
+            await vm.loadUserInfo {
+                tm.token = ""
             }
         }
     }

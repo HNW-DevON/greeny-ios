@@ -11,15 +11,22 @@ import DesignSystem
 
 struct MyEditView: View {
     
-    @State private var name = ""
-    @State private var id = ""
+    @Binding var fixName: String
+    var onComplete: () async -> Void
+    
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var tm: TokenManager
     
+    init(fixName: Binding<String>,
+         onComplete: @escaping () async -> Void) {
+        self.onComplete = onComplete
+        self._fixName = fixName
+    }
+    
     var body: some View {
-        GreenyTopbar("설정", backButtonCallback: {
+        GreenyTopbar("설정") {
             dismiss()
-        }) {
+        } content: {
             VStack(spacing: 0) {
                 AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
                            content: {
@@ -30,22 +37,25 @@ struct MyEditView: View {
                 }
                 )
                 .padding(.top, 16)
-                GreenyInputCeil(title: "이름", hint: "이름을 입력해 주세요", text: $name)
+                GreenyInputCeil(title: "이름", hint: "이름을 입력해 주세요", text: $fixName)
                     .padding(.horizontal, 20)
-                GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 32)
+//                GreenyInputCeil(title: "아이디", hint: "아이디를 입력해 주세요", text: $id)
+//                    .padding(.horizontal, 20)
+//                    .padding(.top, 32)
                 GreenyButton("로그아웃", buttonType: .red) {
                     withAnimation {
                         tm.token = ""
                     }
                 }
-                .frame(width: 100, height: 40)
+                .frame(width: 92, height: 40)
                 .padding(.top, 20)
                 
                 Spacer()
                 GreenyButton("저장") {
-                    dismiss()
+                    Task {
+                        await onComplete()
+                        dismiss()
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 16)
