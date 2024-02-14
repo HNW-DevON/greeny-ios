@@ -8,6 +8,7 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 fileprivate let dummyProducts = [
     ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
@@ -21,6 +22,7 @@ fileprivate let dummyProducts = [
 struct EarnPointView: View {
     
     @Environment(\.dismiss) var dismiss
+    var user: User
     
     var body: some View {
         GreenyTopbar("포인트 얻는 법", backButtonCallback: {
@@ -28,7 +30,7 @@ struct EarnPointView: View {
         }) {
             ScrollView {
                 VStack(spacing: 0) {
-                    PointDetailCeil(name: "노자손", point: 100)
+                    PointDetailCeil(name: "노자손", point: 100, user: user)
                         .padding(.top, 32)
                     Text("사회적 기업의 제품을 소비하고\n포인트를 얻어보세요")
                         .foregroundStyle(Color.main700)

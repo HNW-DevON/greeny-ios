@@ -8,6 +8,7 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 fileprivate let dummyProducts = [
     ("https://hws.dev/paul.jpg", "착한 치킨", 101),
@@ -21,6 +22,7 @@ fileprivate let dummyProducts = [
 struct BenefitView: View {
     
     @Environment(\.dismiss) var dismiss
+    var user: User
     
     var body: some View {
         GreenyTopbar("혜택 보기", backButtonCallback: {
@@ -28,7 +30,7 @@ struct BenefitView: View {
         }) {
             ScrollView {
                 VStack(spacing: 0) {
-                    PointDetailCeil(name: "노자손", point: 100)
+                    PointDetailCeil(name: "노자손", point: 100, user: user)
                         .padding(.top, 32)
                     Text("포인트로 착한소비하기")
                         .font(._body)

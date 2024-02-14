@@ -75,7 +75,9 @@ struct MyView: View {
                     .padding(12)
                 Spacer()
                 NavigationLink {
-                    PointDetailView()
+                    if vm.user != nil {
+                        PointDetailView(user: vm.user!)
+                    }
                 } label: {
                     HStack {
                         Image(Asset.greeny)
@@ -96,14 +98,18 @@ struct MyView: View {
             }
             HStack(spacing: 8) {
                 NavigationLink {
-                    BenefitView()
+                    if vm.user != nil {
+                        BenefitView(user: vm.user!)
+                    }
                 } label: {
                     GreenyButton("혜택보기", buttonType: .gray, height: 32) {}
                         .disabled(true)
                 }
                 
                 NavigationLink {
-                    EarnPointView()
+                    if vm.user != nil {
+                        EarnPointView(user: vm.user!)
+                    }
                 } label: {
                     GreenyButton("포인트 얻는 법", buttonType: .gray, height: 32) {}
                         .frame(maxHeight: 32)

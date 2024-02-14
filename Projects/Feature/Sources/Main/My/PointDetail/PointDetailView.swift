@@ -19,7 +19,7 @@ struct PointDetailView: View {
         GreenyTopbar("포인트", backButtonCallback: {
             dismiss()
         }) {
-            ScrollView {
+            LazyVStack(spacing: 0) {
                 HStack {
                     GreenyLogo(type: .medium)
                     Text("\(user.hasPoint)P")
@@ -32,6 +32,11 @@ struct PointDetailView: View {
                 }
                 .padding(.top, 24)
                 .padding(.leading, 28)
+                var beforeAddedAt = Date.now
+                ForEach(user.pointHistory, id: \.id) { point in
+                    PointCeil(point: point, beforeSame: beforeAddedAt == point.addedAt)
+                    let _ = beforeAddedAt = point.addedAt
+                }
             }
         }
         .navigationBarBackButtonHidden()

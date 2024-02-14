@@ -18,8 +18,19 @@ struct PointCeil: View {
         VStack {
             if !beforeSame {
                 Text("\(point.addedAt)")
+                    .foregroundStyle(Color.gray400)
+                    .font(._bodyLight)
+                    .toLeading()
             }
             HStack {
+                Image(point.point >= 0 ? "EarningPoint" : "PayPoint")
+                    .resizable()
+                    .frame(width: 13, height: 13)
+                    .padding(8)
+                    .background(Color.gray100)
+                    .clipShape(Circle())
+                Text("\(point.point >= 0 ? "+" : "-")\(point.point)P")
+                    .padding(.leading, 12)
                 Spacer()
             }
         }

@@ -8,11 +8,13 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 struct PointDetailCeil: View {
     
     let name: String
     let point: Int
+    var user: User
     
     var body: some View {
         VStack {
@@ -21,7 +23,7 @@ struct PointDetailCeil: View {
                 .padding(.leading, 24)
                 .toLeading()
             NavigationLink {
-                PointDetailView()
+                PointDetailView(user: user)
             } label: {
                 HStack {
                     GreenyLogo(type: .medium)
