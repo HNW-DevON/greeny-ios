@@ -29,7 +29,7 @@ public struct MainView: View {
                 }
                 case .find: FindView()
                 case .certification: CertificationView(isClicked: $isClicked)
-                case .quest: QuestView(selectedQuestTab: $selectedQuestTab)
+                case .quest: QuestView(selectedQuestType: $selectedQuestTab)
                 case .my: MyView()
                 }
                 VStack {

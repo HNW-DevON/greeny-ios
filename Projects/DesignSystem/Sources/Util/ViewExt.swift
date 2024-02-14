@@ -64,3 +64,12 @@ public extension View {
             }
     }
 }
+
+
+public struct ViewRectKey: PreferenceKey {
+    public typealias Value = Array<CGRect>
+    public static var defaultValue = [CGRect]()
+    public static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
+    }
+}
