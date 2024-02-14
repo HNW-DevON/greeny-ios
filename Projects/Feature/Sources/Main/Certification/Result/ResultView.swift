@@ -13,6 +13,7 @@ struct ResultView: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm = ResultViewModel()
+    @EnvironmentObject var tm: TokenManager
     var recentImage: UIImage
     
     
@@ -122,9 +123,13 @@ struct ResultView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .onAppear {
-            withAnimation {
-                vm.loadView()
+        .task {
+            await vm.loadView {
+                withAnimation {
+                    tm.token = ""
+                }
+            } onFail2: {
+                // to fail view
             }
         }
     }

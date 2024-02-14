@@ -41,6 +41,7 @@ class CertificationViewModel: ObservableObject {
         
         camera.$recentImage.sink { [weak self] (photo) in
             guard let pic = photo else { return }
+            print("get photo")
             self?.recentImage = pic
         }
         .store(in: &self.subscriptions)

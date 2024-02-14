@@ -27,7 +27,9 @@ struct CertificationView: View {
                 }
             }
         NavigationLink(isActive: $vm.isActive) {
-            ResultView(recentImage: vm.recentImage!)
+            if vm.recentImage != nil {
+                ResultView(recentImage: vm.recentImage!)
+            }
         } label: {
             
         }
