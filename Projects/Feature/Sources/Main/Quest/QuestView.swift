@@ -33,7 +33,7 @@ struct QuestView: View {
                         }
                 }
             }
-            .padding(.leading, 16)
+            .padding(.horizontal, 16)
         }
     }
     

@@ -69,7 +69,7 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        .padding(.leading, 16)
+                        .padding(.horizontal, 16)
                     }
                     .padding(.top, 8)
                     GreenyTitle("카테고리")
@@ -88,7 +88,7 @@ struct HomeView: View {
                                     }
                             }
                         }
-                        .padding(.leading, 16)
+                        .padding(.horizontal, 16)
                     }
                     .padding(.top, 8)
                 }
