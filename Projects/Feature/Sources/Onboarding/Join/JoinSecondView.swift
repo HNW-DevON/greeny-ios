@@ -28,7 +28,7 @@ struct JoinSecondView: View {
                 GreenyInputCeil(title: "이름", hint: "이름을 입력해 주세요", text: $name)
                     .padding(.horizontal, 20)
                     .padding([.bottom, .top], 32)
-                GreenyInputCeil(textFieldType: .password, title: "생년월일", hint: "생년월일을 입력해 주세요", text: $birthday)
+                GreenyInputCeil(title: "생년월일", hint: "생년월일을 입력해 주세요", text: $birthday)
                     .padding(.horizontal, 20)
                 Spacer()
                 
