@@ -8,8 +8,11 @@
 
 import Foundation
 
+fileprivate let 
+
 class ResultViewModel: ObservableObject {
     @Published var viewType: CertificationViewType = .loadingFirst
+    
     
     func loadView() {
         viewType = .loadingFirst

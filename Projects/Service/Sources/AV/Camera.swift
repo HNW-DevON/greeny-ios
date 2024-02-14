@@ -15,6 +15,7 @@ public class Camera: NSObject, ObservableObject {
     public let output = AVCapturePhotoOutput()
     
     var photoData = Data(count: 0)
+    @Published public var recentImage: UIImage?
     
     public override init() {}
     
@@ -98,6 +99,8 @@ extension Camera: AVCapturePhotoCaptureDelegate {
                             didFinishProcessingPhoto photo: AVCapturePhoto,
                             error: Error?) {
         guard let imageData = photo.fileDataRepresentation() else { return }
+        
+        self.recentImage = UIImage(data: imageData)
         self.savePhoto(imageData)
         
         print("[CameraModel]: Capture routine's done")

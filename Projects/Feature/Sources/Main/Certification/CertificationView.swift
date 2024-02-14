@@ -12,7 +12,7 @@ struct CertificationView: View {
     
     @ObservedObject var vm = CertificationViewModel()
     @Binding var isClicked: Bool
-    @State var isActive = false
+
     
     var body: some View {
         CertificationCameraView(viewModel: vm)
@@ -21,14 +21,13 @@ struct CertificationView: View {
                     let _ = withAnimation {
                         Task {
                             await vm.capturePhoto()
-                            isActive = true
                         }
                     }
                     isClicked = false
                 }
             }
-        NavigationLink(isActive: $isActive) {
-            ResultView()
+        NavigationLink(isActive: $vm.isActive) {
+            ResultView(recentImage: vm.recentImage!)
         } label: {
             
         }

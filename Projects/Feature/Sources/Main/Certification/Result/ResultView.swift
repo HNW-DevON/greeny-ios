@@ -13,6 +13,7 @@ struct ResultView: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm = ResultViewModel()
+    var recentImage: UIImage
     
     
     @ViewBuilder
