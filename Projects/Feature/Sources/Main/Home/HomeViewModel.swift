@@ -19,6 +19,7 @@ final class HomeViewModel: ObservableObject {
     @Published var isLoading = true
     
     func loadDaily(onFail: @escaping () -> Void) async {
+        isLoading = true
         do {
             daily = try await findApi.daily()
         } catch AFError.responseValidationFailed(let e) {
