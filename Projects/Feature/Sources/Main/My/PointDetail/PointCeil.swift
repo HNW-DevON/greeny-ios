@@ -23,10 +23,11 @@ struct PointCeil: View {
                    let day = c.day,
                    let weekday = c.weekday
                 {
-                    Text("\(year).\(month).\(day).\(Date.요일내놔(from: weekday))요일")
+                    Text("\(year).\(month).\(day) \(Date.요일내놔(from: weekday))요일".replacingOccurrences(of: ",", with: ""))
                         .foregroundStyle(Color.gray400)
                         .font(._bodyLight)
                         .toLeading()
+                        .padding(.top, 16)
                 }
             }
             HStack {

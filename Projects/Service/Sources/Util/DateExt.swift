@@ -9,15 +9,10 @@
 import Foundation
 
 extension Date {
-    public func toString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
-        return dateFormatter.string(from: self)
-    }
     
     public var components: DateComponents {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day, .weekday, .second, .minute, .hour], from: self, to: self)
+        let components = calendar.dateComponents([.year, .month, .day, .weekday, .second, .minute, .hour], from: self)
         return components
     }
     
@@ -53,7 +48,7 @@ extension Date {
     public static func fromString(_ string: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
-        
+        dateFormatter.locale = Locale(identifier: "ko_KR")
         if let result = dateFormatter.date(from: string.replacingOccurrences(of: "T", with: " ")) {
             return result
         } else {
