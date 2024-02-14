@@ -16,7 +16,7 @@ fileprivate let userApi = UserApi.live
 @MainActor
 final class MyViewModel: ObservableObject {
     
-    @Published var encyclopedias: EncycloPedias = []
+    @Published var encyclopedias: [Product] = []
     @Published var tier = ""
     @Published var left = 0
     @Published var pointHistory: [PointResponse] = []

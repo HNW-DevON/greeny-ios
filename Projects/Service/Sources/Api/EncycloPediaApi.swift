@@ -12,8 +12,8 @@ public final class EncycloPediaApi {
     
     private let client = GreenyHttpClient()
     
-    public func getEncyclePediaAll() async throws -> EncycloPedias {
-        try await client.request("/pedia", EncycloPediasResponse.self).map { $0.toDomain() }
+    public func getEncyclePediaAll() async throws -> [Product] {
+        try await client.request("/pedia", [ProductResponse].self).map { $0.toDomain() }
     }
     
 }

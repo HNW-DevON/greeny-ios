@@ -8,18 +8,18 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 struct EncyclopediaCeil: View {
     
-    var imageUrl: String
-    var productName: String
+    var product: Product
     
     var body: some View {
         
         let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue, corners: .allCorners)
         
         VStack(spacing: 4) {
-            AsyncImage(url: URL(string: imageUrl),
+            AsyncImage(url: URL(string: product.images.first ?? ""),
                        content: {
                 $0.image?
                     .resizable()
@@ -31,9 +31,11 @@ struct EncyclopediaCeil: View {
                     }
             }
             )
-            Text(productName)
+            Text(product.baseItems.first?.value ?? "")
+                .lineLimit(1)
                 .foregroundStyle(Color.gray700)
                 .font(._cute)
+                .truncationMode(.tail)
         }
     }
 }

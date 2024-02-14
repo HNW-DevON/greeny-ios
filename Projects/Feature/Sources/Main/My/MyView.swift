@@ -179,7 +179,7 @@ struct MyView: View {
     var encyclopedia: some View {
         LazyVGrid(columns: gridItem, spacing: 16) {
             ForEach(vm.encyclopedias, id: \.id) {
-                EncyclopediaCeil(imageUrl: "https://hws.dev/paul.jpg", productName: $0.username)
+                EncyclopediaCeil(product: $0)
                     .onTapGesture {
                         print("clicked \($0)")
                     }
