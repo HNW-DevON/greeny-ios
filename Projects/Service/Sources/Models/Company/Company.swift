@@ -1,18 +1,20 @@
 //
-//  CompanyResponse.swift
+//  Company.swift
 //  Service
 //
-//  Created by dgsw8th71 on 2/5/24.
+//  Created by dgsw8th71 on 2/14/24.
 //  Copyright © 2024 hhhello0507. All rights reserved.
 //
 
-public struct CompanyResponse: Decodable {
+import Foundation
+
+public struct Company: Hashable {
     public let id: Int
     public let companyName: String
     public let companyDesc: String
     public let companyCategory: [String]
-    public let event: [EventResponse]
+    public let event: [Event]
 }
 
-public typealias CompaniesResponse = [CompanyResponse]
+public typealias Companies = [Company]
 
