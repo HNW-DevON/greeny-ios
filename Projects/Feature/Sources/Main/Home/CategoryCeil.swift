@@ -6,20 +6,24 @@ struct CategoryCeil: View {
     var idx: Int
     
     var body: some View {
-        HStack {
-            Spacer()
-            VStack(spacing: 8) {
+        NavigationLink {
+            CompanyDetailView(category: name)
+        } label: {
+            HStack {
                 Spacer()
-                Image("Category\(idx + 1)")
-                Text(name)
-                    .foregroundStyle(Color.gray500)
-                    .font(._caption)
+                VStack(spacing: 8) {
+                    Spacer()
+                    Image("Category\(idx + 1)")
+                    Text(name)
+                        .foregroundStyle(Color.gray500)
+                        .font(._caption)
+                    Spacer()
+                }
                 Spacer()
             }
-            Spacer()
+            .background(Color.gray100)
+            .addGrayStroke(color: .gray300)
+            .padding(1)
         }
-        .background(Color.gray100)
-        .addGrayStroke(color: .gray300)
-        .padding(1)
     }
 }
