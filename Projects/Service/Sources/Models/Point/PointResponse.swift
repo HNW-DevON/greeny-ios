@@ -11,6 +11,6 @@ import Foundation
 public struct PointResponse: Decodable {
     public let id: Int
     public let point: Int
-    public let username: String
+    public let productId: String
     public let addedAt: String
 }

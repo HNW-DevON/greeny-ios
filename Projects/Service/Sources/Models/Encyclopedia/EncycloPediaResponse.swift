@@ -12,7 +12,7 @@ public struct EncycloPediaResponse: Decodable {
     let id: Int
     let productId: String
     let username: String
-    let addedAt: Date
+    let addedAt: String
 }
 
 public typealias EncycloPediasResponse = [EncycloPediaResponse]
@@ -23,7 +23,7 @@ extension EncycloPediaResponse {
         EncycloPedia(id: id,
                      productId: productId,
                      username: username,
-                     addedAt: addedAt)
+                     addedAt: addedAt.toDate())
     }
     
 }
