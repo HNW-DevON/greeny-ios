@@ -20,22 +20,25 @@ struct ResultView: View {
     @ViewBuilder
     private var product: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
-                       content: {
-                $0.image?
+            AsyncImage(url: URL(string: vm.resultProduct?.images.first ?? "")) {
+                $0
                     .resizable()
                     .frame(width: 150, height: 150)
                     .addGrayStroke()
+            } placeholder: {
+                Rectangle()
+                    .foregroundStyle(Color.gray100)
+                    .frame(width: 150, height: 150)
+                    .addGrayStroke()
             }
-            )
             VStack(alignment: .leading, spacing: 0) {
-                Text("망고맛치킨")
+                Text(vm.resultProduct?.baseItems.first?.value ?? "상품 이름을 찾을 수 없어요")
                     .font(._body)
-                Text("히히 망고. 망고는 맛있어. 맛있으면\n망고")
+                Text(vm.resultProduct?.clsTotalNm)
                     .font(._caption)
                     .padding(.top, 4)
                 HStack(spacing: 0) {
-                    Text("312")
+                    Text("3")
                         .foregroundStyle(Color.main600)
                         .font(._cute)
                     Text("번 인증된 제품이에요.")
@@ -55,20 +58,29 @@ struct ResultView: View {
     @ViewBuilder
     private var company: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
-                       content: {
-                $0.image?
-                    .resizable()
-                    .frame(width: 150, height: 150)
-                    .addGrayStroke()
-            }
-            )
-            VStack(alignment: .leading, spacing: 0) {
-                Text("제갈치킨")
-                    .font(._body)
-                Text("선캄브리아 시대부터 춘추제갈\n시대를 지나 현대 문명에 큰 기축을\n담당한 사회적 기업의 근본 중의\n근본 치킨 매장이다.")
-                    .font(._caption)
-                    .padding(.top, 4)
+            //            AsyncImage(url: URL(string: ""),
+            //                       content: {
+            //                $0.image?
+            //                    .resizable()
+            //                    .frame(width: 150, height: 150)
+            //                    .addGrayStroke()
+            //            }
+            //            )
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(vm.resultProduct?.companies ?? [], id: \.name) { i in
+                    VStack(spacing: 0) {
+                        Text(i.name)
+                            .font(._body)
+                        HStack(alignment: .bottom) {
+                            Text(i.type)
+                                .font(._caption)
+                                .padding(.top, 4)
+                            Text(i.addresses.first ?? "")
+                                .font(._caption)
+                                .padding(.top, 4)
+                        }
+                    }
+                }
                 HStack(spacing: 0) {
                     Text("환경")
                         .foregroundStyle(Color(0x47AF23))
