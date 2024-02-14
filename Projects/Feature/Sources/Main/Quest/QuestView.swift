@@ -32,7 +32,7 @@ struct QuestView: View {
     private var questTab: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
-                ForEach(dummyQuestData + dummyQuestData, id: \.0) { i in
+                ForEach(dummyQuestData, id: \.0) { i in
                     QuestTabCeil(image: i.0, title: i.1)
                         .onTapGesture {
                             selectedQuestType = i.2
@@ -43,8 +43,26 @@ struct QuestView: View {
         }
     }
     
-//    @ViewBuilder
-//    private var
+    @ViewBuilder
+    private var questIndicator: some View {
+        HStack {
+            ForEach(QuestTabViewType.allCases, id: \.text) { tab in
+                Text(tab.text)
+                    .foregroundStyle(selectedQuestTab == tab ? Color.main700 : Color.black)
+                    .font(._bodyLight)
+                    .overlay(
+                        Rectangle()
+                            .foregroundStyle(selectedQuestTab == tab ? Color.main700 : Color.white)
+                            .frame(height: 1)
+                            .offset(y: 2),
+                        alignment: .bottom
+                    )
+                    .onTapGesture {
+                        selectedQuestTab = tab
+                    }
+            }
+        }
+    }
     
     @ViewBuilder
     private var doing: some View {
@@ -83,6 +101,11 @@ struct QuestView: View {
         GreenyTopbar("퀘스트") {
             VStack {
                 questTab.padding(.top, 8)
+                questIndicator
+                    .toLeading()
+                    .padding(.top, 24)
+                    .padding(.bottom, 16)
+                    .padding(.horizontal, 24)
                 questContent
             }
         }

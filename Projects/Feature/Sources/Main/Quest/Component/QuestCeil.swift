@@ -20,10 +20,10 @@ struct QuestCeil: View {
                 .frame(width: 20, height: 20)
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(._caption)
+                    .font(._label)
                 Text(state.description)
                     .foregroundStyle(Color.main600)
-                    .font(._cute)
+                    .font(._caption)
             }
             .padding(.leading, 16)
             Spacer()

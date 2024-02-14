@@ -11,4 +11,11 @@ import Foundation
 enum QuestTabViewType: Hashable, CaseIterable {
     case completeOrDoing
     case done
+    
+    var text: String {
+        switch self {
+        case .completeOrDoing: "완료/진행중"
+        case .done: "미완료"
+        }
+    }
 }
