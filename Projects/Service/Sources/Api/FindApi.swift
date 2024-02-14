@@ -15,8 +15,8 @@ public final class FindApi {
         try await client.request("/find", [ProductResponse].self).map { $0.toDomain() }
     }
     
-    public func daily() async throws -> [Product] {
-        try await client.request("/find/daily", [ProductResponse].self).map { $0.toDomain() }
+    public func daily() async throws -> [Daily] {
+        try await client.request("/find/daily", [DailyResponse].self).map { $0.toDomain() }
     }
 }
 

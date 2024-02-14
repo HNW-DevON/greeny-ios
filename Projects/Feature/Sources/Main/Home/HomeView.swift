@@ -63,7 +63,7 @@ struct HomeView: View {
                                                       animation: .pulse(),
                                                       shape: .rounded(.radius(Size.extraLarge.rawValue)))
                                             .frame(width: CGFloat.random(in: 30..<100), height: 10)
-                                            .padding(.leading, 10)
+                                            .padding(.leading, 4)
                                     }
                                 }
                             }

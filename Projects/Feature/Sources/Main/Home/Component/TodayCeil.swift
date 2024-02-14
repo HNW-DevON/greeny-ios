@@ -12,7 +12,7 @@ import Service
 
 struct TodayCeil: View {
     
-    var todayGreeny: Product
+    var todayGreeny: Daily
     
     var body: some View {
         
@@ -20,7 +20,7 @@ struct TodayCeil: View {
         
         VStack(spacing: 0) {
             AsyncImage(
-                url: URL(string: todayGreeny.images.first ?? ""),
+                url: URL(string: todayGreeny.product.images.first ?? ""),
                 content: { image in
                     image.image?.resizable()
                         .aspectRatio(contentMode: .fit)
@@ -28,15 +28,15 @@ struct TodayCeil: View {
                         .addGrayStroke()
                 }
             )
-            Text(todayGreeny.baseItems.first?.value)
+            Text(todayGreeny.product.baseItems.first?.value)
                 .font(._label)
                 .padding(4)
                 .toLeading()
-//            Text("\(todayGreeny.author) - \(todayGreeny.createdAt)")
-//                .font(.caption)
-//                .padding(.leading, 4)
-//                .toLeading()
-//                .foregroundStyle(Color.gray700)
+            Text("\(todayGreeny.username) - \(todayGreeny.addedAt)")
+                .font(.caption)
+                .padding(.leading, 4)
+                .toLeading()
+                .foregroundStyle(Color.gray700)
         }
     }
 }

@@ -15,7 +15,7 @@ fileprivate let findApi = FindApi.live
 @MainActor
 final class HomeViewModel: ObservableObject {
     
-    @Published var daily: [Product] = []
+    @Published var daily: [Daily] = []
     @Published var isLoading = true
     
     func loadDaily(onFail: @escaping () -> Void) async {
