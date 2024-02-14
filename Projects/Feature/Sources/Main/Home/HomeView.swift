@@ -9,24 +9,14 @@
 import SwiftUI
 import DesignSystem
 
-struct Today: Hashable {
-    let imageUrl: String
-    let productName: String
-    let author: String
-    let createdAt: String
-}
-
-fileprivate let dummyTodayData = [
-    Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
-    Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
-    Today(imageUrl: "https://hws.dev/paul.jpg", productName: "착한치킨", author: "이슬아", createdAt: "2시간 전"),
-]
 
 let dummyQuestData = [(Asset.today, "착하게\n시작하는 하루"),
                       (Asset.new, "새 퀘스트"),
                       (Asset.calendarWeek, "이번주의 퀘스트")]
 
 struct HomeView: View {
+    
+    @ObservedObject var vm = HomeViewModel()
     
     var body: some View {
         GreenyTopbar("홈") {
@@ -35,7 +25,7 @@ struct HomeView: View {
                     GreenyTitle("오늘의 착한 소비")
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
-                            ForEach(dummyTodayData, id: \.self) {
+                            ForEach(vm.daily, id: \.self) {
                                 TodayCeil(todayGreeny: $0)
                             }
                         }

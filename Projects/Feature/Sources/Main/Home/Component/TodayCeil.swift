@@ -8,10 +8,11 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 struct TodayCeil: View {
     
-    var todayGreeny: Today
+    var todayGreeny: Product
     
     var body: some View {
         
@@ -19,7 +20,7 @@ struct TodayCeil: View {
         
         VStack(spacing: 0) {
             AsyncImage(
-                url: URL(string: todayGreeny.imageUrl),
+                url: URL(string: todayGreeny.images.first ?? ""),
                 content: { image in
                     image.image?.resizable()
                         .aspectRatio(contentMode: .fit)
@@ -27,15 +28,15 @@ struct TodayCeil: View {
                         .addGrayStroke()
                 }
             )
-            Text(todayGreeny.productName)
+            Text(todayGreeny.baseItems.first?.value)
                 .font(._label)
                 .padding(4)
                 .toLeading()
-            Text("\(todayGreeny.author) - \(todayGreeny.createdAt)")
-                .font(.caption)
-                .padding(.leading, 4)
-                .toLeading()
-                .foregroundStyle(Color.gray700)
+//            Text("\(todayGreeny.author) - \(todayGreeny.createdAt)")
+//                .font(.caption)
+//                .padding(.leading, 4)
+//                .toLeading()
+//                .foregroundStyle(Color.gray700)
         }
     }
 }

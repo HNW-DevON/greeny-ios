@@ -11,6 +11,7 @@ import Foundation
 import Alamofire
 
 fileprivate let productApi = ProductApi.live
+fileprivate let findApi = FindApi.live
 
 @MainActor
 final class FindViewModel: ObservableObject {
@@ -22,7 +23,7 @@ final class FindViewModel: ObservableObject {
     func loadFind(onFail: () -> Void) async {
         do {
             debugPrint("findvm - loading")
-            let products = try await productApi.find()
+            let products = try await findApi.find()
             let center = products.count / 2
             debugPrint("findvm - loaded")
             leftProducts = Array(Array(products)[0..<center])

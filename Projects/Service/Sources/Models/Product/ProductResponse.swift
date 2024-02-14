@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Product {
+public struct Product: Hashable {
     
     public let id = UUID()
     public let code, message, status: String?
@@ -52,17 +52,17 @@ public struct ProductResponse: Decodable {
     }
 }
 
-public struct BaseItemResponse: Decodable {
+public struct BaseItemResponse: Decodable, Hashable {
     public let name: String
     public let value: String
 }
 
-public struct Companies2Response: Decodable {
+public struct Companies2Response: Decodable, Hashable {
     public let type, name: String
     public let addresses: [String]
 }
 
-public struct Country: Decodable {
+public struct Country: Decodable, Hashable {
     let name: String
     let values: [String]
 }
