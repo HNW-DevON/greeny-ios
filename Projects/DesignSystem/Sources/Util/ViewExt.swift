@@ -52,7 +52,7 @@ public extension View {
 
 public extension View {
     
-    func addGrayStroke() -> some View {
+    func addGrayStroke(color: Color = Color.gray100) -> some View {
         
         let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue, corners: .allCorners)
         
@@ -60,7 +60,7 @@ public extension View {
             .clipShape(roundedCorner)
             .overlay {
                 roundedCorner
-                    .stroke(Color.gray100, lineWidth: 2)
+                    .stroke(color, lineWidth: 2)
             }
     }
 }
