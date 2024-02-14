@@ -15,8 +15,8 @@ public final class ProductApi {
         try await client.request("/find", [ProductResponse].self).map { $0.toDomain() }
     }
     
-    public func product(id: Int) async throws -> ProductResponse {
-        try await client.request("/product/\(id)", ProductResponse.self)
+    public func product(id: Int) async throws -> Product {
+        try await client.request("/product/\(id)", ProductResponse.self).toDomain()
     }
 }
 

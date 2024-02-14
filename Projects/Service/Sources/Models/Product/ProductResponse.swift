@@ -18,7 +18,7 @@ public struct Product {
     public let companies: [Companies2Response]
     public let brands: [String]
     public let countries: [Country]
-    public let prdComp, originVolume, prdPacTyp: String
+    public let prdComp, originVolume, prdPacTyp: String?
     public let images: [String]
 }
 
@@ -30,7 +30,7 @@ public struct ProductResponse: Decodable {
     public let companies: [Companies2Response]
     public let brands: [String]
     public let countries: [Country]
-    public let prdComp, originVolume, prdPacTyp: String
+    public let prdComp, originVolume, prdPacTyp: String?
     public let images: [String]
     
     public func toDomain() -> Product {
