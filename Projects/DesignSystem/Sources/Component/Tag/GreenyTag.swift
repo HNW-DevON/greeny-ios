@@ -25,6 +25,7 @@ public struct GreenyTag: View {
     
     public var body: some View {
         Text(text)
+            .font(._caption)
             .padding(.vertical, 5)
             .padding(.horizontal, 8)
             .foregroundStyle(foregroundColor)
