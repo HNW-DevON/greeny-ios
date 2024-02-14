@@ -8,10 +8,12 @@
 
 import Alamofire
 
+fileprivate let client = GreenyHttpClient.live
+
 final class PointApi {
     
-    func savePoint(id: Int) {
-        
+    func savePoint(id: Int) async throws -> VoidResponse {
+        try await client.request("/point/get/\(id)", VoidResponse.self)
     }
     
 }

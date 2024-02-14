@@ -45,9 +45,9 @@ public final class UserApi {
         ).validate().serializingDecodable(TokenResponse.self).value
     }
     
-    public func editProfile(request: EditProfileRequest) async throws -> String {
+    public func editProfile(request: EditProfileRequest) async throws -> VoidResponse {
         try await client.request("/user/edit",
-                                 String.self,
+                                 VoidResponse.self,
                                  method: .post,
                                  parameters: request)
     }
