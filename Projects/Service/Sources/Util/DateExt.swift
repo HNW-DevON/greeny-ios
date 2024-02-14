@@ -20,6 +20,8 @@ extension Date {
         let now = Date()
         let components = calendar.dateComponents([.minute, .hour, .day], from: self, to: now)
         
+        print(now, self)
+        
         if let days = components.day, days > 0 {
             return "\(days)일 전"
         } else if let hours = components.hour, hours > 0 {
@@ -29,5 +31,12 @@ extension Date {
         } else {
             return "방금 전"
         }
+    }
+    
+    public static func fromString(_ string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSSSS"
+        
+        return dateFormatter.date(from: string.replacingOccurrences(of: "T", with: " ")) ?? Date()
     }
 }

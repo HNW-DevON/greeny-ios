@@ -25,7 +25,7 @@ final class LoginViewModel: ObservableObject {
             let tokenResponse = try await userApi.login(request: LoginRequest(username: id,
                                                 password: pw))
             debugPrint("loginvm - respose")
-            let expireAt = tokenResponse.expireAt.toDate()
+            let expireAt = Date.fromString(tokenResponse.expireAt)
             onSuccess(String(tokenResponse.token.split(separator: " ")[1]), expireAt)
             isLoading = false
         } catch (let e) {

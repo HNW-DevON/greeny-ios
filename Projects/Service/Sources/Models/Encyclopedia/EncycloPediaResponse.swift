@@ -23,7 +23,7 @@ extension EncycloPediaResponse {
         EncycloPedia(id: id,
                      productId: productId,
                      username: username,
-                     addedAt: addedAt.toDate())
+                     addedAt: Date.fromString(addedAt))
     }
     
 }
