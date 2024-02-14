@@ -69,7 +69,7 @@ struct MyView: View {
     @ViewBuilder
     var point: some View {
         VStack {
-            HStack {
+            HStack(alignment: .center) {
                 Text("포인트")
                     .font(._body)
                     .padding(12)
@@ -82,6 +82,7 @@ struct MyView: View {
                             .resizable()
                             .frame(maxWidth: 16, maxHeight: 16)
                         Text("\(vm.user?.hasPoint ?? 0)P")
+                            .foregroundStyle(Color.black)
                             .font(._body)
                         Image(Asset.leftArrow)
                             .resizable()
@@ -97,13 +98,16 @@ struct MyView: View {
                 NavigationLink {
                     BenefitView()
                 } label: {
-                    GreenyButton("혜택보기", buttonType: .gray) {}.disabled(true)
+                    GreenyButton("혜택보기", buttonType: .gray, height: 32) {}
+                        .disabled(true)
                 }
                 
                 NavigationLink {
                     EarnPointView()
                 } label: {
-                    GreenyButton("포인트 얻는 법", buttonType: .gray) {}.disabled(true)
+                    GreenyButton("포인트 얻는 법", buttonType: .gray, height: 32) {}
+                        .frame(maxHeight: 32)
+                        .disabled(true)
                 }
             }
             .frame(height: 32)
