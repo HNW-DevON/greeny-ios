@@ -10,16 +10,16 @@ import Alamofire
 
 final class CompanyApi {
     
-    func getCompanyAll() async throws -> CompaniesResponse {
-        try await AF.request("/company", method: .get).serializingDecodable(CompaniesResponse.self).value
+    func getCompanyAll() async throws -> Companies {
+        try await AF.request("/company", method: .get).serializingDecodable(CompaniesResponse.self).value.map { $0.toDomain() }
     }
     
-    func getCompany(id: String) async throws -> CompanyResponse {
-        try await AF.request("/company/\(id)", method: .get).serializingDecodable(CompanyResponse.self).value
+    func getCompany(id: String) async throws -> Company {
+        try await AF.request("/company/\(id)", method: .get).serializingDecodable(CompanyResponse.self).value.toDomain()
     }
     
-    func getCompanyByCategory(category: String) async throws -> CompaniesResponse {
-        try await AF.request("/company/category/\(category)", method: .get).serializingDecodable(CompaniesResponse.self).value
+    func getCompanyByCategory(category: String) async throws -> Companies {
+        try await AF.request("/company/category/\(category)", method: .get).serializingDecodable(CompaniesResponse.self).value.map { $0.toDomain() }
     }
     
 }

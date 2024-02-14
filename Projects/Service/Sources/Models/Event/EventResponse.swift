@@ -13,3 +13,11 @@ public struct EventResponse: Decodable {
 }
 
 public typealias EventsResponse = [EventResponse]
+
+extension EventResponse {
+    func toDomain() -> Event {
+        Event(id: id,
+              eventName: eventName,
+              eventDesc: eventDesc)
+    }
+}

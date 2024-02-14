@@ -16,3 +16,12 @@ public struct CompanyResponse: Decodable {
 
 public typealias CompaniesResponse = [CompanyResponse]
 
+extension CompanyResponse {
+    func toDomain() -> Company {
+        Company(id: id,
+                companyName: companyName,
+                companyDesc: companyDesc,
+                companyCategory: companyCategory,
+                event: event.map { $0.toDomain() })
+    }
+}
