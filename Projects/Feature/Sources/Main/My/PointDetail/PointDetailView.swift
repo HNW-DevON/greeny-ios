@@ -32,10 +32,11 @@ struct PointDetailView: View {
                 }
                 .padding(.top, 24)
                 .padding(.leading, 28)
-                var beforeAddedAt = Date.now
-                ForEach(user.pointHistory, id: \.id) { point in
-                    PointCeil(point: point, beforeSame: beforeAddedAt == point.addedAt)
-                    let _ = beforeAddedAt = point.addedAt
+                ForEach(Array(user.pointHistory.enumerated()), id: \.1.id) {
+                    let (idx, point) = $0
+                    PointCeil(point: point, beforeSame: idx == 0 ? false : user.pointHistory[idx - 1].addedAt == user.pointHistory[idx].addedAt)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 20)
                 }
             }
         }

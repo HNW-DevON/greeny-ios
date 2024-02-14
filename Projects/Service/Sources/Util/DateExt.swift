@@ -15,12 +15,29 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    public var components: DateComponents {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .weekday, .second, .minute, .hour], from: self, to: self)
+        return components
+    }
+    
+    public static func 요일내놔(from str: Int) -> String {
+        switch str {
+        case 1: "일"
+        case 2: "월"
+        case 3: "화"
+        case 4: "수"
+        case 5: "목"
+        case 6: "금"
+        case 7: "토"
+        default: ""
+        }
+    }
+    
     public func timeAgoString() -> String {
         let calendar = Calendar.current
         let now = Date()
         let components = calendar.dateComponents([.minute, .hour, .day], from: self, to: now)
-        
-        print(now, self)
         
         if let days = components.day, days > 0 {
             return "\(days)일 전"
