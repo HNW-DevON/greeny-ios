@@ -21,6 +21,7 @@ let categories = [
 struct HomeView: View {
     
     @ObservedObject var vm = HomeViewModel()
+    @EnvironmentObject var tm: TokenManager
     var questCallback: (Int) -> Void
     
     @ViewBuilder
@@ -91,6 +92,11 @@ struct HomeView: View {
                     }
                     .padding(.top, 8)
                 }
+            }
+        }
+        .task {
+            await vm.loadDaily {
+                tm.token = ""
             }
         }
     }

@@ -10,6 +10,6 @@ import Foundation
 
 public struct Daily: Hashable {
     public let username: String
-    public let addedAt: String
+    public let addedAt: Date
     public let product: Product
 }

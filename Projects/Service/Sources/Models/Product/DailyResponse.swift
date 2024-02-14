@@ -17,7 +17,7 @@ public struct DailyResponse: Decodable {
 extension DailyResponse {
     public func toDomain() -> Daily {
         Daily(username: username,
-              addedAt: addedAt, 
+              addedAt: addedAt.toDate(),
               product: product.toDomain())
     }
 }

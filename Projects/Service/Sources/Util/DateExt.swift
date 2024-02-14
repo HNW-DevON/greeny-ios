@@ -14,4 +14,20 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         return dateFormatter.string(from: self)
     }
+    
+    public func timeAgoString() -> String {
+        let calendar = Calendar.current
+        let now = Date()
+        let components = calendar.dateComponents([.minute, .hour, .day], from: self, to: now)
+        
+        if let days = components.day, days > 0 {
+            return "\(days)일 전"
+        } else if let hours = components.hour, hours > 0 {
+            return "\(hours)시간 전"
+        } else if let minutes = components.minute, minutes > 0 {
+            return "\(minutes)분 전"
+        } else {
+            return "방금 전"
+        }
+    }
 }
