@@ -11,24 +11,25 @@ import Service
 
 struct QuestCeil: View {
     
-    let state: QuestState
-    let title: String
+    var quest: Quest
     
     var body: some View {
         HStack(spacing: 0) {
-            Image(state.image)
+            Image(quest.questState.image)
                 .resizable()
                 .frame(width: 20, height: 20)
             VStack(alignment: .leading, spacing: 4) {
-                Text(title)
+                Text(quest.questName)
+                    .foregroundStyle(Color.black)
                     .font(._label)
-                Text(state.description)
+                Text(quest.questState.description)
                     .foregroundStyle(Color.main600)
                     .font(._caption)
             }
             .padding(.leading, 16)
             Spacer()
             Image(systemName: "chevron.right")
+                .foregroundStyle(Color.gray500)
         }
         .padding(.horizontal, 28)
     }

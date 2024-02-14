@@ -8,6 +8,7 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 struct QuestView: View {
     
@@ -16,6 +17,12 @@ struct QuestView: View {
     @State var selectedQuestTab = QuestTabViewType.completeOrDoing
     @ObservedObject var vm = QuestViewModel()
     @EnvironmentObject var tm: TokenManager
+    @State var isQuestDetail = false
+    @State var selectedQuest: Quest? = nil {
+        didSet {
+            isQuestDetail = true
+        }
+    }
     
     @ViewBuilder
     private var questTab: some View {
@@ -57,8 +64,12 @@ struct QuestView: View {
     private var doing: some View {
         ScrollView {
             LazyVStack(spacing: 36) {
-                ForEach(vm.completeOrDoingQuest) { i in
-                    QuestCeil(state: i.questState, title: i.questName)
+                ForEach(vm.completeOrDoingQuest) { quest in
+                    Button {
+                        selectedQuest = quest
+                    } label: {
+                        QuestCeil(quest: quest)
+                    }
                 }
             }
             Spacer()
@@ -69,8 +80,12 @@ struct QuestView: View {
     private var yet: some View {
         ScrollView {
             LazyVStack(spacing: 36) {
-                ForEach(vm.doneQuest) { i in
-                    QuestCeil(state: i.questState, title: i.questName)
+                ForEach(vm.doneQuest) { quest in
+                    Button {
+                        selectedQuest = quest
+                    } label: {
+                        QuestCeil(quest: quest)
+                    }
                 }
             }
             Spacer()
@@ -106,6 +121,10 @@ struct QuestView: View {
             await vm.loadDone {
                 tm.token = ""
             }
+        }
+        .sheet(isPresented: $isQuestDetail) {
+            QuestDetailView(quest: selectedQuest)
+                .presentationDetents([.height(200), .medium, .large])
         }
     }
 }
