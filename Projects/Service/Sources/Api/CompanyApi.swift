@@ -8,18 +8,20 @@
 
 import Alamofire
 
+fileprivate let client = GreenyHttpClient.live
+
 public final class CompanyApi {
     
     public func getCompanyAll() async throws -> Companies {
-        try await AF.request("/company", method: .get).serializingDecodable(CompaniesResponse.self).value.map { $0.toDomain() }
+        try await client.request("/company", CompaniesResponse.self).map { $0.toDomain() }
     }
     
     public func getCompany(id: String) async throws -> Company {
-        try await AF.request("/company/\(id)", method: .get).serializingDecodable(CompanyResponse.self).value.toDomain()
+        try await client.request("/company/\(id)", CompanyResponse.self).toDomain()
     }
     
     public func getCompanyByCategory(category: String) async throws -> Companies {
-        try await AF.request("/company/category/\(category)", method: .get).serializingDecodable(CompaniesResponse.self).value.map { $0.toDomain() }
+        try await client.request("/company/category/\(category)", CompaniesResponse.self).map { $0.toDomain() }
     }
     
 }
