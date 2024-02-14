@@ -103,7 +103,7 @@ struct MyView: View {
                     }
                 } label: {
                     GreenyButton("혜택보기", buttonType: .gray, height: 32) {}
-                        .disabled(true)
+                        .disabled(vm.user != nil)
                 }
                 
                 NavigationLink {
@@ -113,7 +113,7 @@ struct MyView: View {
                 } label: {
                     GreenyButton("포인트 얻는 법", buttonType: .gray, height: 32) {}
                         .frame(maxHeight: 32)
-                        .disabled(true)
+                        .disabled(vm.user != nil)
                 }
             }
             .frame(height: 32)
