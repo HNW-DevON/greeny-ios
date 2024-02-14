@@ -34,7 +34,7 @@ struct HomeView: View {
             }
             HStack(spacing: 8) {
                 ForEach(Array((Array(categories[4..<8]).enumerated())), id: \.0) { i in
-                    CategoryCeil(name: i.1, idx: i.0)
+                    CategoryCeil(name: i.1, idx: i.0 + 4)
                 }
             }
         }
