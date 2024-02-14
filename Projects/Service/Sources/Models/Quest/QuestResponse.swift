@@ -15,7 +15,20 @@ public struct QuestResponse: Decodable {
     public let questCurrent: Int
     public let questLimit: Int
     public let questPoint: Int
-    public let createdAt: Date
+    public let createdAt: String
 }
 
 public typealias QuestsResponse = [QuestResponse]
+
+extension QuestResponse {
+    func toDomain(state: QuestState) -> Quest {
+        Quest(id: id,
+              questName: questName,
+              questDesc: questDesc, 
+              questCurrent: questCurrent,
+              questLimit: questLimit, 
+              questPoint: questPoint,
+              createdAt: Date.fromString(createdAt),
+              questState: state)
+    }
+}

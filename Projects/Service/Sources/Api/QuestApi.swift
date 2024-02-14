@@ -8,18 +8,17 @@
 
 import Alamofire
 
-final class QuestApi {
+fileprivate let client = GreenyHttpClient.live
+
+public final class QuestApi {
     
-    public func getQuest(id: Int) async throws -> QuestResponse {
-        try await AF.request("/qeust/\(id)", method: .get).serializingDecodable(QuestResponse.self).value
-    }
     
-    public func getQuestAll() async throws -> QuestsResponse {
-        try await AF.request("/quest", method: .get).serializingDecodable(QuestsResponse.self).value
+    public func getQuestAll(type: Int) async throws -> Quests {
+        try await client.request("/quest?type=\(type)", QuestsResponse.self, method: .get).map { $0.toDomain(state: QuestState.fromType(type)) }
     }
     
     public func completeQuest(id: Int) async throws -> VoidResponse {
-        try await AF.request("/quest/complete", method: .post).serializingDecodable(VoidResponse.self).value
+        try await client.request("/quest/complete", method: .post)
     }
     
 }
