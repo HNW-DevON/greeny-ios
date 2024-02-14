@@ -12,7 +12,7 @@ import Service
 
 struct CompanyView: View {
     
-//    var company: Company
+    var company: Company
 
     var body: some View {
         GreenyTopbar("회사 정보") {

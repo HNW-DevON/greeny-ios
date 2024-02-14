@@ -21,8 +21,8 @@ struct CompanyDetailView: View {
             dismiss()
         } content: {
             LazyVStack {
-                ForEach(0..<10, id: \.self) { i in
-                    Text("갱")
+                ForEach(vm.companies, id: \.self) { i in
+                    CompanyDetailCeil(company: i)
                 }
             }
         }
