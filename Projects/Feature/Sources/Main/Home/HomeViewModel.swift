@@ -16,6 +16,7 @@ fileprivate let findApi = FindApi.live
 final class HomeViewModel: ObservableObject {
     
     @Published var daily: [Product] = []
+    @Published var isLoading = true
     
     func loadDaily(onFail: @escaping () -> Void) async {
         do {
@@ -27,5 +28,6 @@ final class HomeViewModel: ObservableObject {
         } catch (let e) {
             print(e)
         }
+        isLoading = false
     }
 }

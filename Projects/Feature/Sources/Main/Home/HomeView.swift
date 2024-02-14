@@ -46,8 +46,26 @@ struct HomeView: View {
                     GreenyTitle("오늘의 착한 소비")
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
-                            ForEach(vm.daily, id: \.self) {
-                                TodayCeil(todayGreeny: $0)
+                            if !vm.isLoading {
+                                ForEach(vm.daily, id: \.self) {
+                                    TodayCeil(todayGreeny: $0)
+                                }
+                            } else {
+                                ForEach(0..<5, id: \.self) { _ in
+                                    VStack(alignment: .leading) {
+                                        Rectangle()
+                                            .skeleton(with: vm.isLoading,
+                                                      animation: .pulse(),
+                                                      shape: .rounded(.radius(Size.extraLarge.rawValue)))
+                                            .frame(width: 120, height: 120)
+                                        Rectangle()
+                                            .skeleton(with: vm.isLoading,
+                                                      animation: .pulse(),
+                                                      shape: .rounded(.radius(Size.extraLarge.rawValue)))
+                                            .frame(width: CGFloat.random(in: 30..<100), height: 10)
+                                            .padding(.leading, 10)
+                                    }
+                                }
                             }
                         }
                         .padding(.leading, 16)
