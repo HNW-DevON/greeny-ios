@@ -20,12 +20,17 @@ fileprivate let dummyDoingQuest = [
 
 struct QuestView: View {
     
+    @Binding var selectedQuestTab: Int
+    
     @ViewBuilder
     private var questTab: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
-                ForEach(dummyQuestData, id: \.0) {
-                    QuestTabCeil(image: $0.0, title: $0.1)
+                ForEach(dummyQuestData, id: \.0) { i in
+                    QuestTabCeil(image: i.0, title: i.1)
+                        .onTapGesture {
+                            selectedQuestTab = i.2
+                        }
                 }
             }
             .padding(.leading, 16)

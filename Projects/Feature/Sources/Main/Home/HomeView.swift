@@ -10,13 +10,14 @@ import SwiftUI
 import DesignSystem
 
 
-let dummyQuestData = [(Asset.today, "착하게\n시작하는 하루"),
-                      (Asset.new, "새 퀘스트"),
-                      (Asset.calendarWeek, "이번주의 퀘스트")]
+let dummyQuestData = [(Asset.today, "착하게\n시작하는 하루", 0),
+                      (Asset.new, "새 퀘스트", 1),
+                      (Asset.calendarWeek, "이번주의 퀘스트", 2)]
 
 struct HomeView: View {
     
     @ObservedObject var vm = HomeViewModel()
+    var questCallback: (Int) -> Void
     
     var body: some View {
         GreenyTopbar("홈") {
@@ -37,8 +38,11 @@ struct HomeView: View {
                     GreenyTitle("퀘스트")
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(dummyQuestData, id: \.0) {
-                                QuestTabCeil(image: $0.0, title: $0.1)
+                            ForEach(dummyQuestData, id: \.0) { i in
+                                QuestTabCeil(image: i.0, title: i.1)
+                                    .onTapGesture {
+                                        questCallback(i.2)
+                                    }
                             }
                         }
                         .padding(.leading, 16)

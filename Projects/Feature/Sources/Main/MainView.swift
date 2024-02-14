@@ -13,6 +13,7 @@ public struct MainView: View {
     @State var selectedTab: GreenyBottomNavigatorType = .home
     @State var certificationFocused = false
     @State var isClicked = false
+    @State var selectedQuestTab = 0
     
     public init() {}
     
@@ -20,10 +21,15 @@ public struct MainView: View {
         NavigationStack {
             ZStack {
                 switch selectedTab {
-                case .home: HomeView()
+                case .home: HomeView { idx in
+                    withAnimation {
+                        selectedQuestTab = idx
+                        selectedTab = .quest
+                    }
+                }
                 case .find: FindView()
                 case .certification: CertificationView(isClicked: $isClicked)
-                case .quest: QuestView()
+                case .quest: QuestView(selectedQuestTab: $selectedQuestTab)
                 case .my: MyView()
                 }
                 VStack {
