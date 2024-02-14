@@ -22,7 +22,7 @@ final class QuestViewModel: ObservableObject {
     func loadCompleteOrDoingQuest(onFail: @escaping () -> Void) async {
         isLoading = true
         do {
-            completeOrDoingQuest = Array(try await questApi.getQuestAll(type: 1) + questApi.getQuestAll(type: 2)).sorted(by: { i1, i2 in i1.createdAt < i2.createdAt })
+            completeOrDoingQuest = try await questApi.getQuestAll(type: 1)
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
@@ -36,7 +36,7 @@ final class QuestViewModel: ObservableObject {
     func loadDone(onFail: @escaping () -> Void) async {
         isLoading = true
         do {
-            doneQuest = Array(try await questApi.getQuestAll(type: 1) + questApi.getQuestAll(type: 2)).sorted(by: { i1, i2 in i1.createdAt < i2.createdAt })
+            doneQuest = try await questApi.getQuestAll(type: 2)
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
