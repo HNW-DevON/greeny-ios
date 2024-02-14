@@ -9,24 +9,13 @@
 import SwiftUI
 import DesignSystem
 
-fileprivate let dummyDoingQuest = [
-    ("이강현과 가위바위보해서 이기기 ", false),
-    ("아 배고프다 오늘 점심 ㅜ머지", false),
-    ("이강현 캄보디아에서 내 선물 사와1", false),
-    ("이강현 캄보디아에서 내 선물 사와2", false),
-    ("이강현 출국심사 안잡히고 출국하기0", true),
-    ("이강현 출국심사 안잡히고 출국하기1", true),
-    ("이강현 출국심사 안잡히고 출국하기2", true),
-    ("이강현 출국심사 안잡히고 출국하기3", true),
-    ("이강현 출국심사 안잡히고 출국하기4", true),
-    ("이강현 출국심사 안잡히고 출국하기5", true)
-]
-
 struct QuestView: View {
     
     @Binding var selectedQuestType: Int
     @State private var rect: CGRect = .zero
     @State var selectedQuestTab = QuestTabViewType.completeOrDoing
+    @ObservedObject var vm = QuestViewModel()
+    @EnvironmentObject var tm: TokenManager
     
     @ViewBuilder
     private var questTab: some View {
@@ -68,8 +57,8 @@ struct QuestView: View {
     private var doing: some View {
         ScrollView {
             LazyVStack(spacing: 36) {
-                ForEach(dummyDoingQuest + dummyDoingQuest, id: \.0) { i in
-                    QuestCeil(state: i.1 ? .complete : .doing, title: i.0)
+                ForEach(vm.completeOrDoingQuest) { i in
+                    QuestCeil(state: i.questState, title: i.questName)
                 }
             }
             Spacer()
@@ -80,8 +69,8 @@ struct QuestView: View {
     private var yet: some View {
         ScrollView {
             LazyVStack(spacing: 36) {
-                ForEach(dummyDoingQuest, id: \.0) { i in
-                    QuestCeil(state: i.1 ? .complete : .doing, title: i.0)
+                ForEach(vm.doneQuest) { i in
+                    QuestCeil(state: i.questState, title: i.questName)
                 }
             }
             Spacer()
@@ -110,5 +99,13 @@ struct QuestView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .task {
+            await vm.loadCompleteOrDoingQuest {
+                tm.token = ""
+            }
+            await vm.loadDone {
+                tm.token = ""
+            }
+        }
     }
 }
