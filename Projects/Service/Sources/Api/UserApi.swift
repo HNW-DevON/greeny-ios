@@ -61,8 +61,8 @@ public final class UserApi {
         try await client.requestImage("/user/image")
     }
     
-    public func getInfo() async throws -> UserResponse {
-        try await client.request("/user/info", UserResponse.self)
+    public func getInfo() async throws -> User {
+        try await client.request("/user/info", UserResponse.self).toDomain()
     }
 }
 

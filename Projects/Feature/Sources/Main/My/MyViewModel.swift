@@ -19,8 +19,8 @@ final class MyViewModel: ObservableObject {
     @Published var encyclopedias: [Product] = []
     @Published var tier = ""
     @Published var left = 0
-    @Published var pointHistory: [PointResponse] = []
-    @Published var user: UserResponse? = nil
+    @Published var pointHistory: [Point] = []
+    @Published var user: User? = nil
     @Published var fixName = ""
     
     func loadEncyclopedia(onFail: () -> Void) async {

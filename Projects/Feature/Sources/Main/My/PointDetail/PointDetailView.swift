@@ -13,7 +13,7 @@ import Service
 struct PointDetailView: View {
     
     @Environment(\.dismiss) var dismiss
-    var user: UserResponse
+    var user: User
     
     var body: some View {
         GreenyTopbar("포인트", backButtonCallback: {
@@ -22,7 +22,7 @@ struct PointDetailView: View {
             ScrollView {
                 HStack {
                     GreenyLogo(type: .medium)
-                    Text("100P")
+                    Text("\(user.hasPoint)P")
                         .font(._title)
                         .padding(.leading, 24)
                     Spacer()
