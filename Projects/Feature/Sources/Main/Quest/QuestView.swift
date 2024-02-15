@@ -20,7 +20,9 @@ struct QuestView: View {
     @State var isQuestDetail = false
     @State var selectedQuest: Quest? = nil {
         didSet {
-            isQuestDetail = true
+            if selectedQuest != nil {
+                isQuestDetail = true
+            }
         }
     }
     
@@ -123,7 +125,7 @@ struct QuestView: View {
             }
         }
         .sheet(isPresented: $isQuestDetail) {
-            QuestDetailView(quest: selectedQuest)
+            QuestDetailView(quest: $selectedQuest)
                 .presentationDetents([.height(200), .medium, .large])
         }
     }

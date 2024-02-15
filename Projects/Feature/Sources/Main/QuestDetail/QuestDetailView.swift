@@ -12,16 +12,15 @@ import Service
 
 struct QuestDetailView: View {
     
-    var quest: Quest?
+    @Binding var quest: Quest?
     
     var body: some View {
         VStack {
-            Text(quest?.questName ?? "")
+            Text(quest?.questName ?? "...")
                 .font(._subtitle)
             Text(quest?.questState.description ?? "")
                 .font(._bodyLight)
                 .foregroundStyle(Color.main700)
-                .padding(.top, 12)
             let c = quest?.createdAt.components
             if let y = c?.year,
                let m = c?.month,
@@ -31,9 +30,9 @@ struct QuestDetailView: View {
                     .font(._label)
             }
             Text(quest?.questDesc ?? "")
-                .padding(.horizontal, 28)
                 .font(._label)
+                .padding(.top, 8)
         }
-        .navigationBarBackButtonHidden()
+        .padding(.horizontal, 28)
     }
 }
