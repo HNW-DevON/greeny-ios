@@ -41,13 +41,21 @@ struct FindView: View {
             if !vm.isLoading {
                 LazyVStack(spacing: 16) {
                     ForEach(vm.leftProducts, id: \.id) { item in
-                        FindCeil(item: item)
+                        NavigationLink {
+                            ProductDetail(product: item)
+                        } label: {
+                            FindCeil(item: item)
+                        }
                     }
                     
                 }
                 LazyVStack(spacing: 16) {
                     ForEach(vm.rightProducts, id: \.id) { item in
-                        FindCeil(item: item)
+                        NavigationLink {
+                            ProductDetail(product: item)
+                        } label: {
+                            FindCeil(item: item)
+                        }
                     }
                 }
             } else {
