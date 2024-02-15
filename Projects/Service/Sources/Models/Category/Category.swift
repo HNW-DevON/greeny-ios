@@ -33,7 +33,7 @@ public enum Category: String, CaseIterable {
         }
     }
     
-    public var foregroundColor: Color {
+    public var backgroundColor: Color {
         switch self {
         case .environment: Color(0xFFCBFFBD)
         case .childcare: Color(0xFFFBCBFF)
@@ -46,7 +46,7 @@ public enum Category: String, CaseIterable {
         }
     }
     
-    public var backgroundColor: Color {
+    public var foregroundColor: Color {
         switch self {
         case .environment: Color(0xFF4BE924)
         case .childcare: Color(0xFFE924D6)
