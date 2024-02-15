@@ -15,9 +15,13 @@ struct LoadingFirstView: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            LottieView(jsonName: "ani")
+//            LottieView(jsonName: "ani", loopMode: .loop)
+//                .frame(width: 144, height: 144)
+            Text("잠시만 기다려주세요...")
+                .font(._subtitle)
             Text("상품을 분석중이에요")
                 .font(._body)
+                .padding(.top, 8)
         }
         .opacity(opacity)
         .toCenter()
