@@ -15,14 +15,21 @@ fileprivate let questApi = QuestApi.live
 @MainActor
 final class QuestViewModel: ObservableObject {
     
+    @Published var selectedQuestTab = QuestTabViewType.completeOrDoing
     @Published var completeOrDoingQuest: [Quest] = []
     @Published var doneQuest: [Quest] = []
     @Published var isLoading = true
     
-    func loadCompleteOrDoingQuest(onFail: @escaping () -> Void) async {
+    func loadCompleteOrDoingQuest(idx:Int,
+                                  onFail: @escaping () -> Void) async {
         isLoading = true
         do {
-            completeOrDoingQuest = try await questApi.getQuestAll(type: 1)
+            completeOrDoingQuest = switch idx {
+            case 0: try await questApi.getQuestAll(type: 1)
+            case 1: try await questApi.newly(type: 1)
+            case 2: try await questApi.weekly(type: 1)
+            default: []
+            }
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
@@ -33,10 +40,17 @@ final class QuestViewModel: ObservableObject {
         isLoading = true
     }
     
-    func loadDone(onFail: @escaping () -> Void) async {
+    func loadDone(idx: Int,
+                  onFail: @escaping () -> Void) async {
         isLoading = true
         do {
-            doneQuest = try await questApi.getQuestAll(type: 2)
+            doneQuest = switch idx {
+            case 0: try await questApi.getQuestAll(type: 2)
+            case 1: try await questApi.newly(type: 2)
+            case 2: try await questApi.weekly(type: 2)
+            default: []
+            }
+            
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()

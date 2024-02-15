@@ -52,6 +52,7 @@ struct CompanyView: View {
                     LazyVStack(spacing: 8) {
                         ForEach(company.event, id: \.id) { event in
                             EventView(event: event)
+                                .padding(.top, 8)
                         }
                     }
                     .padding(.top, 12)

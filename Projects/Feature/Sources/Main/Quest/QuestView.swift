@@ -12,9 +12,20 @@ import Service
 
 struct QuestView: View {
     
-    @Binding var selectedQuestType: Int
+    @Binding var selectedQuestType: Int {
+        didSet {
+            Task {
+                await vm.loadCompleteOrDoingQuest(idx: selectedQuestType) {
+                    tm.token = ""
+                }
+                await vm.loadDone(idx: selectedQuestType) {
+                    tm.token = ""
+                }
+                isQuestDetail = false
+            }
+        }
+    }
     @State private var rect: CGRect = .zero
-    @State var selectedQuestTab = QuestTabViewType.completeOrDoing
     @ObservedObject var vm = QuestViewModel()
     @EnvironmentObject var tm: TokenManager
     @State var isQuestDetail = false
@@ -46,17 +57,17 @@ struct QuestView: View {
         HStack {
             ForEach(QuestTabViewType.allCases, id: \.text) { tab in
                 Text(tab.text)
-                    .foregroundStyle(selectedQuestTab == tab ? Color.main700 : Color.black)
+                    .foregroundStyle(vm.selectedQuestTab == tab ? Color.main700 : Color.black)
                     .font(._bodyLight)
                     .overlay(
                         Rectangle()
-                            .foregroundStyle(selectedQuestTab == tab ? Color.main700 : Color.white)
+                            .foregroundStyle(vm.selectedQuestTab == tab ? Color.main700 : Color.white)
                             .frame(height: 1)
                             .offset(y: 2),
                         alignment: .bottom
                     )
                     .onTapGesture {
-                        selectedQuestTab = tab
+                        vm.selectedQuestTab = tab
                     }
             }
         }
@@ -96,7 +107,7 @@ struct QuestView: View {
     
     @ViewBuilder
     private var questContent: some View {
-        TabView(selection: $selectedQuestTab) {
+        TabView(selection: $vm.selectedQuestTab) {
             doing.tag(QuestTabViewType.completeOrDoing)
             yet.tag(QuestTabViewType.done)
         }
@@ -117,10 +128,10 @@ struct QuestView: View {
         }
         .navigationBarBackButtonHidden()
         .task {
-            await vm.loadCompleteOrDoingQuest {
+            await vm.loadCompleteOrDoingQuest(idx: selectedQuestType) {
                 tm.token = ""
             }
-            await vm.loadDone {
+            await vm.loadDone(idx: selectedQuestType) {
                 tm.token = ""
             }
         }
@@ -129,10 +140,10 @@ struct QuestView: View {
                 Task {
                     await vm.completeQuest(quest: selectedQuest!) {
                         Task {
-                            await vm.loadCompleteOrDoingQuest {
+                            await vm.loadCompleteOrDoingQuest(idx: selectedQuestType) {
                                 tm.token = ""
                             }
-                            await vm.loadDone {
+                            await vm.loadDone(idx: selectedQuestType) {
                                 tm.token = ""
                             }
                             isQuestDetail = false

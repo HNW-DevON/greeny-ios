@@ -27,17 +27,22 @@ struct CompanyDetailCeil: View {
                                   backgroundColor: category.backgroundColor)
                     }
                 }
+                .toLeading()
                 .padding(.leading, 4)
                 Text(company.companyName)
                     .foregroundStyle(Color.black)
                     .font(._subtitle)
                     .padding(.leading, 4)
                     .padding(.top, 8)
+                    .multilineTextAlignment(.leading)
+                    .toLeading()
                 Text(company.companyDesc)
                     .foregroundStyle(Color.gray500)
                     .font(._label)
                     .multilineTextAlignment(.leading)
                     .padding(.top, 4)
+                    .toLeading()
+                    .multilineTextAlignment(.leading) 
                 
             }
             .padding(.horizontal, 20)
