@@ -29,18 +29,26 @@ struct MyView: View {
     var profile: some View {
         HStack {
             HStack(spacing: 8) {
-                AsyncImage(url: URL(string: vm.user?.imagePath ?? "")) {
-                    $0.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 48, maxHeight: 48)
-                        .clipShape(Circle())
-                } placeholder: {
-                    Circle()
-                        .foregroundStyle(Color.gray100)
-                        .frame(maxWidth: 48, maxHeight: 48)
-                        .clipShape(Circle())
+                Group {
+                    if let image = vm.user?.imagePath {
+                        AsyncImage(url: URL(string: vm.user?.imagePath ?? "")) {
+                            $0.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 48, height: 48)
+                                .clipShape(Circle())
+                        } placeholder: {
+                            Circle()
+                                .foregroundStyle(Color.gray100)
+                                .frame(width: 48, height: 48)
+                                .clipShape(Circle())
+                        }
+                        .padding(.leading, 16)
+                    } else {
+                        Image("DummyProfile")
+                            .frame(width: 48, height: 48)
+                            .padding(.leading, 16)
+                    }
                 }
-                .padding(.leading, 16)
                 Text(vm.user?.name ?? "")
                     .font(._label)
                     .skeleton(with: vm.isUserInfoLoading, scales: [0: 0.3])
