@@ -19,9 +19,8 @@ struct EncyclopediaCeil: View {
         let roundedCorner = RoundedCorner(radius: Size.extraLarge.rawValue, corners: .allCorners)
         
         VStack(spacing: 4) {
-            AsyncImage(url: URL(string: product.images.first ?? ""),
-                       content: {
-                $0.image?
+            AsyncImage(url: URL(string: product.images.first ?? "")) {
+                $0
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipShape(roundedCorner)
@@ -29,8 +28,10 @@ struct EncyclopediaCeil: View {
                         roundedCorner
                             .stroke(Color.gray100, lineWidth: 2)
                     }
+            } placeholder: {
+                Rectangle()
+                    .addGrayStroke(color: .gray300)
             }
-            )
             Text(product.baseItems.first?.value ?? "")
                 .lineLimit(1)
                 .foregroundStyle(Color.gray700)

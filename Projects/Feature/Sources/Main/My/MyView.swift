@@ -43,6 +43,8 @@ struct MyView: View {
                 .padding(.leading, 16)
                 Text(vm.user?.name ?? "")
                     .font(._label)
+                    .skeleton(with: vm.isUserInfoLoading, scales: [0: 0.3])
+                    .frame(maxHeight: 16)
                 Text(vm.user?.tier ?? "")
                     .font(._caption)
                     .foregroundStyle(Color.yellow)
@@ -61,6 +63,7 @@ struct MyView: View {
                     .padding(.trailing, 12)
                     .font(._caption)
                     .foregroundStyle(Color.gray500)
+                    .underline()
             }
         }
         .padding(.horizontal, 8)
@@ -80,6 +83,7 @@ struct MyView: View {
                     }
                 } label: {
                     HStack {
+                        Spacer()
                         Image(Asset.greeny)
                             .resizable()
                             .frame(maxWidth: 16, maxHeight: 16)
@@ -94,6 +98,7 @@ struct MyView: View {
                             .scaleEffect(x: -1, y: 1)
                             .padding(.trailing, 12)
                     }
+                    .frame(maxHeight: 18)
                 }
             }
             HStack(spacing: 8) {
@@ -156,6 +161,9 @@ struct MyView: View {
                         .resizable()
                         .frame(width: 36, height: 36)
                         .padding(.bottom, 8)
+                        .skeleton(with: vm.isPointLoading,
+                                  scales: [0:0.5])
+                        .frame(maxHeight: 24)
                     Text(vm.tier)
                         .foregroundStyle(Color.main500)
                         .font(._subtitle)
@@ -188,11 +196,20 @@ struct MyView: View {
     @ViewBuilder
     var encyclopedia: some View {
         LazyVGrid(columns: gridItem, spacing: 16) {
-            ForEach(vm.encyclopedias, id: \.id) {
-                EncyclopediaCeil(product: $0)
-                    .onTapGesture {
-                        print("clicked \($0)")
-                    }
+            if vm.isEncyclopediaLoading {
+                ForEach(0..<14, id: \.self) { _ in
+                    Rectangle()
+                        .skeleton(with: vm.isEncyclopediaLoading,
+                                  shape: .rounded(.radius(Size.extraLarge.rawValue)))
+                        .frame(height: 80)
+                }
+            } else {
+                ForEach(vm.encyclopedias, id: \.id) {
+                    EncyclopediaCeil(product: $0)
+                        .onTapGesture {
+                            print("clicked \($0)")
+                        }
+                }
             }
         }
         .padding(.horizontal, 20)
@@ -240,7 +257,7 @@ struct MyView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: rect.size.height + 30)
         .onPreferenceChange(ViewRectKey.self) { rects in
-            if rects.first?.height ?? .zero > rect.height {
+            if rects.first?.height != .zero {
                 rect = rects.first ?? .zero
             }
         }

@@ -22,11 +22,14 @@ final class MyViewModel: ObservableObject {
     @Published var pointHistory: [Point] = []
     @Published var user: User? = nil
     @Published var fixName = ""
+    @Published var isEncyclopediaLoading = true
+    @Published var isPointLoading = true
+    @Published var isUserInfoLoading = true
     
     func loadEncyclopedia(onFail: () -> Void) async {
+        isEncyclopediaLoading = true
         do {
             encyclopedias = try await encyclopediaApi.getEncyclePediaAll()
-            print(encyclopedias)
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
@@ -35,9 +38,11 @@ final class MyViewModel: ObservableObject {
         } catch (let e) {
             print(e)
         }
+        isEncyclopediaLoading = false
     }
     
     func loadPoint(onFail: () -> Void) async {
+        isPointLoading = true
         do {
             let tierResponse = try await userApi.getTier()
             tier = tierResponse.tier ?? ""
@@ -50,9 +55,11 @@ final class MyViewModel: ObservableObject {
         } catch (let e) {
             print(e)
         }
+        isPointLoading = false
     }
     
     func loadUserInfo(onFail: () -> Void) async {
+        isUserInfoLoading = true
         do {
             let userResponse = try await userApi.getInfo()
             user = userResponse
@@ -66,9 +73,11 @@ final class MyViewModel: ObservableObject {
         } catch (let e) {
             print(e)
         }
+        isUserInfoLoading = false
     }
     
     func editProfile(onFail: () -> Void) async {
+        isUserInfoLoading = true
         do {
             let _ = try await userApi.editProfile(request: EditProfileRequest(name: fixName))
             print("response")
@@ -79,6 +88,7 @@ final class MyViewModel: ObservableObject {
         } catch (let e) {
             print(e)
         }
+        isUserInfoLoading = false
     }
     
 }
