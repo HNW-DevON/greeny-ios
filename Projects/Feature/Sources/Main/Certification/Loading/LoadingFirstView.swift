@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct LoadingFirstView: View {
     
@@ -14,9 +15,7 @@ struct LoadingFirstView: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            Circle()
-                .foregroundStyle(Color.main600)
-                .frame(width: 144, height: 144)
+            LottieView(jsonName: "ani")
             Text("상품을 분석중이에요")
                 .font(._body)
         }
