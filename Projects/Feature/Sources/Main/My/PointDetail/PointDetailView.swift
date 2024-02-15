@@ -26,9 +26,6 @@ struct PointDetailView: View {
                         .font(._title)
                         .padding(.leading, 24)
                     Spacer()
-                    Image(Asset.leftArrow)
-                        .scaleEffect(x: -1, y: 1)
-                        .padding(.trailing, 24)
                 }
                 .padding(.top, 24)
                 .padding(.leading, 28)
