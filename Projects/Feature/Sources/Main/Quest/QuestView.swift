@@ -125,8 +125,24 @@ struct QuestView: View {
             }
         }
         .sheet(isPresented: $isQuestDetail) {
-            QuestDetailView(quest: $selectedQuest)
-                .presentationDetents([.height(200), .medium, .large])
+            QuestDetailView(quest: $selectedQuest) {
+                Task {
+                    await vm.completeQuest(quest: selectedQuest!) {
+                        Task {
+                            await vm.loadCompleteOrDoingQuest {
+                                tm.token = ""
+                            }
+                            await vm.loadDone {
+                                tm.token = ""
+                            }
+                            isQuestDetail = false
+                        }
+                    } onFail: {
+                        tm.token = ""
+                    }
+                }
+            }
+            .presentationDetents([.height(240), .medium, .large])
         }
     }
 }

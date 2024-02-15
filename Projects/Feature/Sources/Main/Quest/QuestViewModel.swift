@@ -42,9 +42,26 @@ final class QuestViewModel: ObservableObject {
                 onFail()
             }
         } catch {
-            
+            print(error)
         }
         isLoading = true
+    }
+    
+    func completeQuest(quest: Quest,
+                       onSuccess: @escaping () -> Void,
+                       onFail: @escaping () -> Void) async {
+        do {
+            print("QuestViewModel.completeQuest - try complete quest")
+            let _ = try await questApi.completeQuest(id: quest.id)
+            onSuccess()
+            print("QuestViewModel.completeQuest - to complete quest is success")
+        } catch AFError.responseValidationFailed(let e) {
+            if isUnauthorized(e) {
+                onFail()
+            }
+        } catch {
+            print(error)
+        }
     }
     
 }

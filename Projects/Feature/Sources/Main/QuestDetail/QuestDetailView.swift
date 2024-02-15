@@ -13,6 +13,7 @@ import Service
 struct QuestDetailView: View {
     
     @Binding var quest: Quest?
+    var onComplete: () -> Void
     
     var body: some View {
         VStack {
@@ -32,6 +33,14 @@ struct QuestDetailView: View {
             Text(quest?.questDesc ?? "")
                 .font(._label)
                 .padding(.top, 8)
+            if let state = quest?.questState {
+                if state != .complete {
+                    GreenyButton("퀘스트 완료") {
+                        onComplete()
+                    }
+                    .padding(.top, 4)
+                }
+            }
         }
         .padding(.horizontal, 28)
     }

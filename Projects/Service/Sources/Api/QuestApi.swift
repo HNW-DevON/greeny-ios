@@ -18,7 +18,7 @@ public final class QuestApi {
     }
     
     public func completeQuest(id: Int) async throws -> VoidResponse {
-        try await client.request("/quest/complete", method: .post)
+        try await client.request("/quest/complete/\(id)")
     }
     
 }
