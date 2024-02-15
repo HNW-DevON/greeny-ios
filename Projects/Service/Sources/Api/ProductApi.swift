@@ -13,8 +13,8 @@ fileprivate let client = GreenyHttpClient.live
 public final class ProductApi {
     
     
-    public func product(id: Int) async throws -> Product {
-        try await client.request("/product/\(id)", ProductResponse.self).toDomain()
+    public func product(id: Int) async throws -> Certification {
+        try await client.request("/product/\(id)", CertificationResponse.self).toDomain()
     }
 }
 
