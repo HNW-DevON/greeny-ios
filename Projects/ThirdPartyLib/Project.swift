@@ -14,7 +14,8 @@ let project = Project.makeModule(
     dependencies: [
         .SPM.Alamofire,
         .SPM.AlamofireImage,
-        .SPM.SkeletonUI
+        .SPM.SkeletonUI,
+        .SPM.Lottie
     ],
     resources: ["Resources/**"]
 )
