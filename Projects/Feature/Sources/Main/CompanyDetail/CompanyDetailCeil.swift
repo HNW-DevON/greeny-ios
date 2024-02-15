@@ -20,8 +20,11 @@ struct CompanyDetailCeil: View {
         } label: {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    ForEach(company.companyCategory, id: \.self) { category in
-                        GreenyTag(category, foregroundColor: Color.green500, backgroundColor: Color.green)
+                    ForEach(company.companyCategory, id: \.self) {
+                        let category = Category.fromString($0)
+                        GreenyTag($0,
+                                  foregroundColor: category.foregroundColor,
+                                  backgroundColor: category.backgroundColor)
                     }
                 }
                 .padding(.leading, 4)

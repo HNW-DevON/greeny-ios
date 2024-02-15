@@ -23,7 +23,10 @@ struct CompanyView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 8) {
                         ForEach(company.companyCategory, id: \.self) {
-                            GreenyTag($0, foregroundColor: .gray, backgroundColor: .red)
+                            let category = Category.fromString($0)
+                            GreenyTag($0,
+                                      foregroundColor: category.foregroundColor,
+                                      backgroundColor: category.backgroundColor)
                         }
                     }
                     .padding(.top, 28)
