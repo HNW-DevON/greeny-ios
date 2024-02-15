@@ -37,13 +37,15 @@ struct BenefitView: View {
                         .padding(.top, 32)
                         .padding(.leading, 24)
                         .toLeading()
-                    VStack(spacing: 12) {
-                        ForEach(dummyProducts, id: \.2) {
-                            BenefitProductCeil(productName: $0.1, imageUrl: $0.0, point: $0.2)
-                                .padding(.horizontal, 28)
-                        }
-                    }
-                    .padding(.top, 16)
+                    //                    VStack(spacing: 12) {
+                    //                        ForEach(dummyProducts, id: \.2) {
+                    //                            BenefitProductCeil(productName: $0.1, imageUrl: $0.0, point: $0.2)
+                    //                                .padding(.horizontal, 28)
+                    //                        }
+                    //                    }
+                    Text("아직 받으실 수 있는 혜택이 없어요ㅠㅠ")
+                        .font(._bodyLight)
+                        .padding(.top, 72)
                     
                 }
             }
