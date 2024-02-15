@@ -30,7 +30,7 @@ struct BenefitView: View {
         }) {
             ScrollView {
                 VStack(spacing: 0) {
-                    PointDetailCeil(name: "노자손", point: 100, user: user)
+                    PointDetailCeil(name: user.name, point: user.hasPoint, user: user)
                         .padding(.top, 32)
                     Text("포인트로 착한소비하기")
                         .font(._body)

@@ -23,7 +23,7 @@ struct EarnPointView: View {
         }) {
             ScrollView {
                 VStack(spacing: 0) {
-                    PointDetailCeil(name: "노자손", point: 100, user: user)
+                    PointDetailCeil(name: user.name, point: user.hasPoint, user: user)
                         .padding(.top, 32)
                     Text("사회적 기업의 제품을 소비하고\n포인트를 얻어보세요")
                         .foregroundStyle(Color.main700)
