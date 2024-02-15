@@ -28,14 +28,18 @@ struct MyEditView: View {
             dismiss()
         } content: {
             VStack(spacing: 0) {
-                AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
-                           content: {
-                    $0.image?
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .clipShape(Circle())
-                }
-                )
+//                AsyncImage(url: URL(string: "https://hws.dev/paul.jpg"),
+//                           content: {
+//                    $0.image?
+//                        .resizable()
+//                        .frame(width: 80, height: 80)
+//                        .clipShape(Circle())
+//                }
+//                )
+                Image("DummyProfile")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
                 .padding(.top, 16)
                 GreenyInputCeil(title: "이름", hint: "이름을 입력해 주세요", text: $fixName)
                     .padding(.horizontal, 20)
