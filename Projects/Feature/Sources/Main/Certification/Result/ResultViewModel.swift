@@ -16,7 +16,7 @@ fileprivate let pointApi = PointApi.live
 @MainActor
 class ResultViewModel: ObservableObject {
     @Published var viewType: CertificationViewType = .loadingFirst
-    @Published var resultProduct: Product? = nil {
+    @Published var resultProduct: Certification? = nil {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 self.viewType = .result
