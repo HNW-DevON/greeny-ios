@@ -24,7 +24,7 @@ struct ResultView: View {
     @ViewBuilder
     private var product: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: URL(string: vm.resultProduct?.product.images.first ?? "")) {
+            AsyncImage(url: URL(string: (vm.resultProduct?.product.images?.first ?? "") ?? "")) {
                 $0
                     .resizable()
                     .frame(width: 150, height: 150)
@@ -36,7 +36,7 @@ struct ResultView: View {
                     .addGrayStroke()
             }
             VStack(alignment: .leading, spacing: 0) {
-                Text(vm.resultProduct?.product.baseItems.first?.value ?? "상품 이름을 찾을 수 없어요")
+                Text(vm.resultProduct?.product.baseItems?.first??.value ?? "상품 이름을 찾을 수 없어요")
                     .font(._body)
                 Text(vm.resultProduct?.product.clsTotalNm)
                     .font(._caption)
@@ -63,15 +63,15 @@ struct ResultView: View {
     private var company: some View {
         HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading, spacing: 8) {
-                ForEach(vm.resultProduct?.product.companies ?? [], id: \.name) { i in
+                ForEach(vm.resultProduct?.product.companies ?? [], id: \.?.addresses) { i in
                     VStack(alignment: .leading, spacing: 0) {
-                        Text(i.name)
+                        Text(i?.name)
                             .font(._body)
                         HStack(alignment: .bottom) {
-                            Text(i.type)
+                            Text(i?.type)
                                 .font(._caption)
                                 .padding(.top, 8)
-                            Text(i.addresses.first ?? "")
+                            Text(i?.addresses?.first ?? "")
                                 .font(._caption)
                                 .padding(.top, 4)
                         }

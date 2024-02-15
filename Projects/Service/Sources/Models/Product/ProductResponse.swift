@@ -12,26 +12,26 @@ public struct Product: Hashable {
     
     public let id = UUID()
     public let code, message, status: String?
-    public let type, gtin, kanCode: String
-    public let clsTotalNm: String
-    public let baseItems: [BaseItemResponse]
-    public let companies: [Companies2Response]
-    public let brands: [String]
-    public let countries: [Country]
+    public let type, gtin, kanCode: String?
+    public let clsTotalNm: String?
+    public let baseItems: [BaseItemResponse?]?
+    public let companies: [Companies2Response?]?
+    public let brands: [String?]?
+    public let countries: [Country?]?
     public let prdComp, originVolume, prdPacTyp: String?
-    public let images: [String]
+    public let images: [String?]?
 }
 
 public struct ProductResponse: Decodable {
     public let code, message, status: String?
-    public let type, gtin, kanCode: String
-    public let clsTotalNm: String
-    public let baseItems: [BaseItemResponse]
-    public let companies: [Companies2Response]
-    public let brands: [String]
-    public let countries: [Country]
+    public let type, gtin, kanCode: String?
+    public let clsTotalNm: String?
+    public let baseItems: [BaseItemResponse?]?
+    public let companies: [Companies2Response?]?
+    public let brands: [String?]
+    public let countries: [Country?]?
     public let prdComp, originVolume, prdPacTyp: String?
-    public let images: [String]
+    public let images: [String?]?
     
     public func toDomain() -> Product {
         Product(code: code,
@@ -53,16 +53,16 @@ public struct ProductResponse: Decodable {
 }
 
 public struct BaseItemResponse: Decodable, Hashable {
-    public let name: String
-    public let value: String
+    public let name: String?
+    public let value: String?
 }
 
 public struct Companies2Response: Decodable, Hashable {
-    public let type, name: String
-    public let addresses: [String]
+    public let type, name: String?
+    public let addresses: [String?]?
 }
 
 public struct Country: Decodable, Hashable {
-    let name: String
-    let values: [String]
+    let name: String?
+    let values: [String?]?
 }

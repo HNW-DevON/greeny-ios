@@ -20,7 +20,7 @@ struct TodayCeil: View {
         
         VStack(spacing: 0) {
             AsyncImage(
-                url: URL(string: todayGreeny.product.images.first ?? "")) { image in
+                url: URL(string: (todayGreeny.product.images?.first ?? "") ?? "")) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -32,7 +32,7 @@ struct TodayCeil: View {
                         .frame(width: 120, height: 120)
                         .addGrayStroke()
                 }
-            Text(todayGreeny.product.baseItems.first?.value)
+            Text(todayGreeny.product.baseItems?.first??.value)
                 .font(._label)
                 .lineLimit(1)
                 .truncationMode(.tail)

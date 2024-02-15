@@ -31,7 +31,7 @@ struct MyView: View {
             HStack(spacing: 8) {
                 Group {
                     if let image = vm.user?.imagePath {
-                        AsyncImage(url: URL(string: vm.user?.imagePath ?? "")) {
+                        AsyncImage(url: URL(string: image)) {
                             $0.resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 48, height: 48)

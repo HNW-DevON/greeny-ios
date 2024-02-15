@@ -23,7 +23,7 @@ struct ProductDetail: View {
         } content: {
             ScrollView {
                 VStack(spacing: 0) {
-                    AsyncImage(url: URL(string: product.images.first ?? "")) {
+                    AsyncImage(url: URL(string: (product.images?.first ?? "") ?? "")) {
                         $0
                             .resizable()
                             .addGrayStroke()
@@ -35,7 +35,7 @@ struct ProductDetail: View {
                             .frame(width: size, height: size)
                     }
                     .padding(.top, 44)
-                    Text(product.baseItems.first?.value ?? "")
+                    Text(product.baseItems?.first??.value ?? "")
                         .font(._subtitle)
                         .padding(.top, 12)
                     Text("기업 정보")
@@ -45,15 +45,15 @@ struct ProductDetail: View {
                         .padding(.top, 24)
                     HStack(alignment: .top, spacing: 16) {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(product.companies, id: \.name) { i in
+                            ForEach(product.companies ?? [], id: \.?.name) { i in
                                 VStack(alignment: .leading, spacing: 0) {
-                                    Text(i.name)
+                                    Text(i?.name)
                                         .font(._body)
                                     HStack(alignment: .bottom) {
-                                        Text(i.type)
+                                        Text(i?.type)
                                             .font(._caption)
                                             .padding(.top, 8)
-                                        Text(i.addresses.first ?? "")
+                                        Text(i?.addresses?.first ?? "")
                                             .font(._caption)
                                             .padding(.top, 4)
                                     }
