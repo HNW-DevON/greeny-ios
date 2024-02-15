@@ -28,7 +28,7 @@ public struct ProductResponse: Decodable {
     public let clsTotalNm: String?
     public let baseItems: [BaseItemResponse?]?
     public let companies: [Companies2Response?]?
-    public let brands: [String?]
+    public let brands: [String?]?
     public let countries: [Country?]?
     public let prdComp, originVolume, prdPacTyp: String?
     public let images: [String?]?

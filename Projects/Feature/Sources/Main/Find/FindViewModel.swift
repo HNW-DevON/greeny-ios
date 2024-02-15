@@ -35,6 +35,7 @@ final class FindViewModel: ObservableObject {
             }
             isLoading = false
         } catch {
+            print(error)
             isLoading = false
         }
     }
