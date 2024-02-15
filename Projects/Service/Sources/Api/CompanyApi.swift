@@ -24,6 +24,10 @@ public final class CompanyApi {
         try await client.request("/company/category/\(category)", CompaniesResponse.self).map { $0.toDomain() }
     }
     
+    public func todayCompany() async throws -> Companies {
+        try await client.request("/company/daily", CompaniesResponse.self).map { $0.toDomain() }
+    }
+    
 }
 
 extension CompanyApi {
