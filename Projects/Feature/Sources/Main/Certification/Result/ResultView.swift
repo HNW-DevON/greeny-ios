@@ -14,9 +14,11 @@ struct ResultView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm = ResultViewModel()
     @EnvironmentObject var tm: TokenManager
-    var recentImage: UIImage
+    
     @State var showDialog = false
     @State var isPointed = false
+    
+    var barcode: Int
     
     
     @ViewBuilder
@@ -143,7 +145,7 @@ struct ResultView: View {
         }
         .navigationBarBackButtonHidden()
         .task {
-            await vm.loadView {
+            await vm.loadView(barcode: barcode) {
                 withAnimation {
                     tm.token = ""
                 }

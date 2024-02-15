@@ -12,26 +12,15 @@ struct CertificationView: View {
     
     @ObservedObject var vm = CertificationViewModel()
     @Binding var isClicked: Bool
-
     
     var body: some View {
-        CertificationCameraView(viewModel: vm)
-            .onChange(of: isClicked) {
-                if $0 {
-                    let _ = withAnimation {
-                        Task {
-                            await vm.capturePhoto()
-                        }
-                    }
-                    isClicked = false
-                }
+        BarcodeScannerView(barcode: $vm.barcode)
+        if vm.barcode != nil {
+            NavigationLink(isActive: $isClicked) {
+                ResultView(barcode: vm.barcode!)
+            } label: {
+                
             }
-        NavigationLink(isActive: $vm.isActive) {
-            if vm.recentImage != nil {
-                ResultView(recentImage: vm.recentImage!)
-            }
-        } label: {
-            
         }
     }
 }

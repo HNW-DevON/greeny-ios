@@ -15,10 +15,10 @@ struct CertificationCameraView: View {
     
     var body: some View {
         ZStack {
-            viewModel.cameraPreview.ignoresSafeArea()
-                .task {
-                    await viewModel.configure()
-                }
+//            viewModel.cameraPreview.ignoresSafeArea()
+//                .task {
+//                    await viewModel.configure()
+//                }
             Image(Asset.cameraRectangle)
                 .resizable()
                 .frame(width: 200, height: 200)

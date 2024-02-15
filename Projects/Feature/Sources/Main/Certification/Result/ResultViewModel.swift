@@ -24,12 +24,13 @@ class ResultViewModel: ObservableObject {
         }
     }
     
-    func loadView(onFail: @escaping () -> Void, onFail2: @escaping () -> Void) async {
+    func loadView(barcode: Int,
+                  onFail: @escaping () -> Void,
+                  onFail2: @escaping () -> Void) async {
         viewType = .loadingFirst
         do {
-            let dummyId = 8801045023687
-            resultProduct = try await productApi.product(id: 8801045023687)
-            let _ = try await pointApi.savePoint(id: 8801045023687)
+            resultProduct = try await productApi.product(id: barcode)
+            let _ = try await pointApi.savePoint(id: barcode)
         } catch AFError.responseValidationFailed(let e) {
             if isUnauthorized(e) {
                 onFail()
