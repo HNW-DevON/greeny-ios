@@ -8,38 +8,42 @@
 
 import SwiftUI
 import DesignSystem
+import Service
 
 struct TodayCompanyCeil: View {
     
-    let productName: String
-    let imageUrl: String
-    let description: String
+    var company: Company
     
     var body: some View {
         HStack {
-            AsyncImage(
-                url: URL(string: imageUrl),
-                content: {
-                    $0.image?
-                        .resizable()
-                        .frame(width: 64, height: 64)
-                        .addGrayStroke()
-                }
-            )
+//            AsyncImage(
+//                url: URL(string: company.),
+//                content: {
+//                    $0.image?
+//                        .resizable()
+//                        .frame(width: 64, height: 64)
+//                        .addGrayStroke()
+//                }
+//            )
             VStack {
                 Spacer()
-                Text(productName)
+                Text(company.companyName)
                     .font(._body)
                     .toLeading()
                 Spacer()
-                Text(description)
+                Text(company.companyDesc)
                     .font(._label)
                     .toLeading()
                 Spacer()
             }
             .padding(.leading, 12)
             Spacer()
-            GreenyTag("asd", foregroundColor: .green500, backgroundColor: .green)
+            ForEach(company.companyCategory, id: \.self) {
+                let category = Category.fromString($0)
+                GreenyTag($0,
+                          foregroundColor: category.foregroundColor,
+                          backgroundColor: category.backgroundColor)
+            }
         }
     }
 }

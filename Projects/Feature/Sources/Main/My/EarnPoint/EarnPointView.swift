@@ -10,18 +10,11 @@ import SwiftUI
 import DesignSystem
 import Service
 
-fileprivate let dummyProducts = [
-    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
-    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
-    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
-    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
-    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨"),
-    ("https://hws.dev/paul.jpg", "착한 치킨", "선캄브리아 제갈 치킨")
-]
-
 struct EarnPointView: View {
     
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var vm = EarnPointViewModel()
+    @EnvironmentObject var tm: TokenManager
     var user: User
     
     var body: some View {
@@ -44,8 +37,8 @@ struct EarnPointView: View {
                         .padding(.leading, 24)
                         .toLeading()
                     VStack(spacing: 12) {
-                        ForEach(dummyProducts, id: \.2) {
-                            TodayCompanyCeil(productName: $0.1, imageUrl: $0.0, description: $0.2)
+                        ForEach(vm.todayCompanies, id: \.id) {
+                            TodayCompanyCeil(company: $0)
                                 .padding(.horizontal, 28)
                         }
                     }
@@ -54,5 +47,10 @@ struct EarnPointView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .task {
+            await vm.loadCompanies {
+                tm.token = ""
+            }
+        }
     }
 }
