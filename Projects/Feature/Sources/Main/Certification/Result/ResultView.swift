@@ -70,22 +70,22 @@ struct ResultView: View {
                         HStack(alignment: .bottom) {
                             Text(i.type)
                                 .font(._caption)
-                                .padding(.top, 4)
+                                .padding(.top, 8)
                             Text(i.addresses.first ?? "")
                                 .font(._caption)
                                 .padding(.top, 4)
                         }
                     }
                 }
-                HStack(spacing: 0) {
-                    Text("환경")
-                        .foregroundStyle(Color(0x47AF23))
-                        .font(._cute)
-                }
-                .padding(6)
-                .background(Color(0xCBFFCD))
-                .clipShape(RoundedCorner(radius: 8))
-                .padding(.top, 12)
+//                HStack(spacing: 0) {
+//                    Text("환경")
+//                        .foregroundStyle(Color(0x47AF23))
+//                        .font(._cute)
+//                }
+//                .padding(6)
+//                .background(Color(0xCBFFCD))
+//                .clipShape(RoundedCorner(radius: 8))
+//                .padding(.top, 12)
             }
             .padding(.top, 4)
             .toLeading()
